@@ -8,6 +8,7 @@ height = 22.0
 
 [node name="Player" type="CharacterBody2D" unique_id=681689913]
 script = ExtResource("1_dovo2")
+jump_force = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=600228725]
 position = Vector2(0, -1)
@@ -16,3 +17,6 @@ texture = ExtResource("1_8afob")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463265850]
 visible = false
 shape = SubResource("CapsuleShape2D_dovo2")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2056689752]
+position_smoothing_speed = 10.0
