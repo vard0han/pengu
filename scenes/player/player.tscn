@@ -14,4 +14,5 @@ position = Vector2(0, -1)
 texture = ExtResource("1_8afob")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463265850]
+visible = false
 shape = SubResource("CapsuleShape2D_dovo2")
