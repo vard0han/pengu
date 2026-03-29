@@ -2,13 +2,85 @@
 
 [ext_resource type="Texture2D" uid="uid://lkx1tbo6fktc" path="res://assets/Tiles/Characters/tile_0000.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://brm57tiph3xql" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="Texture2D" uid="uid://cyurgrsvg8tl2" path="res://assets/Tiles/Characters/tile_0001.png" id="3_gmlin"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 22.0
 
+[sub_resource type="Animation" id="Animation_lvxji"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_8afob")]
+}
+
+[sub_resource type="Animation" id="Animation_p47bc"]
+resource_name = "air"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_gmlin")]
+}
+
+[sub_resource type="Animation" id="Animation_75vfm"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_8afob")]
+}
+
+[sub_resource type="Animation" id="Animation_0owmy"]
+resource_name = "run"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_8afob"), ExtResource("3_gmlin"), ExtResource("1_8afob"), ExtResource("3_gmlin"), ExtResource("1_8afob")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qek5x"]
+_data = {
+&"RESET": SubResource("Animation_lvxji"),
+&"air": SubResource("Animation_p47bc"),
+&"idle": SubResource("Animation_75vfm"),
+&"run": SubResource("Animation_0owmy")
+}
+
 [node name="Player" type="CharacterBody2D" unique_id=681689913]
 script = ExtResource("1_dovo2")
-jump_force = 300.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=600228725]
 position = Vector2(0, -1)
@@ -20,3 +92,6 @@ shape = SubResource("CapsuleShape2D_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2056689752]
 position_smoothing_speed = 10.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1070710517]
+libraries/ = SubResource("AnimationLibrary_qek5x")
