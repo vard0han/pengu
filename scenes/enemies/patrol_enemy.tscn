@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://k1c5t2tg6rfn"]
+
+[ext_resource type="Script" uid="uid://2p0q43c1xtd8" path="res://scenes/enemies/patrol_enemy.gd" id="1_3dqja"]
+[ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/Tiles/Characters/tile_0015.png" id="1_767nm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dqja"]
+size = Vector2(10.45911, 16)
+
+[node name="PatrolEnemy" type="CharacterBody2D" unique_id=276203327]
+script = ExtResource("1_3dqja")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=630022480]
+position = Vector2(0, -12)
+texture = ExtResource("1_767nm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1164736399]
+position = Vector2(-1, -8)
+scale = Vector2(1.0990803, 1)
+shape = SubResource("RectangleShape2D_3dqja")
+
+[node name="LedgeRay" type="RayCast2D" parent="." unique_id=1777103767]
+position = Vector2(-10, 0)
+target_position = Vector2(0, 30)
