@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://cdu7skj32y1ys" path="res://scenes/player/states/run.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://cwpho3s2b5xt3" path="res://scenes/player/states/jump.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://pnxpf7p85pd1" path="res://scenes/player/states/fall.gd" id="8_qek5x"]
+[ext_resource type="Script" uid="uid://cwsw2ddmd1ftm" path="res://scenes/weapons/weapon.gd" id="9_5gtgg"]
+[ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectile.tscn" id="10_h17s1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 22.0
@@ -85,6 +87,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=681689913]
+collision_layer = 2
 script = ExtResource("1_dovo2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=600228725]
@@ -114,3 +117,10 @@ script = ExtResource("7_0owmy")
 
 [node name="Fall" type="Node2D" parent="StateMachine" unique_id=183175131]
 script = ExtResource("8_qek5x")
+
+[node name="Weapon" type="Node2D" parent="." unique_id=1105540759]
+script = ExtResource("9_5gtgg")
+projectile_scene = ExtResource("10_h17s1")
+
+[node name="Muzzle" type="Marker2D" parent="Weapon" unique_id=1214488650]
+position = Vector2(-12, 0)
