@@ -10,6 +10,9 @@ func _unhandled_input(event) -> void:
 		spawn_projectile()
 
 func spawn_projectile() -> void:
+	# adjust muzzle position based on which way is player facing
+	muzzle.position.x = absf(muzzle.position.x) * (1 if player.sprite.flip_h else -1)
+	
 	# spawn the chosen projectile, adjust the position to muzzle's position
 	var projectile : Projectile = projectile_scene.instantiate()
 	projectile.global_position = muzzle.global_position
