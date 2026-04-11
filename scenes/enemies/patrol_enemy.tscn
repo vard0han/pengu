@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2p0q43c1xtd8" path="res://scenes/enemies/patrol_enemy.gd" id="1_3dqja"]
 [ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/Tiles/Characters/tile_0015.png" id="1_767nm"]
-[ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card.tscn" id="2_bvcjx"]
+[ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card_pickup.tscn" id="2_bvcjx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dqja"]
 size = Vector2(10.45911, 16)
@@ -11,7 +11,7 @@ size = Vector2(10.45911, 16)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_3dqja")
-card_drop = ExtResource("2_bvcjx")
+card_drop_scene = ExtResource("2_bvcjx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=630022480]
 position = Vector2(0, -12)

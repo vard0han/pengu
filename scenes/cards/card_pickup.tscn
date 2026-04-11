@@ -1,18 +1,18 @@
 [gd_scene format=3 uid="uid://bwinksyej1kli"]
 
-[ext_resource type="Script" uid="uid://tnekafxa8lbq" path="res://scenes/cards/card.gd" id="1_0qqw3"]
-[ext_resource type="Texture2D" uid="uid://bi4krbss665hx" path="res://assets/Tiles/tile_0170.png" id="2_jl6rh"]
+[ext_resource type="Script" uid="uid://tnekafxa8lbq" path="res://scenes/cards/card_pickup.gd" id="1_duqvd"]
+[ext_resource type="Texture2D" uid="uid://bi4krbss665hx" path="res://assets/Tiles/tile_0170.png" id="2_gg7nh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mvcrd"]
-radius = 6.0
 
 [node name="CardPickup" type="Area2D" unique_id=1911761064]
-collision_mask = 3
-script = ExtResource("1_0qqw3")
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_duqvd")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1739299784]
 position = Vector2(0, -5)
-texture = ExtResource("2_jl6rh")
+texture = ExtResource("2_gg7nh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1273678723]
 position = Vector2(0, -5)
