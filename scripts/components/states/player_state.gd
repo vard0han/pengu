@@ -9,7 +9,7 @@ func enter() -> void:
 func process_physics(_delta) -> void:
 	pass
 
-func apply_gravity(delta):
+func apply_gravity(delta) -> void:
 	if not player:
 		return
 	
@@ -19,7 +19,7 @@ func apply_gravity(delta):
 		# stop gravity from reaching stupid number (might cause bugs)
 		player.velocity.y = minf(player.velocity.y, player.max_fall_speed)
 
-func apply_horizontal_movement(delta):
+func apply_horizontal_movement(delta) -> void:
 	if not player:
 		return
 	

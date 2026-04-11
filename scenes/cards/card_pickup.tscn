@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bwinksyej1kli"]
+
+[ext_resource type="Script" uid="uid://tnekafxa8lbq" path="res://scenes/cards/card_pickup.gd" id="1_duqvd"]
+[ext_resource type="Texture2D" uid="uid://bi4krbss665hx" path="res://assets/Tiles/tile_0170.png" id="2_gg7nh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mvcrd"]
+
+[node name="CardPickup" type="Area2D" unique_id=1911761064]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_duqvd")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1739299784]
+position = Vector2(0, -5)
+texture = ExtResource("2_gg7nh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1273678723]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_mvcrd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

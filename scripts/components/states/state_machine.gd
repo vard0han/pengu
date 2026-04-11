@@ -3,7 +3,7 @@ extends Node
 
 var _current_state: State
 
-func _ready():
+func _ready() -> void:
 	var owner_actor := get_parent()
 	
 	for child in get_children():
@@ -28,7 +28,7 @@ func _physics_process(delta : float) -> void:
 	if body:
 		body.move_and_slide()
 
-func transition_to(state_name: String):
+func transition_to(state_name: String) -> void:
 	var new_state := find_child(state_name) as State
 	if not new_state:
 		push_error("StateMachine: state not found — " + state_name)
