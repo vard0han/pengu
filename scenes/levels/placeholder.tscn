@@ -253,7 +253,14 @@ tile_set = SubResource("TileSet_ib0f8")
 [node name="Player" parent="." unique_id=681689913 instance=ExtResource("2_addv0")]
 position = Vector2(190, 115)
 
-[node name="PatrolEnemy" parent="." unique_id=276203327 instance=ExtResource("3_ib0f8")]
+[node name="Projectiles" type="Node2D" parent="." unique_id=1494524374]
+
+[node name="Pickups" type="Node2D" parent="." unique_id=1158344346]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=600619546]
+
+[node name="PatrolEnemy" parent="Enemies" unique_id=276203327 instance=ExtResource("3_ib0f8")]
 position = Vector2(277, 72)
 
-[node name="Projectiles" type="Node2D" parent="." unique_id=1494524374]
+[node name="PatrolEnemy2" parent="Enemies" unique_id=1535574037 instance=ExtResource("3_ib0f8")]
+position = Vector2(64, 127)
