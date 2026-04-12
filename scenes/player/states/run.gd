@@ -24,6 +24,8 @@ func process_physics(delta: float) -> void:
 	
 	# no velocity check needed, can only go down from running
 	if not on_floor:
+		# before transitioning to fall, start the coyote timer
+		player.coyote_timer = player.coyote_time
 		state_machine.transition_to("Fall")
 		return
 	
