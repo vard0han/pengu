@@ -3,6 +3,7 @@ extends PlayerState
 
 func enter() -> void:
 	super()
+	
 	player.anim_player.play("air")
 
 func process_physics(delta: float) -> void:
@@ -16,12 +17,20 @@ func process_physics(delta: float) -> void:
 	# -------------TRANSITION LOGIC-------------
 	
 	var on_floor := player.is_on_floor()
-	var direction : float = Input.get_axis("move_left", "move_right")
 	
-	if on_floor and absf(player.velocity.x) < 0.1:
-		state_machine.transition_to("Idle")
-		return
+	if on_floor:
+		if player.jump_buffer_timer > 0.0:
+			player.jump_buffer_timer = 0.0
+			state_machine.transition_to("Jump")
+			return
+		if absf(player.velocity.x) < 0.1:
+			state_machine.transition_to("Idle")
+			return
+		else:
+			state_machine.transition_to("Run")
+			return
 	
-	if on_floor and direction != 0:
-		state_machine.transition_to("Run")
+	if Input.is_action_just_pressed("jump") and player.coyote_timer > 0.0:
+		player.coyote_timer = 0.0
+		state_machine.transition_to("Jump")
 		return
