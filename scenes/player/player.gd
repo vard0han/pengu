@@ -14,3 +14,8 @@ extends CharacterBody2D
 
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
+
+@onready var card_inventory: CardInventory = $CardInventory
+
+func collect_card(card: CardData) -> void:
+	card_inventory.add_card(card)

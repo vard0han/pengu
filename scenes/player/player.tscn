@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://pnxpf7p85pd1" path="res://scenes/player/states/fall.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://cwsw2ddmd1ftm" path="res://scenes/weapons/weapon.gd" id="9_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectile.tscn" id="10_h17s1"]
+[ext_resource type="Script" uid="uid://dphds4jgsa3rp" path="res://scripts/components/inventory/card_inventory.gd" id="11_je7p5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 22.0
@@ -124,3 +125,6 @@ projectile_scene = ExtResource("10_h17s1")
 
 [node name="Muzzle" type="Marker2D" parent="Weapon" unique_id=1214488650]
 position = Vector2(-12, 0)
+
+[node name="CardInventory" type="Node" parent="." unique_id=1711922121]
+script = ExtResource("11_je7p5")
