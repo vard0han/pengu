@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://m1alj7c8khdy"]
+
+[ext_resource type="Script" uid="uid://c7fi0aj5bq2k4" path="res://scripts/components/states/cards/double_jump_state.gd" id="1_6rytp"]
+
+[node name="DoubleJump" type="Node2D" unique_id=966190885]
+script = ExtResource("1_6rytp")

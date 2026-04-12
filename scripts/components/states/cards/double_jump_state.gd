@@ -1,4 +1,4 @@
-class_name JumpState
+class_name DoubleJumpState
 extends PlayerState
 
 func enter() -> void:
@@ -19,6 +19,14 @@ func process_physics(delta: float) -> void:
 	
 	# -------------TRANSITION LOGIC-------------
 	
+	var on_floor := player.is_on_floor()
+	
 	if player.velocity.y >= 0:
 		_state_machine.transition_to("Fall")
 		return
+	
+	if on_floor:
+		if absf(player.velocity.x) > 0.1:
+			_state_machine.transition_to("Run")
+		else:
+			_state_machine.transition_to("Idle")

@@ -23,6 +23,8 @@ var jump_buffer_timer: float = 0.0
 
 @onready var card_inventory: CardInventory = $CardInventory
 
+@onready var state_machine: StateMachine = $StateMachine
+
 func _physics_process(delta: float) -> void:
 	coyote_timer = maxf(coyote_timer - delta, 0.0)
 	jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
@@ -30,6 +32,23 @@ func _physics_process(delta: float) -> void:
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("jump"):
 		jump_buffer_timer = jump_buffer_time
+	
+	if event.is_action_pressed("use_card"):
+		_try_use_card()
+
 
 func collect_card(card: CardData) -> void:
 	card_inventory.add_card(card)
+
+func _try_use_card() -> void:
+	if card_inventory.cards.size() == 0: return
+	
+	var card = card_inventory.use_card(0)
+	
+	if not card: return
+	
+	if not card.movement_ability_scene:
+		print("Card has no movement_ability_scene assigned")
+		return
+	
+	state_machine.transition_to_scene(card.movement_ability_scene)

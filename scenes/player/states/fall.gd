@@ -21,16 +21,16 @@ func process_physics(delta: float) -> void:
 	if on_floor:
 		if player.jump_buffer_timer > 0.0:
 			player.jump_buffer_timer = 0.0
-			state_machine.transition_to("Jump")
+			_state_machine.transition_to("Jump")
 			return
 		if absf(player.velocity.x) < 0.1:
-			state_machine.transition_to("Idle")
+			_state_machine.transition_to("Idle")
 			return
 		else:
-			state_machine.transition_to("Run")
+			_state_machine.transition_to("Run")
 			return
 	
 	if Input.is_action_just_pressed("jump") and player.coyote_timer > 0.0:
 		player.coyote_timer = 0.0
-		state_machine.transition_to("Jump")
+		_state_machine.transition_to("Jump")
 		return

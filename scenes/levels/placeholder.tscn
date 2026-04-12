@@ -3,8 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bcigxtkqq5rir" path="res://assets/Tilemap/tilemap_packed.png" id="1_on2b6"]
 [ext_resource type="PackedScene" uid="uid://cvjuwglb08ivq" path="res://scenes/player/player.tscn" id="2_addv0"]
 [ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="3_ib0f8"]
-[ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://scripts/resources/cards/jump_card.tres" id="4_tjj0y"]
-[ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://scripts/resources/cards/dash_card.tres" id="5_k0n4l"]
+[ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="4_tjj0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_addv0"]
 texture = ExtResource("1_on2b6")
@@ -267,8 +266,8 @@ card_drop = ExtResource("4_tjj0y")
 
 [node name="PatrolEnemy2" parent="Enemies" unique_id=1535574037 instance=ExtResource("3_ib0f8")]
 position = Vector2(64, 127)
-card_drop = ExtResource("5_k0n4l")
+card_drop = ExtResource("4_tjj0y")
 
 [node name="PatrolEnemy3" parent="Enemies" unique_id=531181896 instance=ExtResource("3_ib0f8")]
 position = Vector2(-15, 67)
-card_drop = ExtResource("5_k0n4l")
+card_drop = ExtResource("4_tjj0y")

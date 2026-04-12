@@ -7,6 +7,8 @@ signal card_added(card: CardData, slot_index: int)
 signal card_removed(card: CardData, slot_index: int)
 signal inventory_full
 
+signal card_used(card: CardData)
+
 var cards: Array[CardData] = []
 
 func add_card(card: CardData) -> bool:
@@ -32,6 +34,17 @@ func remove_card(slot_index: int) -> CardData:
 	card_removed.emit(card, slot_index)
 	
 	_print_state()
+	
+	return card
+
+func use_card(slot_index: int) -> CardData:
+	if slot_index >= MAX_SLOTS:
+		return null
+	
+	var card = get_card(slot_index)
+	remove_card(slot_index)
+	
+	card_used.emit(card)
 	
 	return card
 

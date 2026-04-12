@@ -3,10 +3,10 @@ extends Node
 
 var actor : Node
 
-var state_machine : StateMachine
+var _state_machine : StateMachine
 
 func _ready() -> void:
-	state_machine = get_parent() as StateMachine
+	_state_machine = get_parent() as StateMachine
 
 func enter() -> void:
 	pass
