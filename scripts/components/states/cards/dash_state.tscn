@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dprdaguhehjkm"]
+
+[ext_resource type="Script" uid="uid://bmty0k5nkgs4g" path="res://scripts/components/states/cards/dash_state.gd" id="1_x67mv"]
+
+[node name="Dash" type="Node2D" unique_id=1937033284]
+script = ExtResource("1_x67mv")

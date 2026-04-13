@@ -11,6 +11,7 @@ func _unhandled_input(event) -> void:
 
 func spawn_projectile() -> void:
 	# adjust muzzle position based on which way is player facing
+	# TODO: fragile logic
 	muzzle.position.x = absf(muzzle.position.x) * (1 if player.sprite.flip_h else -1)
 	
 	# spawn the chosen projectile, adjust the position to muzzle's position
@@ -18,5 +19,6 @@ func spawn_projectile() -> void:
 	projectile.global_position = muzzle.global_position
 	
 	# handle flight direction, set projectile as a child of "Projectiles" node in the level
+	# TODO: fragile logic
 	projectile.direction = Vector2.RIGHT if player.sprite.flip_h else Vector2.LEFT
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)

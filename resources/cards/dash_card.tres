@@ -1,9 +1,11 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c1sso5unef5oq"]
 
+[ext_resource type="PackedScene" uid="uid://dprdaguhehjkm" path="res://scripts/components/states/cards/dash_state.tscn" id="1_t8hdp"]
 [ext_resource type="Script" uid="uid://bcny1435lia47" path="res://resources/card_data.gd" id="1_uj18g"]
 
 [resource]
 script = ExtResource("1_uj18g")
 card_name = "Dash Card"
 card_id = "dash"
+movement_ability_scene = ExtResource("1_t8hdp")
 metadata/_custom_type_script = "uid://bcny1435lia47"

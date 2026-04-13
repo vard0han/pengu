@@ -14,9 +14,6 @@ func process_physics(delta: float) -> void:
 	apply_horizontal_movement(delta)
 	apply_gravity(delta)
 	
-	if Input.is_action_just_released("jump") and player.velocity.y < 0:
-		player.velocity.y *= player.jump_cut_multiplier
-	
 	# -------------TRANSITION LOGIC-------------
 	
 	var on_floor := player.is_on_floor()

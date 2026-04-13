@@ -27,6 +27,7 @@ func flip_direction() -> void:
 	# flip direction and in which direction the raycast detects the collision
 	direction *= -1
 	ledge_ray.position.x *= -1
+	
 	sprite.flip_h = direction > 0
 	
 	# Force immediate update — raycast state is stale for one frame after moving it
