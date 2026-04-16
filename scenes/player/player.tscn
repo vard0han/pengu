@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://pnxpf7p85pd1" path="res://scenes/player/states/fall.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://cwsw2ddmd1ftm" path="res://scenes/weapons/weapon.gd" id="9_5gtgg"]
 [ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectile.tscn" id="10_h17s1"]
+[ext_resource type="Texture2D" uid="uid://csgkxrg1yx7nd" path="res://assets/Tiles/tile_0069.png" id="11_fm80t"]
 [ext_resource type="Script" uid="uid://dphds4jgsa3rp" path="res://scripts/components/inventory/card_inventory.gd" id="11_je7p5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
@@ -94,6 +95,7 @@ script = ExtResource("1_dovo2")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=600228725]
 position = Vector2(0, -1)
 texture = ExtResource("1_8afob")
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463265850]
 shape = SubResource("CapsuleShape2D_dovo2")
@@ -124,7 +126,13 @@ script = ExtResource("9_5gtgg")
 projectile_scene = ExtResource("10_h17s1")
 
 [node name="Muzzle" type="Marker2D" parent="Weapon" unique_id=1214488650]
-position = Vector2(-12, 0)
+position = Vector2(19, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=1096032240]
+position = Vector2(14, 4.973799e-14)
+rotation = 1.5707964
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("11_fm80t")
 
 [node name="CardInventory" type="Node" parent="." unique_id=1711922121]
 script = ExtResource("11_je7p5")

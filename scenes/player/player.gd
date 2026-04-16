@@ -12,6 +12,10 @@ extends CharacterBody2D
 @export var jump_cut_multiplier : float = 0.4
 @export var max_fall_speed : float = 800.0
 
+var aim_direction: Vector2 = Vector2.RIGHT
+var direction : float = 1.0
+var last_direction : float = 1.0
+
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
 
@@ -25,9 +29,24 @@ var jump_buffer_timer: float = 0.0
 
 @onready var state_machine: StateMachine = $StateMachine
 
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+
 func _physics_process(delta: float) -> void:
 	coyote_timer = maxf(coyote_timer - delta, 0.0)
 	jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
+
+func _process(_delta):
+	aim_direction = (get_global_mouse_position() - global_position).normalized()
+	
+	# flip the sprite according to aim
+	sprite.flip_h = aim_direction.x > 0
+	
+	# get player direction for everything
+	direction = Input.get_axis("move_left", "move_right")
+	
+	if direction:
+		last_direction = direction
 
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("jump"):

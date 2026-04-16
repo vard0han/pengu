@@ -23,16 +23,11 @@ func apply_horizontal_movement(delta) -> void:
 	if not player:
 		return
 	
-	var direction : float = Input.get_axis("move_left", "move_right")
-	
-	var target_speed : float = player.move_speed * direction
+	var target_speed : float = player.move_speed * player.direction
 	
 	# move towards the target speed at the rate of acceleration, when direction is known
 	# move towards 0 speed at the rate of deceleration, when direction input not held
-	if direction != 0:
-		# when direction exists, handle sprite flip when facing left and right
-		player.sprite.flip_h = direction > 0
-		
+	if player.direction != 0:
 		player.velocity.x = move_toward(player.velocity.x, target_speed, player.acceleration * delta)
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.deceleration * delta)

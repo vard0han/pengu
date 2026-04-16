@@ -15,7 +15,6 @@ func process_physics(delta: float) -> void:
 	# -------------TRANSITION LOGIC-------------
 	
 	var on_floor := player.is_on_floor()
-	var direction : float = Input.get_axis("move_left", "move_right")
 	
 	if Input.is_action_just_pressed("jump") and on_floor:
 		_state_machine.transition_to("Jump")
@@ -27,6 +26,6 @@ func process_physics(delta: float) -> void:
 		_state_machine.transition_to("Fall")
 		return
 	
-	if(direction != 0):
+	if(player.direction != 0):
 		_state_machine.transition_to("Run")
 		return

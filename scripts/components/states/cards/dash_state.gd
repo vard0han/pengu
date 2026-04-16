@@ -2,15 +2,14 @@ class_name DashState
 extends PlayerState
 
 var _dash_timer: float = 0.0
-const DASH_DURATION: float = 0.2
-const DASH_SPEED: float = 250.0
+const DASH_DURATION: float = 0.1
+const DASH_SPEED: float = 300.0
 
 func enter() -> void:
 	super()
 	
 	player.velocity.y = 0.0
-	# TODO: fragile logic
-	player.velocity.x = DASH_SPEED if player.sprite.flip_h else -DASH_SPEED
+	player.velocity.x = DASH_SPEED * player.last_direction
 	_dash_timer = DASH_DURATION
 	
 	player.anim_player.play("run")

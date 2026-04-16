@@ -1,9 +1,12 @@
 [gd_scene format=4 uid="uid://b2851kykdqgp8"]
 
+[ext_resource type="Script" uid="uid://mrk2ddgpde0y" path="res://scenes/levels/placeholder.gd" id="1_e37e1"]
 [ext_resource type="Texture2D" uid="uid://bcigxtkqq5rir" path="res://assets/Tilemap/tilemap_packed.png" id="1_on2b6"]
 [ext_resource type="PackedScene" uid="uid://cvjuwglb08ivq" path="res://scenes/player/player.tscn" id="2_addv0"]
 [ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="3_ib0f8"]
 [ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="4_o1he8"]
+[ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="5_tjj0y"]
+[ext_resource type="Texture2D" uid="uid://mcca8wabslu1" path="res://assets/Tilemap/ELR_Corsshairs.png" id="7_qkqye"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_addv0"]
 texture = ExtResource("1_on2b6")
@@ -246,6 +249,7 @@ physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_addv0")
 
 [node name="Placeholder" type="Node2D" unique_id=945902726]
+script = ExtResource("1_e37e1")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=495922563]
 tile_map_data = PackedByteArray("AAAAAAcAAAACAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAAPAAcAAAACAAAAAAAQAAcAAAACAAAAAAARAAcAAAACAAAAAAD//wcAAAABAAAAAAASAAcAAAADAAAAAAAAAAQAAAADAAAAAAATAAQAAAADAAAAAAAYAAIAAAADAAAAAAAaAP//AAADAAAAAAACAAEAAAADAAAAAAAEAP//AAADAAAAAAADAP//AAACAAAAAAACAP//AAACAAAAAAD//wQAAAACAAAAAAD+/wQAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAASAAQAAAACAAAAAAARAAQAAAACAAAAAAAQAAQAAAACAAAAAAALAAIAAAACAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAVAAIAAAACAAAAAAAWAAIAAAACAAAAAAAXAAIAAAACAAAAAAAXAP//AAACAAAAAAAYAP//AAACAAAAAAAZAP//AAACAAAAAAD9/wQAAAABAAAAAAD//wEAAAABAAAAAAABAP//AAABAAAAAAAKAAIAAAABAAAAAAAPAAQAAAABAAAAAAAUAAIAAAABAAAAAAAWAP//AAABAAAAAAAOAAIAAAADAAAAAAAKAAAAAAAAAAAAAAAHAP//AAAAAAAAAAAbAAUAAAAAAAAAAAD6/wIAAAAAAAAAAAD4/wAAAAAAAAAAAAA=")
@@ -269,5 +273,10 @@ position = Vector2(64, 127)
 card_drop = ExtResource("4_o1he8")
 
 [node name="PatrolEnemy3" parent="Enemies" unique_id=531181896 instance=ExtResource("3_ib0f8")]
-position = Vector2(-15, 67)
-card_drop = ExtResource("4_o1he8")
+position = Vector2(-15, 72)
+card_drop = ExtResource("5_tjj0y")
+
+[node name="Reticle" type="Sprite2D" parent="." unique_id=255680953]
+texture = ExtResource("7_qkqye")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

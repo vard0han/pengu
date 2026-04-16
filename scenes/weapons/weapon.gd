@@ -5,20 +5,20 @@ extends Node2D
 @onready var muzzle : Marker2D = $Muzzle
 @onready var player : Player = get_parent()
 
+func _process(_delta: float) -> void:
+	if not player: return
+	
+	rotation = player.aim_direction.angle()
+
 func _unhandled_input(event) -> void:
 	if event.is_action_pressed("attack"):
 		spawn_projectile()
 
 func spawn_projectile() -> void:
-	# adjust muzzle position based on which way is player facing
-	# TODO: fragile logic
-	muzzle.position.x = absf(muzzle.position.x) * (1 if player.sprite.flip_h else -1)
-	
 	# spawn the chosen projectile, adjust the position to muzzle's position
 	var projectile : Projectile = projectile_scene.instantiate()
 	projectile.global_position = muzzle.global_position
+	projectile.direction = player.aim_direction
 	
-	# handle flight direction, set projectile as a child of "Projectiles" node in the level
-	# TODO: fragile logic
-	projectile.direction = Vector2.RIGHT if player.sprite.flip_h else Vector2.LEFT
+	# set projectile as a child of "Projectiles" node in the level
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
