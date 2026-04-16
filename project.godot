@@ -17,6 +17,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="PENGU"
 run/main_scene="uid://b2851kykdqgp8"
 config/features=PackedStringArray("4.6", "Forward Plus")
+run/max_fps=155
 
 [display]
 

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cuogqvvhnp70j"]
+
+[ext_resource type="Texture2D" uid="uid://mcca8wabslu1" path="res://assets/Tilemap/ELR_Corsshairs.png" id="1_jysyp"]
+[ext_resource type="Script" uid="uid://cwet727oh6lhe" path="res://scenes/weapons/reticle.gd" id="2_3opjj"]
+
+[node name="Reticle" type="Sprite2D" unique_id=519812675]
+texture = ExtResource("1_jysyp")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("2_3opjj")
