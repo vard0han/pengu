@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cu7evum44f2j8"]
+
+[ext_resource type="Script" uid="uid://orvgvhevqbd1" path="res://scenes/weapons/projectiles/arc_projectile.gd" id="1_050vg"]
+[ext_resource type="Texture2D" uid="uid://8le8xcbw6mij" path="res://assets/Tiles/tile_0161.png" id="2_qmshg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f0pap"]
+radius = 3.0
+
+[node name="ArcProjectile" type="Area2D" unique_id=75497651]
+collision_layer = 8
+collision_mask = 5
+script = ExtResource("1_050vg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1745227959]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_qmshg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=557578281]
+shape = SubResource("CircleShape2D_f0pap")

@@ -8,8 +8,10 @@ signal card_removed(card: CardData, slot_index: int)
 signal inventory_full
 
 signal card_used(card: CardData)
+signal card_sacrificed(card: CardData)
 
 var cards: Array[CardData] = []
+
 
 func add_card(card: CardData) -> bool:
 	if cards.size() >= MAX_SLOTS:
@@ -47,6 +49,20 @@ func use_card(slot_index: int) -> CardData:
 	card_used.emit(card)
 	
 	return card
+
+func sacrifice_card(slot_index: int) -> CardData:
+	if slot_index >= MAX_SLOTS:
+		return null
+	
+	var card = get_card(slot_index)
+	remove_card(slot_index)
+	
+	card_sacrificed.emit(card)
+	print("Sacrificed: " + card.card_name)
+	
+	return card
+
+# HELPER FUNCTIONS
 
 func is_full() -> bool:
 	return cards.size() >= MAX_SLOTS

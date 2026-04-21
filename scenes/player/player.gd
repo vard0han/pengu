@@ -54,6 +54,9 @@ func _unhandled_input(event) -> void:
 	
 	if event.is_action_pressed("use_card"):
 		_try_use_card()
+	
+	if event.is_action_pressed("sacrifice_card"):
+		_try_sacrifice_card()
 
 
 func collect_card(card: CardData) -> void:
@@ -71,3 +74,9 @@ func _try_use_card() -> void:
 		return
 	
 	state_machine.transition_to_scene(card.movement_ability_scene)
+
+func _try_sacrifice_card() -> void:
+	if card_inventory.cards.size() == 0:
+		return
+	
+	card_inventory.sacrifice_card(0)

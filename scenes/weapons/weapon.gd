@@ -5,6 +5,14 @@ extends Node2D
 @onready var muzzle : Marker2D = $Muzzle
 @onready var player : Player = get_parent()
 
+var pending_empowerment: CardData = null
+
+func _ready() -> void:
+	call_deferred("_connect_signals")
+
+func _connect_signals() -> void:
+	player.card_inventory.card_sacrificed.connect(_on_card_sacrificed)
+
 func _process(_delta: float) -> void:
 	if not player: return
 	
@@ -15,10 +23,15 @@ func _unhandled_input(event) -> void:
 		spawn_projectile()
 
 func spawn_projectile() -> void:
-	# spawn the chosen projectile, adjust the position to muzzle's position
-	var projectile : Projectile = projectile_scene.instantiate()
-	projectile.global_position = muzzle.global_position
-	projectile.direction = player.aim_direction
+	var scene = pending_empowerment.empowered_projectile_scene if pending_empowerment else projectile_scene
+	var projectile : Projectile = scene.instantiate()
 	
+	projectile.global_position = muzzle.global_position
 	# set projectile as a child of "Projectiles" node in the level
 	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
+	
+	if pending_empowerment:
+		pending_empowerment = null
+
+func _on_card_sacrificed(card: CardData) -> void:
+	pending_empowerment = card
