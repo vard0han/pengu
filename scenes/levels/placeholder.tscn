@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bcigxtkqq5rir" path="res://assets/Tilemap/tilemap_packed.png" id="1_on2b6"]
 [ext_resource type="PackedScene" uid="uid://cvjuwglb08ivq" path="res://scenes/player/player.tscn" id="2_addv0"]
 [ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="3_ib0f8"]
+[ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="5_k0n4l"]
 [ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="5_tjj0y"]
 [ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="6_k0n4l"]
 
@@ -271,10 +272,14 @@ card_drop = ExtResource("5_tjj0y")
 
 [node name="PatrolEnemy3" parent="Enemies" unique_id=531181896 instance=ExtResource("3_ib0f8")]
 position = Vector2(-15, 72)
-card_drop = ExtResource("5_tjj0y")
+card_drop = ExtResource("5_k0n4l")
 
 [node name="PatrolEnemy4" parent="Enemies" unique_id=621822398 instance=ExtResource("3_ib0f8")]
 position = Vector2(603, 198)
 card_drop = ExtResource("5_tjj0y")
+
+[node name="PatrolEnemy5" parent="Enemies" unique_id=1017930309 instance=ExtResource("3_ib0f8")]
+position = Vector2(246, 126)
+card_drop = ExtResource("5_k0n4l")
 
 [node name="Reticle" parent="." unique_id=519812675 instance=ExtResource("6_k0n4l")]
