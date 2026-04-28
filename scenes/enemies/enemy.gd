@@ -24,5 +24,10 @@ func die() -> void:
 		var card_pickup = card_drop_scene.instantiate()
 		card_pickup.card_data = card_drop
 		card_pickup.global_position = global_position
-		get_tree().current_scene.get_node("Pickups").call_deferred("add_child", card_pickup)
+		
+		var main : Main = Main.get_instance(get_tree())
+		var container : Node2D = main.game_manager.get_pickups_container()
+		if container:
+			container.call_deferred("add_child", card_pickup)
+		
 		queue_free()

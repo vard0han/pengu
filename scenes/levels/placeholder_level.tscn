@@ -1,14 +1,12 @@
 [gd_scene format=4 uid="uid://b2851kykdqgp8"]
 
-[ext_resource type="Texture2D" uid="uid://bcigxtkqq5rir" path="res://assets/Tilemap/tilemap_packed.png" id="1_on2b6"]
-[ext_resource type="PackedScene" uid="uid://cvjuwglb08ivq" path="res://scenes/player/player.tscn" id="2_addv0"]
-[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="3_ib0f8"]
-[ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="5_k0n4l"]
-[ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="5_tjj0y"]
-[ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="6_k0n4l"]
+[ext_resource type="Texture2D" uid="uid://bcigxtkqq5rir" path="res://assets/Tilemap/tilemap_packed.png" id="1_8i2jy"]
+[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="3_rnr66"]
+[ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="4_eiyd6"]
+[ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="5_5582e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_addv0"]
-texture = ExtResource("1_on2b6")
+texture = ExtResource("1_8i2jy")
 texture_region_size = Vector2i(18, 18)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-9, -9, 9, -9, 9, 9, -9, 9)
@@ -247,14 +245,11 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_addv0")
 
-[node name="Placeholder" type="Node2D" unique_id=945902726]
+[node name="PlaceholderLevel" type="Node2D" unique_id=945902726]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=495922563]
 tile_map_data = PackedByteArray("AAAAAAcAAAACAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAAPAAcAAAACAAAAAAAQAAcAAAACAAAAAAARAAcAAAACAAAAAAD//wcAAAABAAAAAAASAAcAAAADAAAAAAAAAAQAAAADAAAAAAATAAQAAAADAAAAAAAYAAIAAAADAAAAAAAaAP//AAADAAAAAAACAAEAAAADAAAAAAAEAP//AAADAAAAAAADAP//AAACAAAAAAACAP//AAACAAAAAAD//wQAAAACAAAAAAD+/wQAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAASAAQAAAACAAAAAAARAAQAAAACAAAAAAAQAAQAAAACAAAAAAALAAIAAAACAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAVAAIAAAACAAAAAAAWAAIAAAACAAAAAAAXAAIAAAACAAAAAAAXAP//AAACAAAAAAAYAP//AAACAAAAAAAZAP//AAACAAAAAAD9/wQAAAABAAAAAAD//wEAAAABAAAAAAABAP//AAABAAAAAAAKAAIAAAABAAAAAAAPAAQAAAABAAAAAAAUAAIAAAABAAAAAAAWAP//AAABAAAAAAAOAAIAAAADAAAAAAAKAAAAAAAAAAAAAAAHAP//AAAAAAAAAAD6/wIAAAAAAAAAAAD4/wAAAAAAAAAAAAAVAAsAAAACAAAAAAAWAAsAAAACAAAAAAAXAAsAAAACAAAAAAAYAAsAAAACAAAAAAAZAAsAAAACAAAAAAAaAAsAAAACAAAAAAAbAAsAAAACAAAAAAAcAAsAAAACAAAAAAAdAAsAAAACAAAAAAAeAAsAAAACAAAAAAAUAAsAAAABAAAAAAAfAAsAAAACAAAAAAAfAAkAAAAAAAYAAAAfAAoAAAAAAAYAAAAfAAUAAAAAAAEAAAAfAAYAAAAAAAYAAAAfAAcAAAAAAAYAAAAfAAgAAAAAAAYAAAAgAAsAAAACAAAAAAAhAAsAAAADAAAAAAA=")
 tile_set = SubResource("TileSet_ib0f8")
-
-[node name="Player" parent="." unique_id=681689913 instance=ExtResource("2_addv0")]
-position = Vector2(190, 115)
 
 [node name="Projectiles" type="Node2D" parent="." unique_id=1494524374]
 
@@ -262,24 +257,25 @@ position = Vector2(190, 115)
 
 [node name="Enemies" type="Node2D" parent="." unique_id=600619546]
 
-[node name="PatrolEnemy" parent="Enemies" unique_id=276203327 instance=ExtResource("3_ib0f8")]
+[node name="PatrolEnemy" parent="Enemies" unique_id=276203327 instance=ExtResource("3_rnr66")]
 position = Vector2(277, 72)
-card_drop = ExtResource("5_tjj0y")
+card_drop = ExtResource("4_eiyd6")
 
-[node name="PatrolEnemy2" parent="Enemies" unique_id=1535574037 instance=ExtResource("3_ib0f8")]
+[node name="PatrolEnemy2" parent="Enemies" unique_id=1535574037 instance=ExtResource("3_rnr66")]
 position = Vector2(64, 127)
-card_drop = ExtResource("5_tjj0y")
+card_drop = ExtResource("4_eiyd6")
 
-[node name="PatrolEnemy3" parent="Enemies" unique_id=531181896 instance=ExtResource("3_ib0f8")]
+[node name="PatrolEnemy3" parent="Enemies" unique_id=531181896 instance=ExtResource("3_rnr66")]
 position = Vector2(-15, 72)
-card_drop = ExtResource("5_k0n4l")
+card_drop = ExtResource("5_5582e")
 
-[node name="PatrolEnemy4" parent="Enemies" unique_id=621822398 instance=ExtResource("3_ib0f8")]
+[node name="PatrolEnemy4" parent="Enemies" unique_id=621822398 instance=ExtResource("3_rnr66")]
 position = Vector2(603, 198)
-card_drop = ExtResource("5_tjj0y")
+card_drop = ExtResource("4_eiyd6")
 
-[node name="PatrolEnemy5" parent="Enemies" unique_id=1017930309 instance=ExtResource("3_ib0f8")]
+[node name="PatrolEnemy5" parent="Enemies" unique_id=1017930309 instance=ExtResource("3_rnr66")]
 position = Vector2(246, 126)
-card_drop = ExtResource("5_k0n4l")
+card_drop = ExtResource("5_5582e")
 
-[node name="Reticle" parent="." unique_id=519812675 instance=ExtResource("6_k0n4l")]
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=987366312]
+position = Vector2(190, 126)

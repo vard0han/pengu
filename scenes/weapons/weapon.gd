@@ -28,7 +28,10 @@ func spawn_projectile() -> void:
 	
 	projectile.global_position = muzzle.global_position
 	# set projectile as a child of "Projectiles" node in the level
-	get_tree().current_scene.get_node("Projectiles").add_child(projectile)
+	var main : Main = Main.get_instance(get_tree())
+	var container : Node2D = main.game_manager.get_projectiles_container()
+	if container:
+		container.add_child(projectile)
 	
 	if pending_empowerment:
 		pending_empowerment = null
