@@ -9,7 +9,7 @@ var direction : int = -1
 @onready var ledge_ray: RayCast2D = $LedgeRay
 @onready var sprite: Sprite2D = $Sprite2D
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	

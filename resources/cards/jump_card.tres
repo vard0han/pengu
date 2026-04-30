@@ -3,11 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://cu7evum44f2j8" path="res://scenes/weapons/projectiles/arc_projectile.tscn" id="1_caili"]
 [ext_resource type="Script" uid="uid://bcny1435lia47" path="res://resources/card_data.gd" id="1_eafn0"]
 [ext_resource type="PackedScene" uid="uid://m1alj7c8khdy" path="res://scripts/components/states/cards/double_jump_state.tscn" id="1_t2fi3"]
+[ext_resource type="Texture2D" uid="uid://dl7b06lbh7uph" path="res://assets/Tiles/tile_0171.png" id="2_ikgba"]
 
 [resource]
 script = ExtResource("1_eafn0")
 card_name = "Jump Card"
 card_id = "jump"
+display_label = "JUMP"
+color = Color(1, 0.85490197, 0.011764706, 1)
+icon = ExtResource("2_ikgba")
 movement_ability_scene = ExtResource("1_t2fi3")
 empowered_projectile_scene = ExtResource("1_caili")
 metadata/_custom_type_script = "uid://bcny1435lia47"

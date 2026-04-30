@@ -15,7 +15,7 @@ func process_physics(delta: float) -> void:
 	
 	# -------------TRANSITION LOGIC-------------
 	
-	var on_floor := player.is_on_floor()
+	var on_floor : bool = player.is_on_floor()
 	
 	if Input.is_action_just_pressed("jump") and on_floor:
 		_state_machine.transition_to("Jump")

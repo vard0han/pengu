@@ -21,7 +21,7 @@ func die() -> void:
 	# if scene exists, instantiate it, adjust the position
 	# add it in the level scene tree, remove the enemy
 	if card_drop_scene:
-		var card_pickup = card_drop_scene.instantiate()
+		var card_pickup: Node = card_drop_scene.instantiate()
 		card_pickup.card_data = card_drop
 		card_pickup.global_position = global_position
 		

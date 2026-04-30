@@ -29,14 +29,16 @@ var jump_buffer_timer: float = 0.0
 
 @onready var state_machine: StateMachine = $StateMachine
 
-func _ready():
+@onready var weapon: Node2D = $Weapon
+
+func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 
 func _physics_process(delta: float) -> void:
 	coyote_timer = maxf(coyote_timer - delta, 0.0)
 	jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	aim_direction = (get_global_mouse_position() - global_position).normalized()
 	
 	# flip the sprite according to aim
@@ -48,7 +50,7 @@ func _process(_delta):
 	if direction:
 		last_direction = direction
 
-func _unhandled_input(event) -> void:
+func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("jump"):
 		jump_buffer_timer = jump_buffer_time
 	
@@ -57,6 +59,9 @@ func _unhandled_input(event) -> void:
 	
 	if event.is_action_pressed("sacrifice_card"):
 		_try_sacrifice_card()
+	
+	if event.is_action_pressed("cycle_card"):
+		_try_cycle_card()
 
 
 func collect_card(card: CardData) -> void:
@@ -65,7 +70,7 @@ func collect_card(card: CardData) -> void:
 func _try_use_card() -> void:
 	if card_inventory.cards.size() == 0: return
 	
-	var card = card_inventory.use_card(0)
+	var card: CardData  = card_inventory.use_card(0)
 	
 	if not card: return
 	
@@ -80,3 +85,7 @@ func _try_sacrifice_card() -> void:
 		return
 	
 	card_inventory.sacrifice_card(0)
+
+func _try_cycle_card() -> void:
+	if card_inventory.cards.size() > 1:
+		card_inventory.cycle_card()

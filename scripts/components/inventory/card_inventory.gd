@@ -6,12 +6,12 @@ const MAX_SLOTS: int = 2
 signal card_added(card: CardData, slot_index: int)
 signal card_removed(card: CardData, slot_index: int)
 signal inventory_full
+signal card_cycled
 
 signal card_used(card: CardData)
 signal card_sacrificed(card: CardData)
 
 var cards: Array[CardData] = []
-
 
 func add_card(card: CardData) -> bool:
 	if cards.size() >= MAX_SLOTS:
@@ -30,7 +30,7 @@ func remove_card(slot_index: int) -> CardData:
 	if slot_index >= MAX_SLOTS:
 		return null
 	
-	var card = cards[slot_index]
+	var card: CardData = cards[slot_index]
 	cards.remove_at(slot_index)
 	
 	card_removed.emit(card, slot_index)
@@ -43,7 +43,7 @@ func use_card(slot_index: int) -> CardData:
 	if slot_index >= MAX_SLOTS:
 		return null
 	
-	var card = get_card(slot_index)
+	var card: CardData = get_card(slot_index)
 	remove_card(slot_index)
 	
 	card_used.emit(card)
@@ -54,13 +54,18 @@ func sacrifice_card(slot_index: int) -> CardData:
 	if slot_index >= MAX_SLOTS:
 		return null
 	
-	var card = get_card(slot_index)
+	var card: CardData = get_card(slot_index)
 	remove_card(slot_index)
 	
 	card_sacrificed.emit(card)
 	print("Sacrificed: " + card.card_name)
 	
 	return card
+
+func cycle_card() -> void:
+	cards.reverse()
+	
+	card_cycled.emit()
 
 # HELPER FUNCTIONS
 
@@ -76,7 +81,7 @@ func get_card(slot_index: int) -> CardData:
 func _print_state() -> void:
 	if cards.size() > 0:
 		print("Inventory: ")
-		for card in cards:
+		for card : CardData in cards:
 			print(card.card_name)
 	else:
 		print("Empty")

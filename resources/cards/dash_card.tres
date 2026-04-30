@@ -3,11 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://b56f58l0nth2x" path="res://scenes/weapons/projectiles/pierce_projectile.tscn" id="1_swqip"]
 [ext_resource type="PackedScene" uid="uid://dprdaguhehjkm" path="res://scripts/components/states/cards/dash_state.tscn" id="1_t8hdp"]
 [ext_resource type="Script" uid="uid://bcny1435lia47" path="res://resources/card_data.gd" id="1_uj18g"]
+[ext_resource type="Texture2D" uid="uid://b60dvk4wo6xd5" path="res://assets/Tiles/tile_0162.png" id="2_ilgpw"]
 
 [resource]
 script = ExtResource("1_uj18g")
 card_name = "Dash Card"
 card_id = "dash"
+display_label = "DASH"
+color = Color(0.4, 0.5764706, 0.9607843, 1)
+icon = ExtResource("2_ilgpw")
 movement_ability_scene = ExtResource("1_t8hdp")
 empowered_projectile_scene = ExtResource("1_swqip")
 metadata/_custom_type_script = "uid://bcny1435lia47"

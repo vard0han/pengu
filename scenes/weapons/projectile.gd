@@ -10,7 +10,7 @@ var velocity: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	
-	var aim_dir = (get_global_mouse_position() - global_position).normalized()
+	var aim_dir: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	
 	velocity = aim_dir * base_speed
 

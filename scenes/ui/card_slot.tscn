@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dxmcxjy54g0nh"]
+
+[ext_resource type="Script" uid="uid://cg85pw0ea6p0f" path="res://scenes/ui/card_slot.gd" id="1_eut7y"]
+[ext_resource type="PackedScene" uid="uid://dtfmuk3002t8f" path="res://scenes/ui/card_visual.tscn" id="2_pv7k4"]
+
+[node name="CardSlot" type="Control" unique_id=1129725781]
+custom_minimum_size = Vector2(32, 48)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eut7y")
+
+[node name="CardVisual" parent="." unique_id=931439587 instance=ExtResource("2_pv7k4")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -135,7 +135,7 @@ rotation = 1.5707964
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("11_fm80t")
 
-[node name="Reticle" parent="Weapon" unique_id=519812675 instance=ExtResource("12_gx1jg")]
-
 [node name="CardInventory" type="Node" parent="." unique_id=1711922121]
 script = ExtResource("11_je7p5")
+
+[node name="Reticle" parent="." unique_id=519812675 instance=ExtResource("12_gx1jg")]

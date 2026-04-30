@@ -6,10 +6,10 @@ var _current_state: State
 var _dynamic_states: Array[Node] = []
 
 func _ready() -> void:
-	var owner_actor := get_parent()
+	var owner_actor: Node2D = get_parent()
 	
-	for child in get_children():
-		var state := child as State
+	for child : Node in get_children():
+		var state: Node = child as State
 		
 		if state:
 			state.actor = owner_actor
@@ -26,13 +26,13 @@ func _physics_process(delta : float) -> void:
 	
 	_current_state.process_physics(delta)
 	
-	var body := get_parent() as CharacterBody2D
+	var body : Node = get_parent() as CharacterBody2D
 	if body:
 		body.move_and_slide()
 
 # handles existing states
 func transition_to(state_name: String) -> void:
-	var new_state := find_child(state_name) as State
+	var new_state : Node = find_child(state_name) as State
 	if not new_state:
 		push_error("StateMachine: state not found — " + state_name)
 		return
@@ -50,7 +50,7 @@ func transition_to_scene(state_scene: PackedScene) -> void:
 		push_error("StateMachine: dynamic state not found")
 		return
 	
-	var new_state = state_scene.instantiate() as State
+	var new_state: Node = state_scene.instantiate() as State
 	
 	if not new_state:
 		push_error("StateMachine: dynamic state doesn't extend State")

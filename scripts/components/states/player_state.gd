@@ -6,10 +6,10 @@ var player : Player
 func enter() -> void:
 	player = actor as Player
 
-func process_physics(_delta) -> void:
+func process_physics(_delta: float) -> void:
 	pass
 
-func apply_gravity(delta) -> void:
+func apply_gravity(delta: float) -> void:
 	if not player:
 		return
 	
@@ -19,7 +19,7 @@ func apply_gravity(delta) -> void:
 		# stop gravity from reaching stupid number (might cause bugs)
 		player.velocity.y = minf(player.velocity.y, player.max_fall_speed)
 
-func apply_horizontal_movement(delta) -> void:
+func apply_horizontal_movement(delta: float) -> void:
 	if not player:
 		return
 	
