@@ -2,20 +2,23 @@ class_name Projectile
 extends Area2D
 
 @export var damage: int = 1
-@export var lifetime: float = 3.0
-@export var base_speed: float = 300.0
+@export var lifetime: float = 5.0
 
+var max_distance: float = 1000.0
 var velocity: Vector2 = Vector2.ZERO
+var _distance_travelled: float = 0.0 # range checks against this
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
-	
-	var aim_dir: Vector2 = (get_global_mouse_position() - global_position).normalized()
-	
-	velocity = aim_dir * base_speed
 
 func _physics_process(delta: float) -> void:
-	global_position += velocity * delta
+	var step: Vector2 = velocity * delta
+	global_position += step
+	_distance_travelled += step.length()
+	
+	if _distance_travelled >= max_distance:
+		queue_free()
+		return
 	
 	_tick_lifetime(delta)
 

@@ -9,8 +9,7 @@
 [ext_resource type="Script" uid="uid://cwpho3s2b5xt3" path="res://scenes/player/states/jump.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://pnxpf7p85pd1" path="res://scenes/player/states/fall.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://cwsw2ddmd1ftm" path="res://scenes/weapons/weapon.gd" id="9_5gtgg"]
-[ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectile.tscn" id="10_h17s1"]
-[ext_resource type="Texture2D" uid="uid://csgkxrg1yx7nd" path="res://assets/Tiles/tile_0069.png" id="11_fm80t"]
+[ext_resource type="Resource" uid="uid://dcqe550q0p0h" path="res://resources/weapons/shuriken.tres" id="10_gx1jg"]
 [ext_resource type="Script" uid="uid://dphds4jgsa3rp" path="res://scripts/components/inventory/card_inventory.gd" id="11_je7p5"]
 [ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="12_gx1jg"]
 
@@ -124,16 +123,10 @@ script = ExtResource("8_qek5x")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1105540759]
 script = ExtResource("9_5gtgg")
-projectile_scene = ExtResource("10_h17s1")
+weapon_data = ExtResource("10_gx1jg")
 
 [node name="Muzzle" type="Marker2D" parent="Weapon" unique_id=1214488650]
-position = Vector2(19, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Weapon" unique_id=1096032240]
-position = Vector2(14, 4.973799e-14)
-rotation = 1.5707964
-scale = Vector2(0.6, 0.6)
-texture = ExtResource("11_fm80t")
+position = Vector2(12, 0)
 
 [node name="CardInventory" type="Node" parent="." unique_id=1711922121]
 script = ExtResource("11_je7p5")

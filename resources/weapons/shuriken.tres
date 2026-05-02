@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://dcqe550q0p0h"]
+
+[ext_resource type="PackedScene" uid="uid://3gfnh5ov60y4" path="res://scenes/weapons/projectiles/shuriken.tscn" id="1_m5mo2"]
+[ext_resource type="Script" uid="uid://corgghm6jc77" path="res://resources/weapons/weapon_data.gd" id="1_v3oei"]
+
+[resource]
+script = ExtResource("1_v3oei")
+weapon_name = "Shuriken"
+weapon_id = "shuriken"
+projectile_scene = ExtResource("1_m5mo2")
+weapon_range = 100.0
+projectile_speed = 100.0
+metadata/_custom_type_script = "uid://corgghm6jc77"

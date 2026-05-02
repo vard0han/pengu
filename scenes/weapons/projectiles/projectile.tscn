@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://d1aae2yyynmf"]
 
-[ext_resource type="Script" uid="uid://dolov3k4diovs" path="res://scenes/weapons/projectile.gd" id="1_qp4n5"]
-[ext_resource type="Texture2D" uid="uid://fd4y825j1tn" path="res://assets/Tiles/tile_0157.png" id="1_vl370"]
+[ext_resource type="Script" uid="uid://dolov3k4diovs" path="res://scenes/weapons/projectiles/projectile.gd" id="1_qp4n5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qp4n5"]
-radius = 3.0
+radius = 5.0
 
 [node name="Projectile" type="Area2D" unique_id=455320433]
 collision_layer = 8
@@ -12,8 +11,6 @@ collision_mask = 5
 script = ExtResource("1_qp4n5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1514560233]
-position = Vector2(0, -3)
-texture = ExtResource("1_vl370")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1623151557]
 shape = SubResource("CircleShape2D_qp4n5")

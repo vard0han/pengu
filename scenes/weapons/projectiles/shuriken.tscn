@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://3gfnh5ov60y4"]
+
+[ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectiles/projectile.tscn" id="1_2cuhi"]
+[ext_resource type="Texture2D" uid="uid://bb0ituhykpabr" path="res://assets/Weapons/shuriken pixel art.png" id="1_euw4o"]
+
+[node name="Shuriken" unique_id=455320433 instance=ExtResource("1_2cuhi")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1514560233]
+texture = ExtResource("1_euw4o")
+region_enabled = true
+region_rect = Rect2(52, 22, 10, 10)
