@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://cwpho3s2b5xt3" path="res://scenes/player/states/jump.gd" id="7_0owmy"]
 [ext_resource type="Script" uid="uid://pnxpf7p85pd1" path="res://scenes/player/states/fall.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://cwsw2ddmd1ftm" path="res://scenes/weapons/weapon.gd" id="9_5gtgg"]
-[ext_resource type="Resource" uid="uid://dcqe550q0p0h" path="res://resources/weapons/shuriken.tres" id="10_gx1jg"]
+[ext_resource type="Resource" uid="uid://c8bxpv5kpv3d7" path="res://resources/weapons/kunai.tres" id="10_fm80t"]
 [ext_resource type="Script" uid="uid://dphds4jgsa3rp" path="res://scripts/components/inventory/card_inventory.gd" id="11_je7p5"]
 [ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="12_gx1jg"]
 
@@ -123,7 +123,7 @@ script = ExtResource("8_qek5x")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1105540759]
 script = ExtResource("9_5gtgg")
-weapon_data = ExtResource("10_gx1jg")
+weapon_data = ExtResource("10_fm80t")
 
 [node name="Muzzle" type="Marker2D" parent="Weapon" unique_id=1214488650]
 position = Vector2(12, 0)

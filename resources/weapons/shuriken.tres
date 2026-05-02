@@ -8,6 +8,5 @@ script = ExtResource("1_v3oei")
 weapon_name = "Shuriken"
 weapon_id = "shuriken"
 projectile_scene = ExtResource("1_m5mo2")
-weapon_range = 100.0
-projectile_speed = 100.0
+weapon_range = 600.0
 metadata/_custom_type_script = "uid://corgghm6jc77"

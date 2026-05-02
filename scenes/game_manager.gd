@@ -4,9 +4,12 @@ extends Node
 @onready var main: Main = get_parent()
 
 var current_level_instance: Node2D = null
+var pending_level_path: String = ""
+var weapon_select_instance: WeaponSelect = null
 
 func _ready() -> void:
 	call_deferred("load_level", "res://scenes/levels/placeholder_level.tscn")
+	call_deferred("show_weapon_select", "res://scenes/levels/placeholder_level.tscn")
 
 func load_level(path: String) -> void:
 	# free existing level
@@ -39,3 +42,28 @@ func get_pickups_container() -> Node:
 	if current_level_instance:
 		return current_level_instance.get_node_or_null("Pickups")
 	return null
+
+func show_weapon_select(level_path: String) -> void:
+	pending_level_path = level_path
+	
+	# hide player during selection so it's not visibly floating
+	main.player.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	var weapon_select_scene: PackedScene = load("res://scenes/ui/weapon_select.tscn")
+	weapon_select_instance = weapon_select_scene.instantiate()
+	main.hud_layer.add_child(weapon_select_instance)
+	
+	weapon_select_instance.weapon_selected.connect(_on_weapon_selected)
+
+func _on_weapon_selected(weapon: WeaponData) -> void:
+	main.player.weapon.weapon_data = weapon
+	
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
+	
+	weapon_select_instance.queue_free()
+	weapon_select_instance = null
+	
+	main.player.visible = true
+	
+	load_level(pending_level_path)

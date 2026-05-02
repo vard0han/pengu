@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://55seiumnbee2"]
+
+[ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectiles/projectile.tscn" id="1_xn3hi"]
+[ext_resource type="Texture2D" uid="uid://dy1tw6hkwfibl" path="res://assets/Weapons/shurken throwin stars.png" id="2_83def"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_242op"]
+radius = 5.0
+
+[node name="Kunai" unique_id=455320433 instance=ExtResource("1_xn3hi")]
+damage = 3
+
+[node name="Sprite2D" parent="." index="0" unique_id=1514560233]
+texture = ExtResource("2_83def")
+region_enabled = true
+region_rect = Rect2(40, 9, 9, 9)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1623151557]
+rotation = 1.5707964
+shape = SubResource("CircleShape2D_242op")

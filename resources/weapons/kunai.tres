@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="WeaponData" format=3 uid="uid://c8bxpv5kpv3d7"]
+
+[ext_resource type="PackedScene" uid="uid://55seiumnbee2" path="res://scenes/weapons/projectiles/kunai.tscn" id="1_a6apl"]
+[ext_resource type="Script" uid="uid://corgghm6jc77" path="res://resources/weapons/weapon_data.gd" id="1_r4htw"]
+
+[resource]
+script = ExtResource("1_r4htw")
+weapon_name = "Kunai"
+weapon_id = "kunai"
+projectile_scene = ExtResource("1_a6apl")
+fire_rate = 4.0
+weapon_range = 200.0
+projectile_speed = 600.0
+display_color = Color(0.97571105, 0.9736578, 0, 1)
+metadata/_custom_type_script = "uid://corgghm6jc77"
