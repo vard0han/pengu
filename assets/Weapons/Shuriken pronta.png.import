@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://hc65yg32cpde"
-path="res://.godot/imported/Shuriken pronta.png-1305b99d41f4daa69a4256da44c5e45e.ctex"
+path="res://.godot/imported/Shuriken pronta.png-3d2a11e79b0a3b2616947274e393b05c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Weapons/Shuriken pronta.png"
-dest_files=["res://.godot/imported/Shuriken pronta.png-1305b99d41f4daa69a4256da44c5e45e.ctex"]
+source_file="res://assets/weapons/Shuriken pronta.png"
+dest_files=["res://.godot/imported/Shuriken pronta.png-3d2a11e79b0a3b2616947274e393b05c.ctex"]
 
 [params]
 

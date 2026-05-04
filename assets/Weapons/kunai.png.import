@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dlw5sbqwquwaf"
-path="res://.godot/imported/kunai.png-47ceaa80712740d66ab95526efb1898b.ctex"
+path="res://.godot/imported/kunai.png-e676a109e6c9d45758b65f719e97fefa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Weapons/kunai.png"
-dest_files=["res://.godot/imported/kunai.png-47ceaa80712740d66ab95526efb1898b.ctex"]
+source_file="res://assets/weapons/kunai.png"
+dest_files=["res://.godot/imported/kunai.png-e676a109e6c9d45758b65f719e97fefa.ctex"]
 
 [params]
 

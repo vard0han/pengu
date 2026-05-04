@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://mcca8wabslu1"
-path="res://.godot/imported/ELR_Corsshairs.png-9d4a5406a9b3ba9f9128e3b77b2ce120.ctex"
+path="res://.godot/imported/ELR_Corsshairs.png-1937963a5dc60bd385114970e5d96428.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tilemap/ELR_Corsshairs.png"
-dest_files=["res://.godot/imported/ELR_Corsshairs.png-9d4a5406a9b3ba9f9128e3b77b2ce120.ctex"]
+source_file="res://assets/tilemap/ELR_Corsshairs.png"
+dest_files=["res://.godot/imported/ELR_Corsshairs.png-1937963a5dc60bd385114970e5d96428.ctex"]
 
 [params]
 

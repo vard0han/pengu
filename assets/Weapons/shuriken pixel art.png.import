@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb0ituhykpabr"
-path="res://.godot/imported/shuriken pixel art.png-62ec55ae8356d1ae6e587d4eed7fece8.ctex"
+uid="uid://ceti6sjeslvbw"
+path="res://.godot/imported/shuriken pixel art.png-b3b4de84a7c30cfd29e2bdbdaee71738.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Weapons/shuriken pixel art.png"
-dest_files=["res://.godot/imported/shuriken pixel art.png-62ec55ae8356d1ae6e587d4eed7fece8.ctex"]
+source_file="res://assets/weapons/shuriken pixel art.png"
+dest_files=["res://.godot/imported/shuriken pixel art.png-b3b4de84a7c30cfd29e2bdbdaee71738.ctex"]
 
 [params]
 

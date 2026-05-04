@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cyshhqffsprwo"]
+
+[ext_resource type="PackedScene" uid="uid://c3bw2u364seyn" path="res://scenes/weapons/visuals/weapon_visual.tscn" id="1_fyv6h"]
+[ext_resource type="Texture2D" uid="uid://bos7t4k1r2kf4" path="res://resources/textures/shuriken_projectile.tres" id="2_63le4"]
+
+[node name="ShurikenVisual" unique_id=1434154058 instance=ExtResource("1_fyv6h")]
+
+[node name="Pivot" parent="." index="0" unique_id=1860582117]
+position = Vector2(12, 0)
+
+[node name="Sprite2D" parent="Pivot" index="0" unique_id=686704269]
+texture = ExtResource("2_63le4")
+region_rect = Rect2(52, 22, 10, 10)

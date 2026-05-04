@@ -1,16 +1,18 @@
 class_name WeaponData
 extends Resource
 
-# Identity
+@export_category("Identity")
 @export var weapon_name: String = ""
 @export var weapon_id: String = ""
 
-# Behaviour
+@export_category("Behavior")
 @export var projectile_scene: PackedScene
-@export var fire_rate: float = 5.0 # shots per second
-@export var weapon_range: float = 1000.0 # pixels travelled before despawn
+@export var fire_rate: float = 5.0
+@export var weapon_range: float = 1000.0
 @export var projectile_speed: float = 400.0
 
-# Display (used by weapon select screen, HUD)
+@export_category("Display")
 @export var display_color: Color = Color.WHITE
 @export var icon: Texture2D
+@export var projectile_texture: Texture2D
+@export var visual_scene: PackedScene

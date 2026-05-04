@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5n376xmlhqdc"]
 
 [ext_resource type="Script" uid="uid://b5icc3n26ww4g" path="res://scenes/ui/weapon_select.gd" id="1_6yodv"]
-[ext_resource type="Script" uid="uid://corgghm6jc77" path="res://resources/weapons/weapon_data.gd" id="2_laud3"]
+[ext_resource type="Script" uid="uid://corgghm6jc77" path="res://scripts/data/weapon_data.gd" id="2_laud3"]
 [ext_resource type="Resource" uid="uid://dcqe550q0p0h" path="res://resources/weapons/shuriken.tres" id="3_elkkp"]
 [ext_resource type="Resource" uid="uid://c8bxpv5kpv3d7" path="res://resources/weapons/kunai.tres" id="4_0ygci"]
 

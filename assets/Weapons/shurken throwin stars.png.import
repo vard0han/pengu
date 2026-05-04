@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dy1tw6hkwfibl"
-path="res://.godot/imported/shurken throwin stars.png-b1bb3538c7b61613c1cea359439e545c.ctex"
+path="res://.godot/imported/shurken throwin stars.png-291702c1cab3f2f019399981566c2f93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Weapons/shurken throwin stars.png"
-dest_files=["res://.godot/imported/shurken throwin stars.png-b1bb3538c7b61613c1cea359439e545c.ctex"]
+source_file="res://assets/weapons/shurken throwin stars.png"
+dest_files=["res://.godot/imported/shurken throwin stars.png-291702c1cab3f2f019399981566c2f93.ctex"]
 
 [params]
 

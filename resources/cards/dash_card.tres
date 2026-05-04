@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c1sso5unef5oq"]
 
 [ext_resource type="PackedScene" uid="uid://b56f58l0nth2x" path="res://scenes/weapons/empowerments/pierce_projectile.tscn" id="1_swqip"]
-[ext_resource type="PackedScene" uid="uid://dprdaguhehjkm" path="res://scripts/components/states/cards/dash_state.tscn" id="1_t8hdp"]
-[ext_resource type="Script" uid="uid://bcny1435lia47" path="res://resources/cards/card_data.gd" id="1_uj18g"]
-[ext_resource type="Texture2D" uid="uid://b60dvk4wo6xd5" path="res://assets/Tiles/tile_0162.png" id="2_ilgpw"]
+[ext_resource type="PackedScene" uid="uid://dprdaguhehjkm" path="res://scenes/player/states/cards/dash_state.tscn" id="1_t8hdp"]
+[ext_resource type="Script" uid="uid://bcny1435lia47" path="res://scripts/data/card_data.gd" id="1_uj18g"]
+[ext_resource type="Texture2D" uid="uid://b60dvk4wo6xd5" path="res://assets/tiles/tile_0162.png" id="2_ilgpw"]
 
 [resource]
 script = ExtResource("1_uj18g")

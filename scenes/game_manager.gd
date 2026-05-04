@@ -8,8 +8,8 @@ var pending_level_path: String = ""
 var weapon_select_instance: WeaponSelect = null
 
 func _ready() -> void:
-	call_deferred("load_level", "res://scenes/levels/placeholder_level.tscn")
-	call_deferred("show_weapon_select", "res://scenes/levels/placeholder_level.tscn")
+	call_deferred("load_level", "res://scenes/world/levels/placeholder_level.tscn")
+	call_deferred("show_weapon_select", "res://scenes/world/levels/placeholder_level.tscn")
 
 func load_level(path: String) -> void:
 	# free existing level
@@ -57,7 +57,7 @@ func show_weapon_select(level_path: String) -> void:
 	weapon_select_instance.weapon_selected.connect(_on_weapon_selected)
 
 func _on_weapon_selected(weapon: WeaponData) -> void:
-	main.player.weapon.weapon_data = weapon
+	main.player.weapon.set_weapon(weapon)
 	
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	

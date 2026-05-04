@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://b5pxuc0s5ko0"
-path="res://.godot/imported/RetroByte.ttf-de858d9195d33bf4864b03d0f6bca883.fontdata"
+path="res://.godot/imported/RetroByte.ttf-5d55422ab15b8e692a2aa6fdced20341.fontdata"
 
 [deps]
 
-source_file="res://assets/Fonts/RetroByte.ttf"
-dest_files=["res://.godot/imported/RetroByte.ttf-de858d9195d33bf4864b03d0f6bca883.fontdata"]
+source_file="res://assets/fonts/RetroByte.ttf"
+dest_files=["res://.godot/imported/RetroByte.ttf-5d55422ab15b8e692a2aa6fdced20341.fontdata"]
 
 [params]
 
