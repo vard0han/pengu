@@ -1,0 +1,46 @@
+[gd_scene format=4 uid="uid://de2r1xgdorhvy"]
+
+[ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/base_level.tscn" id="1_odbsn"]
+[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="2_3tp2u"]
+[ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="3_ynxc0"]
+[ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="4_ynxc0"]
+
+[node name="Level01" unique_id=994587893 instance=ExtResource("1_odbsn")]
+level_id = "level_01"
+
+[node name="TileMapLayer" parent="." index="0" unique_id=1304465506]
+tile_map_data = PackedByteArray("AAAHAP//AAACAAQAAAAIAP//AAACAAQAAAAJAP//AAACAAQAAAAKAP//AAACAAQAAAALAP//AAACAAQAAAAMAP//AAACAAQAAAANAP//AAADAAQAAAAGAP//AAABAAQAAAD///v/AAABAAQAAAAAAPv/AAACAAQAAAABAPv/AAACAAQAAAACAPv/AAACAAQAAAADAPv/AAACAAQAAAAEAPv/AAADAAQAAAARAP3/AAACAAYAAAASAP3/AAACAAYAAAATAP3/AAACAAYAAAAUAP3/AAACAAYAAAAVAP3/AAACAAYAAAAWAP3/AAACAAYAAAAXAP3/AAACAAYAAAAQAP3/AAABAAYAAAAQAP7/AAABAAcAAAARAP7/AAACAAcAAAASAP7/AAACAAcAAAATAP7/AAACAAcAAAAUAP7/AAACAAcAAAAVAP7/AAACAAcAAAAWAP7/AAACAAcAAAAXAP7/AAACAAcAAAAYAP7/AAADAAcAAAAYAP3/AAADAAYAAAAYAPz/AAADAAUAAAAQAPz/AAABAAUAAAARAPz/AAACAAUAAAASAPz/AAACAAUAAAATAPz/AAACAAUAAAAUAPz/AAACAAUAAAAVAPz/AAACAAUAAAAWAPz/AAACAAUAAAAXAPz/AAACAAUAAAAdAPv/AAAAAAUAAAAdAPz/AAAAAAYAAAAdAP3/AAAAAAcAAAAhAP7/AAACAAQAAAAiAP7/AAADAAQAAAAgAP7/AAABAAQAAAAaAAIAAAACAAQAAAAbAAIAAAACAAQAAAAcAAIAAAACAAQAAAAdAAIAAAACAAQAAAAeAAIAAAACAAQAAAAfAAIAAAACAAQAAAAgAAIAAAADAAQAAAAZAAIAAAABAAQAAAD1//j/AAABAAUAAAD2//j/AAACAAUAAAD3//j/AAACAAUAAAD4//j/AAACAAUAAAD5//j/AAACAAUAAAD6//j/AAACAAUAAAD7//j/AAACAAUAAAD8//j/AAADAAUAAAD1//n/AAABAAYAAAD8//n/AAADAAYAAAD2//n/AAACAAYAAAD2//r/AAACAAYAAAD3//r/AAACAAYAAAD4//r/AAACAAYAAAD5//r/AAACAAYAAAD6//r/AAACAAYAAAD7//r/AAACAAYAAAD7//n/AAACAAYAAAD6//n/AAACAAYAAAD5//n/AAACAAYAAAD4//n/AAACAAYAAAD3//n/AAACAAYAAAD2//v/AAACAAYAAAD3//v/AAACAAYAAAD4//v/AAACAAYAAAD5//v/AAACAAYAAAD6//v/AAACAAYAAAD7//v/AAACAAYAAAD8//r/AAADAAYAAAD8//v/AAADAAYAAAD1//r/AAABAAYAAAD1//v/AAABAAYAAAD1//z/AAABAAcAAAD8//z/AAADAAcAAAD2//z/AAACAAcAAAD3//z/AAACAAcAAAD4//z/AAACAAcAAAD5//z/AAACAAcAAAD6//z/AAACAAcAAAD7//z/AAACAAcAAADv//f/AAABAAQAAADw//f/AAACAAQAAADx//f/AAACAAQAAADy//f/AAADAAQAAADp//P/AAABAAQAAADq//P/AAACAAQAAADr//P/AAACAAQAAADs//P/AAACAAQAAADt//P/AAACAAQAAADu//P/AAADAAQAAADn//D/AAADAAQAAADj//D/AAACAAQAAADk//D/AAACAAQAAADl//D/AAACAAQAAADm//D/AAACAAQAAADi//D/AAABAAQAAADf//D/AAAAAAcAAADf/+//AAAAAAYAAADf/+7/AAAAAAYAAADf/+3/AAAAAAUAAAD8/wIAAAACAAYAAAD8/wMAAAACAAcAAAD9/wIAAAACAAYAAAD9/wMAAAACAAcAAAD+/wIAAAACAAYAAAD+/wMAAAACAAcAAAD//wIAAAACAAYAAAD//wMAAAACAAcAAAAAAAIAAAACAAYAAAAAAAMAAAACAAcAAAABAAIAAAACAAYAAAABAAMAAAACAAcAAAACAAIAAAACAAYAAAACAAMAAAACAAcAAAADAAIAAAACAAYAAAADAAMAAAACAAcAAAAEAAIAAAADAAYAAAAEAAMAAAADAAcAAAAEAAEAAAADAAUAAAD8/wEAAAACAAUAAAD9/wEAAAACAAUAAAD+/wEAAAACAAUAAAD//wEAAAACAAUAAAAAAAEAAAACAAUAAAABAAEAAAACAAUAAAACAAEAAAACAAUAAAADAAEAAAACAAUAAAD7/wEAAAABAAUAAAD7/wIAAAABAAYAAAD7/wMAAAABAAcAAAA=")
+
+[node name="JumpPatrol" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="0" unique_id=276203327 instance=ExtResource("2_3tp2u")]
+position = Vector2(575, 36)
+card_drop = ExtResource("3_ynxc0")
+
+[node name="JumpPatrol2" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="1" unique_id=1352111430 instance=ExtResource("2_3tp2u")]
+position = Vector2(218, -18)
+card_drop = ExtResource("3_ynxc0")
+
+[node name="JumpPatrol3" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="2" unique_id=1466767805 instance=ExtResource("2_3tp2u")]
+position = Vector2(-89, -144)
+card_drop = ExtResource("3_ynxc0")
+
+[node name="DashPatrol" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="3" unique_id=552296699 instance=ExtResource("2_3tp2u")]
+position = Vector2(421, -72)
+card_drop = ExtResource("4_ynxc0")
+
+[node name="DashPatrol2" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="4" unique_id=221315118 instance=ExtResource("2_3tp2u")]
+position = Vector2(73, -90)
+card_drop = ExtResource("4_ynxc0")
+
+[node name="DashPatrol3" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="5" unique_id=920964354 instance=ExtResource("2_3tp2u")]
+position = Vector2(617, -36)
+card_drop = ExtResource("4_ynxc0")
+
+[node name="DashPatrol4" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="6" unique_id=768004220 instance=ExtResource("2_3tp2u")]
+position = Vector2(-334, -235)
+card_drop = ExtResource("4_ynxc0")
+
+[node name="PlayerSpawn" parent="." index="4" unique_id=2045276910]
+position = Vector2(-75, 17)
+
+[node name="FinishLine" parent="." index="5" unique_id=1804460539]
+position = Vector2(-583, -350)

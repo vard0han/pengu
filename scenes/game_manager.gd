@@ -1,6 +1,8 @@
 class_name GameManager
 extends Node
 
+signal level_loaded
+
 @onready var main: Main = get_parent()
 
 var current_level_instance: Node2D = null
@@ -8,8 +10,8 @@ var pending_level_path: String = ""
 var weapon_select_instance: WeaponSelect = null
 
 func _ready() -> void:
-	call_deferred("load_level", "res://scenes/world/levels/placeholder_level.tscn")
-	call_deferred("show_weapon_select", "res://scenes/world/levels/placeholder_level.tscn")
+	call_deferred("load_level", "res://scenes/world/levels/level_01.tscn")
+	call_deferred("show_weapon_select", "res://scenes/world/levels/level_01.tscn")
 
 func load_level(path: String) -> void:
 	# free existing level
@@ -32,6 +34,11 @@ func load_level(path: String) -> void:
 		main.player.global_position = spawn_marker.global_position
 	else:
 		push_warning("Level has no PlayerSpawn market - player position unchanged")
+	
+	call_deferred("_emit_level_loaded")
+
+func _emit_level_loaded() -> void:
+	level_loaded.emit()
 
 func get_projectiles_container() -> Node:
 	if current_level_instance:

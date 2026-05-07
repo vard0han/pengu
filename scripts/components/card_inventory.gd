@@ -16,13 +16,12 @@ var cards: Array[CardData] = []
 func add_card(card: CardData) -> bool:
 	if cards.size() >= MAX_SLOTS:
 		inventory_full.emit()
-		print("Inventory Full:")
 		return false
 	
 	cards.append(card)
 	card_added.emit(card, cards.size() - 1)
 	
-	_print_state()
+	#_print_state()
 	
 	return true
 
@@ -35,7 +34,7 @@ func remove_card(slot_index: int) -> CardData:
 	
 	card_removed.emit(card, slot_index)
 	
-	_print_state()
+	#_print_state()
 	
 	return card
 
@@ -58,7 +57,6 @@ func sacrifice_card(slot_index: int) -> CardData:
 	remove_card(slot_index)
 	
 	card_sacrificed.emit(card)
-	print("Sacrificed: " + card.card_name)
 	
 	return card
 

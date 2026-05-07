@@ -13,11 +13,10 @@ func _ready() -> void:
 
 func take_damage(amount: int) -> void:
 	current_health -= amount
-	die()
+	if current_health <= 0:
+		die()
 
 func die() -> void:
-	print("Enemy died")
-	
 	# if scene exists, instantiate it, adjust the position
 	# add it in the level scene tree, remove the enemy
 	if card_drop_scene:
