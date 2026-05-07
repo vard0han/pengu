@@ -55,6 +55,7 @@ func show_weapon_select(level_path: String) -> void:
 	
 	# hide player during selection so it's not visibly floating
 	main.player.visible = false
+	main.hud.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	var weapon_select_scene: PackedScene = load("res://scenes/ui/weapon_select.tscn")
@@ -72,5 +73,6 @@ func _on_weapon_selected(weapon: WeaponData) -> void:
 	weapon_select_instance = null
 	
 	main.player.visible = true
+	main.hud.visible = true
 	
 	load_level(pending_level_path)

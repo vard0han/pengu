@@ -21,6 +21,8 @@ signal level_completed
 signal level_started
 
 var is_complete_unlocked: bool = false
+var time_elapsed: float = 0.0
+var is_timer_running: bool = false
 
 func _ready() -> void:
 	if level_id == "":
@@ -41,15 +43,18 @@ func _start_level() -> void:
 	# check if level is already winnable
 	_check_win_condition(initial_count)
 	
+	is_timer_running = true
 	level_started.emit()
+
+func _process(delta: float) -> void:
+	if is_timer_running:
+		time_elapsed += delta
 
 # called when enemy is removed from the tree
 func _on_enemy_exiting(_child: Node) -> void:
 	var remaining: int = enemies_container.get_child_count() - 1
-	
 	enemies_remaining_changed.emit(remaining)
 	_check_win_condition(remaining)
-
 
 func _check_win_condition(enemies_remaining: int) -> void:
 	if is_complete_unlocked:
@@ -70,4 +75,5 @@ func _on_finish_line_entered(body: Node) -> void:
 	if not is_complete_unlocked:
 		return
 	if body is Player:
-		level_completed.emit()
+		is_timer_running = false
+		level_completed.emit(time_elapsed)

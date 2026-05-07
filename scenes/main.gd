@@ -7,6 +7,7 @@ extends Node2D
 @onready var game_manager: GameManager = $GameManager
 
 var hud: HUD = null
+var results_instance: LevelResults = null
 
 func _ready() -> void:
 	var hud_scene: PackedScene = load("res://scenes/ui/hud.tscn")
@@ -24,12 +25,40 @@ func _on_level_loaded() -> void:
 	
 	level.enemies_remaining_changed.connect(_on_enemies_remaining_changed)
 	level.level_completed.connect(_on_level_completed)
+	
+	# set active level on hud so it can read the timer
+	hud.set_active_level(level)
 
 func _on_enemies_remaining_changed(count: int) -> void:
 	hud.update_enemies_remaining(count)
 
-func _on_level_completed() -> void:
-	print("Main: Level Complete")
+func _on_level_completed(time: float) -> void:
+	var level: Level = game_manager.current_level_instance as Level
+	var level_id: String = level.level_id
+	
+	var previous_best: float = BestTimes.get_best_time(level_id)
+	var is_new_best: bool = BestTimes.record_time(level_id, time)
+	
+	_show_results(time, previous_best, is_new_best)
+
+func _show_results(time: float, previous_best: float, is_new_best: bool) -> void:
+	var scene: PackedScene = load("res://scenes/ui/level_results.tscn")
+	results_instance = scene.instantiate()
+	hud_layer.add_child(results_instance)
+	
+	var displayed_best: float = previous_best
+	if previous_best == INF or is_new_best:
+		displayed_best = time
+	
+	results_instance.setup(time, displayed_best, is_new_best)
+	results_instance.continue_pressed.connect(_on_results_continue)
+
+func _on_results_continue() -> void:
+	if results_instance:
+		results_instance.queue_free()
+		results_instance = null
+	
+	game_manager.show_weapon_select(game_manager.pending_level_path)
 
 func _connect_hud_signals() -> void:
 	var inventory: CardInventory = player.card_inventory
