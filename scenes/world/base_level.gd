@@ -5,8 +5,20 @@ enum WinCondition {
 	KILL_ALL_ENEMIES,
 }
 
+enum Medal {
+	NONE, 
+	BRONZE,
+	SILVER,
+	GOLD
+}
+
 @export_category("Identity")
 @export var level_id: String = ""
+
+@export_category("Medal Thresholds")
+@export var gold_time: float = 0.0
+@export var silver_time: float = 0.0
+@export var bronze_time: float = 0.0
 
 @export_category("Win Condition")
 @export var win_condition: WinCondition = WinCondition.KILL_ALL_ENEMIES
@@ -15,6 +27,7 @@ enum WinCondition {
 @onready var enemies_container: Node2D = $Enemies
 @onready var finish_line: Area2D = $FinishLine
 @onready var finish_sprite: Sprite2D = $FinishLine/Sprite2D
+@onready var kill_zone: Area2D = $KillZone
 
 signal enemies_remaining_changed(count: int)
 signal level_completed
@@ -30,8 +43,13 @@ func _ready() -> void:
 	
 	enemies_container.child_exiting_tree.connect(_on_enemy_exiting)
 	finish_line.body_entered.connect(_on_finish_line_entered)
+	kill_zone.body_entered.connect(_on_kill_zone_entered)
 	
 	call_deferred("_start_level")
+
+func _on_kill_zone_entered(body: Node) -> void:
+	if body is Player:
+		body.health_component.take_damage_ignore_cooldown(999)
 
 func _start_level() -> void:
 	await  get_tree().process_frame
@@ -77,3 +95,13 @@ func _on_finish_line_entered(body: Node) -> void:
 	if body is Player:
 		is_timer_running = false
 		level_completed.emit(time_elapsed)
+
+func get_medal_for_time(time: float) -> Medal:
+	if time <= gold_time:
+		return Medal.GOLD
+	if time <= silver_time:
+		return Medal.SILVER
+	if time <= bronze_time:
+		return Medal.BRONZE
+	
+	return Medal.NONE

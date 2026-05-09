@@ -1,15 +1,15 @@
 extends Node
 
-const SAVE_PATH: String = "user://best_times.json"
+const SAVE_PATH: String = "user://save_data.json"
 
-var times: Dictionary = {}
+var data: Dictionary = {}
 
 func _ready() -> void:
 	_load()
 
 func _load() -> void:
 	if not FileAccess.file_exists(SAVE_PATH):
-		times = {}
+		data = {}
 		return
 	
 	var file: FileAccess = FileAccess.open(SAVE_PATH, FileAccess.READ)
@@ -22,10 +22,10 @@ func _load() -> void:
 	
 	var parsed: Dictionary = JSON.parse_string(content)
 	if parsed is Dictionary:
-		times = parsed
+		data = parsed
 	else:
 		push_warning("Best times file invalid, resetting")
-		times = {}
+		data = {}
 
 func _save() -> void:
 	var file: FileAccess = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -33,19 +33,35 @@ func _save() -> void:
 		push_error("Failed to open best times file for writing")
 		return
 	
-	file.store_string(JSON.stringify(times))
+	file.store_string(JSON.stringify(data))
 	file.close()
 
+func _get_level_data(level_id: String) -> Dictionary:
+	if level_id not in data:
+		data[level_id] = {}
+	return data[level_id]
+
 func get_best_time(level_id: String) -> float:
-	if level_id in times:
-		return times[level_id]
-	return INF # no record means any time is a new best
+	return _get_level_data(level_id).get("best_time", INF)
+
+func get_best_medal(level_id: String) -> int:
+	return _get_level_data(level_id).get("best_medal", 0)
 
 func record_time(level_id: String, time: float) -> bool:
 	var current_best: float = get_best_time(level_id)
 	
 	if time < current_best:
-		times[level_id] = time
+		_get_level_data(level_id)["best_time"] = time
+		_save()
+		return true
+	
+	return false
+
+func record_medal(level_id: String, medal: int) -> bool:
+	var current_best: int = get_best_medal(level_id)
+	
+	if medal > current_best:
+		_get_level_data(level_id)["best_medal"] = medal
 		_save()
 		return true
 	

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dxmcxjy54g0nh" path="res://scenes/ui/card_slot.tscn" id="1_0mwgc"]
 [ext_resource type="Script" uid="uid://cnexni3y8i2g0" path="res://scenes/ui/hud.gd" id="1_hqnrr"]
 [ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/Characters/tile_0015.png" id="3_bo48s"]
+[ext_resource type="PackedScene" uid="uid://datj0wupg85ff" path="res://scenes/ui/hearts_display.tscn" id="4_8qguk"]
 
 [node name="HUD" type="Control" unique_id=1423548122]
 layout_mode = 3
@@ -86,7 +87,18 @@ theme_override_constants/margin_top = 12
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 10
+theme_override_constants/outline_size = 5
 theme_override_font_sizes/font_size = 32
 text = "0.00"
 horizontal_alignment = 1
+
+[node name="TopLeft" type="MarginContainer" parent="." unique_id=218916089]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+
+[node name="HeartsDisplay" parent="TopLeft" unique_id=1364286350 instance=ExtResource("4_8qguk")]
+unique_name_in_owner = true
+layout_mode = 2

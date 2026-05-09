@@ -3,13 +3,16 @@
 [ext_resource type="Script" uid="uid://2p0q43c1xtd8" path="res://scenes/enemies/patrol_enemy.gd" id="1_3dqja"]
 [ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/Characters/tile_0015.png" id="1_767nm"]
 [ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card_pickup.tscn" id="2_bvcjx"]
+[ext_resource type="Script" uid="uid://cjjdqwe3gxkkb" path="res://scripts/components/health_component.gd" id="4_2m8xl"]
+[ext_resource type="Script" uid="uid://bkfnhx31hf6ye" path="res://scripts/components/hurtbox.gd" id="5_27vc1"]
+[ext_resource type="Script" uid="uid://cq6bv2b4pf06i" path="res://scripts/components/hitbox.gd" id="6_at13k"]
+[ext_resource type="PackedScene" uid="uid://dgcds6cgkaa8y" path="res://scenes/enemies/enemy_health_bar.tscn" id="7_27vc1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3dqja"]
 size = Vector2(10.45911, 16)
 
 [node name="PatrolEnemy" type="CharacterBody2D" unique_id=276203327]
 collision_layer = 4
-collision_mask = 3
 script = ExtResource("1_3dqja")
 card_drop_scene = ExtResource("2_bvcjx")
 
@@ -18,6 +21,7 @@ position = Vector2(0, -12)
 texture = ExtResource("1_767nm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1164736399]
+visible = false
 position = Vector2(-1, -8)
 scale = Vector2(1.0990803, 1)
 shape = SubResource("RectangleShape2D_3dqja")
@@ -25,3 +29,37 @@ shape = SubResource("RectangleShape2D_3dqja")
 [node name="LedgeRay" type="RayCast2D" parent="." unique_id=1777103767]
 position = Vector2(-10, 0)
 target_position = Vector2(0, 30)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1255369331]
+script = ExtResource("4_2m8xl")
+metadata/_custom_type_script = "uid://cjjdqwe3gxkkb"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=535543261 node_paths=PackedStringArray("health_component")]
+visible = false
+collision_layer = 16
+collision_mask = 160
+script = ExtResource("5_27vc1")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bkfnhx31hf6ye"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=210028817]
+position = Vector2(-1, -8)
+scale = Vector2(1.0990803, 1)
+shape = SubResource("RectangleShape2D_3dqja")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=1713021587]
+visible = false
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("6_at13k")
+metadata/_custom_type_script = "uid://cq6bv2b4pf06i"
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" unique_id=1441516386]
+position = Vector2(-1, -8)
+scale = Vector2(1.0990803, 1)
+shape = SubResource("RectangleShape2D_3dqja")
+
+[node name="HealthBarAnchor" type="Node2D" parent="." unique_id=1794298587]
+
+[node name="EnemyHealthBar" parent="HealthBarAnchor" unique_id=559578271 instance=ExtResource("7_27vc1")]
+unique_name_in_owner = true

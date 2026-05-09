@@ -1,22 +1,19 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export var max_health: int = 1
-@export var contact_damage : int = 1
 @export var card_drop_scene : PackedScene
 @export var card_drop : CardData
-
-var current_health : int
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _ready() -> void:
-	current_health = max_health
+	health_component.damage_cooldown = 0.05
+	health_component.died.connect(_on_died)
 
-func take_damage(amount: int) -> void:
-	current_health -= amount
-	if current_health <= 0:
-		die()
+func _on_died() -> void:
+	_drop_card()
+	queue_free()
 
-func die() -> void:
+func _drop_card() -> void:
 	# if scene exists, instantiate it, adjust the position
 	# add it in the level scene tree, remove the enemy
 	if card_drop_scene:
@@ -28,5 +25,3 @@ func die() -> void:
 		var container : Node2D = main.game_manager.get_pickups_container()
 		if container:
 			container.call_deferred("add_child", card_pickup)
-		
-		queue_free()

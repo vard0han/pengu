@@ -21,7 +21,7 @@ run/max_fps=155
 
 [autoload]
 
-BestTimes="*uid://b42ebeyvfwh7e"
+SaveData="*uid://b42ebeyvfwh7e"
 
 [debug]
 
@@ -94,10 +94,14 @@ cycle_card={
 [layer_names]
 
 2d_physics/layer_1="World"
-2d_physics/layer_2="Player"
-2d_physics/layer_3="Enemy"
-2d_physics/layer_4="PlayerProjectile"
-2d_physics/layer_5="Pickups"
+2d_physics/layer_2="PlayerBody"
+2d_physics/layer_3="EnemyBody"
+2d_physics/layer_4="PlayerHurtbox"
+2d_physics/layer_5="EnemyHurtbox"
+2d_physics/layer_6="PlayerHitbox"
+2d_physics/layer_7="EnemyHitbox"
+2d_physics/layer_8="PlayerProjectile"
+2d_physics/layer_9="Pickup"
 
 [physics]
 

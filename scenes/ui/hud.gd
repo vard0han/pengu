@@ -6,6 +6,7 @@ extends Control
 @onready var empowerment_label: Label = %EmpowermentLabel
 @onready var enemies_label: Label = %EnemiesLabel
 @onready var timer_label: Label = %TimerLabel
+@onready var hearts_display: HeartsDisplay = %HeartsDisplay
 
 var active_level: Level = null
 
@@ -41,3 +42,9 @@ func set_empowered(is_empowered: bool, card: CardData = null) -> void:
 		empowerment_label.text = "EMPOWERED: " + card.display_label
 	else:
 		empowerment_label.text = ""
+
+func setup_player_hearts(max_health: int) -> void:
+	hearts_display.setup(max_health)
+
+func update_player_hearts(current_health: int) -> void:
+	hearts_display.update_health(current_health)

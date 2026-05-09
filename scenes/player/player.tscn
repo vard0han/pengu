@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://c8bxpv5kpv3d7" path="res://resources/weapons/kunai.tres" id="10_fm80t"]
 [ext_resource type="Script" uid="uid://dphds4jgsa3rp" path="res://scripts/components/card_inventory.gd" id="11_je7p5"]
 [ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="12_gx1jg"]
+[ext_resource type="Script" uid="uid://cjjdqwe3gxkkb" path="res://scripts/components/health_component.gd" id="13_ugbui"]
+[ext_resource type="Script" uid="uid://bkfnhx31hf6ye" path="res://scripts/components/hurtbox.gd" id="14_fcs02"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 22.0
@@ -134,3 +136,18 @@ position = Vector2(12, 0)
 script = ExtResource("11_je7p5")
 
 [node name="Reticle" parent="." unique_id=519812675 instance=ExtResource("12_gx1jg")]
+
+[node name="HealthComponent" type="Node" parent="." unique_id=2035797106]
+script = ExtResource("13_ugbui")
+damage_cooldown = 1.0
+metadata/_custom_type_script = "uid://cjjdqwe3gxkkb"
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1761976488 node_paths=PackedStringArray("health_component")]
+collision_layer = 8
+collision_mask = 64
+script = ExtResource("14_fcs02")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://bkfnhx31hf6ye"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1663120866]
+shape = SubResource("CapsuleShape2D_dovo2")

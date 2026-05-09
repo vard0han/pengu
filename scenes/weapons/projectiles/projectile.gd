@@ -1,7 +1,6 @@
 class_name Projectile
-extends Area2D
+extends Hitbox
 
-@export var damage: int = 1
 @export var lifetime: float = 5.0
 
 var max_distance: float = 1000.0
@@ -10,6 +9,9 @@ var _distance_travelled: float = 0.0 # range checks against this
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
+
+func _on_body_entered(_body: Node) -> void:
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	var step: Vector2 = velocity * delta
@@ -21,12 +23,6 @@ func _physics_process(delta: float) -> void:
 		return
 	
 	_tick_lifetime(delta)
-
-func _on_body_entered(body: Node) -> void:
-	if body is Enemy:
-		body.take_damage(damage)
-	
-	queue_free()
 
 func _tick_lifetime(delta: float) -> void:
 	lifetime -= delta

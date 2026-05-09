@@ -6,9 +6,10 @@
 radius = 3.0
 
 [node name="ArcProjectile" type="Area2D" unique_id=75497651]
-collision_layer = 8
-collision_mask = 5
+collision_layer = 128
 script = ExtResource("1_050vg")
+damage = 3
+destroy_on_hit = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1745227959]
 
