@@ -4,14 +4,24 @@ extends CharacterBody2D
 @export var card_drop_scene : PackedScene
 @export var card_drop : CardData
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var health_bar: EnemyHealthBar = %EnemyHealthBar
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
+	health_component.health_changed.connect(_on_health_changed)
+	health_bar.setup(health_component.max_health)
 	health_component.damage_cooldown = 0.05
 	health_component.died.connect(_on_died)
+	
+	if card_drop:
+		sprite.material.set_shader_parameter("outline_color", card_drop.color)
 
 func _on_died() -> void:
 	_drop_card()
 	queue_free()
+
+func _on_health_changed(current: int, _max: int) -> void:
+	health_bar.update_health(current)
 
 func _drop_card() -> void:
 	# if scene exists, instantiate it, adjust the position

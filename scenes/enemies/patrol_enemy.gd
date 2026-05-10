@@ -7,16 +7,6 @@ extends Enemy
 var direction : int = -1
 
 @onready var ledge_ray: RayCast2D = $LedgeRay
-@onready var sprite: Sprite2D = $Sprite2D
-@onready var health_bar: EnemyHealthBar = %EnemyHealthBar
-
-func _ready() -> void:
-	super._ready()
-	health_component.health_changed.connect(_on_health_changed)
-	health_bar.setup(health_component.max_health)
-
-func _on_health_changed(current: int, _max: int) -> void:
-	health_bar.update_health(current)
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

@@ -33,11 +33,19 @@ func _on_level_loaded() -> void:
 	
 	level.enemies_remaining_changed.connect(_on_enemies_remaining_changed)
 	level.level_completed.connect(_on_level_completed)
+	level.restart_requested.connect(_on_restart_requested)
+	level.restart_with_weapon_requested.connect(_on_restart_with_weapon_requested)
 	
 	# set active level on hud so it can read the timer
 	hud.set_active_level(level)
 	
 	_connect_player_signals()
+
+func _on_restart_requested() -> void:
+	game_manager.load_level(game_manager.pending_level_path)
+
+func _on_restart_with_weapon_requested() -> void:
+	game_manager.show_weapon_select(game_manager.pending_level_path)
 
 func _on_enemies_remaining_changed(count: int) -> void:
 	hud.update_enemies_remaining(count)
@@ -91,6 +99,7 @@ func _show_results(
 		earned_medal,
 		displayed_best_medal,
 		is_new_best_medal,
+		level.dev_time,
 		level.gold_time,
 		level.silver_time,
 		level.bronze_time)

@@ -1,15 +1,17 @@
 [gd_scene format=4 uid="uid://de2r1xgdorhvy"]
 
 [ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/base_level.tscn" id="1_odbsn"]
-[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="2_3tp2u"]
+[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/test/patrol_old.tscn" id="2_3tp2u"]
 [ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="3_ynxc0"]
 [ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="4_ynxc0"]
+[ext_resource type="PackedScene" uid="uid://dwgv6imlxdcwh" path="res://scenes/enemies/patrol_enemy.tscn" id="5_q6olp"]
 
 [node name="Level01" unique_id=994587893 instance=ExtResource("1_odbsn")]
 level_id = "level_01"
 gold_time = 20.0
 silver_time = 25.0
 bronze_time = 30.0
+dev_time = 18.0
 
 [node name="TileMapLayer" parent="." index="0" unique_id=1304465506]
 tile_map_data = PackedByteArray("AAAHAP//AAACAAQAAAAIAP//AAACAAQAAAAJAP//AAACAAQAAAAKAP//AAACAAQAAAALAP//AAACAAQAAAAMAP//AAACAAQAAAANAP//AAADAAQAAAAGAP//AAABAAQAAAD///v/AAABAAQAAAAAAPv/AAACAAQAAAABAPv/AAACAAQAAAACAPv/AAACAAQAAAADAPv/AAACAAQAAAAEAPv/AAADAAQAAAARAP3/AAACAAYAAAASAP3/AAACAAYAAAATAP3/AAACAAYAAAAUAP3/AAACAAYAAAAVAP3/AAACAAYAAAAWAP3/AAACAAYAAAAXAP3/AAACAAYAAAAQAP3/AAABAAYAAAAQAP7/AAABAAcAAAARAP7/AAACAAcAAAASAP7/AAACAAcAAAATAP7/AAACAAcAAAAUAP7/AAACAAcAAAAVAP7/AAACAAcAAAAWAP7/AAACAAcAAAAXAP7/AAACAAcAAAAYAP7/AAADAAcAAAAYAP3/AAADAAYAAAAYAPz/AAADAAUAAAAQAPz/AAABAAUAAAARAPz/AAACAAUAAAASAPz/AAACAAUAAAATAPz/AAACAAUAAAAUAPz/AAACAAUAAAAVAPz/AAACAAUAAAAWAPz/AAACAAUAAAAXAPz/AAACAAUAAAAdAPv/AAAAAAUAAAAdAPz/AAAAAAYAAAAdAP3/AAAAAAcAAAAhAP7/AAACAAQAAAAiAP7/AAADAAQAAAAgAP7/AAABAAQAAAAaAAIAAAACAAQAAAAbAAIAAAACAAQAAAAcAAIAAAACAAQAAAAdAAIAAAACAAQAAAAeAAIAAAACAAQAAAAfAAIAAAACAAQAAAAgAAIAAAADAAQAAAAZAAIAAAABAAQAAAD1//j/AAABAAUAAAD2//j/AAACAAUAAAD3//j/AAACAAUAAAD4//j/AAACAAUAAAD5//j/AAACAAUAAAD6//j/AAACAAUAAAD7//j/AAACAAUAAAD8//j/AAADAAUAAAD1//n/AAABAAYAAAD8//n/AAADAAYAAAD2//n/AAACAAYAAAD2//r/AAACAAYAAAD3//r/AAACAAYAAAD4//r/AAACAAYAAAD5//r/AAACAAYAAAD6//r/AAACAAYAAAD7//r/AAACAAYAAAD7//n/AAACAAYAAAD6//n/AAACAAYAAAD5//n/AAACAAYAAAD4//n/AAACAAYAAAD3//n/AAACAAYAAAD2//v/AAACAAYAAAD3//v/AAACAAYAAAD4//v/AAACAAYAAAD5//v/AAACAAYAAAD6//v/AAACAAYAAAD7//v/AAACAAYAAAD8//r/AAADAAYAAAD8//v/AAADAAYAAAD1//r/AAABAAYAAAD1//v/AAABAAYAAAD1//z/AAABAAcAAAD8//z/AAADAAcAAAD2//z/AAACAAcAAAD3//z/AAACAAcAAAD4//z/AAACAAcAAAD5//z/AAACAAcAAAD6//z/AAACAAcAAAD7//z/AAACAAcAAADv//f/AAABAAQAAADw//f/AAACAAQAAADx//f/AAACAAQAAADy//f/AAADAAQAAADp//P/AAABAAQAAADq//P/AAACAAQAAADr//P/AAACAAQAAADs//P/AAACAAQAAADt//P/AAACAAQAAADu//P/AAADAAQAAADn//D/AAADAAQAAADj//D/AAACAAQAAADk//D/AAACAAQAAADl//D/AAACAAQAAADm//D/AAACAAQAAADi//D/AAABAAQAAADf//D/AAAAAAcAAADf/+//AAAAAAYAAADf/+7/AAAAAAYAAADf/+3/AAAAAAUAAAD8/wIAAAACAAYAAAD8/wMAAAACAAcAAAD9/wIAAAACAAYAAAD9/wMAAAACAAcAAAD+/wIAAAACAAYAAAD+/wMAAAACAAcAAAD//wIAAAACAAYAAAD//wMAAAACAAcAAAAAAAIAAAACAAYAAAAAAAMAAAACAAcAAAABAAIAAAACAAYAAAABAAMAAAACAAcAAAACAAIAAAACAAYAAAACAAMAAAACAAcAAAADAAIAAAACAAYAAAADAAMAAAACAAcAAAAEAAIAAAADAAYAAAAEAAMAAAADAAcAAAAEAAEAAAADAAUAAAD8/wEAAAACAAUAAAD9/wEAAAACAAUAAAD+/wEAAAACAAUAAAD//wEAAAACAAUAAAAAAAEAAAACAAUAAAABAAEAAAACAAUAAAACAAEAAAACAAUAAAADAAEAAAACAAUAAAD7/wEAAAABAAUAAAD7/wIAAAABAAYAAAD7/wMAAAABAAcAAAA=")
@@ -42,8 +44,70 @@ card_drop = ExtResource("4_ynxc0")
 position = Vector2(-334, -235)
 card_drop = ExtResource("4_ynxc0")
 
+[node name="PatrolEnemy" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="7" unique_id=1356801853 instance=ExtResource("5_q6olp")]
+position = Vector2(64, 18)
+card_drop = ExtResource("3_ynxc0")
+
 [node name="FinishLine" parent="." index="4" unique_id=1804460539]
 position = Vector2(-583, -350)
 
+[node name="KillZone" parent="." index="5" unique_id=466905863]
+position = Vector2(0, 200)
+
 [node name="Player" parent="." index="6" unique_id=681689913]
 position = Vector2(-63, 7)
+
+[node name="TutorialMove" type="Label" parent="." index="7" unique_id=576442551]
+show_behind_parent = true
+offset_left = -127.0
+offset_top = -40.0
+offset_right = -44.0
+offset_bottom = -11.0
+theme_override_font_sizes/font_size = 16
+text = "WASD - move
+SPACE - jump"
+horizontal_alignment = 1
+
+[node name="TutorialCard" type="Label" parent="." index="8" unique_id=1440355018]
+show_behind_parent = true
+offset_left = 422.0
+offset_top = -181.0
+offset_right = 591.0
+offset_bottom = -120.0
+theme_override_font_sizes/font_size = 16
+text = "Shift - use card
+Right Click - empower next shot
+Q - switch cards
+"
+horizontal_alignment = 1
+
+[node name="TutorialShoot" type="Label" parent="." index="9" unique_id=1116506334]
+show_behind_parent = true
+offset_left = 139.0
+offset_top = -127.0
+offset_right = 225.0
+offset_bottom = -98.0
+theme_override_font_sizes/font_size = 16
+text = "Click - shoot"
+horizontal_alignment = 1
+
+[node name="TutorialFinish" type="Label" parent="." index="10" unique_id=582179473]
+show_behind_parent = true
+offset_left = -644.0
+offset_top = -406.0
+offset_right = -516.0
+offset_bottom = -377.0
+theme_override_font_sizes/font_size = 16
+text = "unlocks when there are 
+no more enemies"
+horizontal_alignment = 1
+
+[node name="TutorialRestart" type="Label" parent="." index="11" unique_id=710613118]
+show_behind_parent = true
+offset_left = -197.0
+offset_top = -265.0
+offset_right = -5.0
+offset_bottom = -236.0
+theme_override_font_sizes/font_size = 16
+text = "HOLD R - restart
+HOLD T - restart with new weapon"

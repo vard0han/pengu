@@ -9,7 +9,8 @@ enum Medal {
 	NONE, 
 	BRONZE,
 	SILVER,
-	GOLD
+	GOLD,
+	DEV
 }
 
 @export_category("Identity")
@@ -19,6 +20,7 @@ enum Medal {
 @export var gold_time: float = 0.0
 @export var silver_time: float = 0.0
 @export var bronze_time: float = 0.0
+@export var dev_time: float = 0.0
 
 @export_category("Win Condition")
 @export var win_condition: WinCondition = WinCondition.KILL_ALL_ENEMIES
@@ -33,9 +35,18 @@ signal enemies_remaining_changed(count: int)
 signal level_completed
 signal level_started
 
+signal restart_requested
+signal restart_with_weapon_requested
+
+const RESTART_HOLD_DURATION: float = 0.5
+
 var is_complete_unlocked: bool = false
 var time_elapsed: float = 0.0
 var is_timer_running: bool = false
+var _timer_armed: bool = false
+
+var _restart_hold_timer: float = 0.0
+var _restart_weapon_hold_timer: float = 0.0
 
 func _ready() -> void:
 	if level_id == "":
@@ -61,12 +72,45 @@ func _start_level() -> void:
 	# check if level is already winnable
 	_check_win_condition(initial_count)
 	
-	is_timer_running = true
+	_timer_armed = true
 	level_started.emit()
 
 func _process(delta: float) -> void:
 	if is_timer_running:
 		time_elapsed += delta
+	elif _timer_armed:
+		if _player_provided_input():
+			_timer_armed = false
+			is_timer_running = true
+	
+	_process_restart_input(delta)
+	_process_restart_weapon_input(delta)
+
+func _player_provided_input() -> bool:
+	return (
+		Input.is_action_pressed("move_left") or
+		Input.is_action_pressed("move_right") or
+		Input.is_action_pressed("jump") or
+		Input.is_action_pressed("attack")
+	)
+
+func _process_restart_input(delta: float) -> void:
+	if Input.is_action_pressed("restart_level"):
+		_restart_hold_timer += delta
+		if _restart_hold_timer >= RESTART_HOLD_DURATION:
+			_restart_hold_timer = 0.0
+			restart_requested.emit()
+	else:
+		_restart_hold_timer = 0.0
+
+func _process_restart_weapon_input(delta: float) -> void:
+	if Input.is_action_pressed("restart_with_weapon"):
+		_restart_weapon_hold_timer += delta
+		if _restart_weapon_hold_timer >= RESTART_HOLD_DURATION:
+			_restart_weapon_hold_timer = 0.0
+			restart_with_weapon_requested.emit()
+	else:
+		_restart_weapon_hold_timer = 0.0
 
 # called when enemy is removed from the tree
 func _on_enemy_exiting(_child: Node) -> void:
@@ -97,6 +141,8 @@ func _on_finish_line_entered(body: Node) -> void:
 		level_completed.emit(time_elapsed)
 
 func get_medal_for_time(time: float) -> Medal:
+	if time <= dev_time:
+		return Medal.DEV
 	if time <= gold_time:
 		return Medal.GOLD
 	if time <= silver_time:

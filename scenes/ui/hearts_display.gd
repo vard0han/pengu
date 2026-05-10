@@ -14,6 +14,7 @@ func setup(max_health: int) -> void:
 	for i: int in range(max_health):
 		var rect : TextureRect = TextureRect.new()
 		rect.texture = full_heart_texture
+		rect.custom_minimum_size = Vector2(32,32)
 		rect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		add_child(rect)
 		_heart_rects.append(rect)

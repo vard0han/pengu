@@ -52,6 +52,11 @@ func get_pickups_container() -> Node:
 
 func show_weapon_select(level_path: String) -> void:
 	pending_level_path = level_path
+	
+	if current_level_instance:
+		current_level_instance.queue_free()
+		current_level_instance = null
+	
 	main.hud.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	

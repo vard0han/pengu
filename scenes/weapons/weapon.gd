@@ -74,7 +74,6 @@ func spawn_projectile() -> void:
 	if container:
 		container.add_child(projectile)
 
-
 func _on_card_sacrificed(card: CardData) -> void:
 	pending_empowerment = card
 	_apply_empowerment_visual(card)

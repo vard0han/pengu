@@ -5,11 +5,13 @@ extends Control
 @onready var best_label: Label = %BestLabel
 @onready var medal_label: Label = %MedalLabel
 @onready var best_medal_label: Label = %BestMedalLabel
+@onready var dev_row: Label = %DevRow
 @onready var gold_row: Label = %GoldRow
 @onready var silver_row: Label = %SilverRow
 @onready var bronze_row: Label = %BronzeRow
 @onready var continue_button: Button = %ContinueButton
 
+const COLOR_DEV: Color = Color(0.702, 0.949, 1.0)
 const COLOR_GOLD: Color = Color(1.0, 0.85, 0.3)
 const COLOR_SILVER: Color = Color(0.75, 0.75, 0.75)
 const COLOR_BRONZE: Color = Color(0.8, 0.5, 0.2)
@@ -29,12 +31,13 @@ func setup(
 	earned_medal: Level.Medal,
 	best_medal: Level.Medal,
 	is_new_best_medal: bool,
+	dev: float,
 	gold: float,
 	silver: float,
 	bronze: float) -> void:
 	_set_time_labels(level_time, best_time, is_new_best_time)
 	_set_medal_labels(earned_medal, best_medal, is_new_best_medal)
-	_set_threshold_rows(gold, silver, bronze)
+	_set_threshold_rows(best_medal, dev, gold, silver, bronze)
 
 func _set_time_labels(level_time: float, best_time: float, is_new_best: bool) -> void:
 	time_label.text = "TIME: %.2f" % level_time
@@ -59,10 +62,14 @@ func _set_medal_labels(earned: Level.Medal, best: Level.Medal, is_new_best: bool
 		best_medal_label.text = "BEST MEDAL: " + _medal_name(best)
 		best_medal_label.modulate = COLOR_EARNED
 
-func _set_threshold_rows(gold: float, silver: float, bronze: float) -> void:
-	gold_row.text =   "GOLD:     %.2f" % gold
-	silver_row.text = "SILVER:   %.2f" % silver
-	bronze_row.text = "BRONZE:   %.2f" % bronze
+func _set_threshold_rows(best: Level.Medal, dev: float, gold: float, silver: float, bronze: float) -> void:
+	if dev > 0.0 and best >= Level.Medal.GOLD:
+		dev_row.visible = true
+		dev_row.text = "DEV:      %.2f" % dev
+	
+	gold_row.text =    "GOLD:     %.2f" % gold
+	silver_row.text =  "SILVER:   %.2f" % silver
+	bronze_row.text =  "BRONZE:   %.2f" % bronze
 	
 	gold_row.modulate = COLOR_GOLD 
 	silver_row.modulate = COLOR_SILVER
@@ -70,6 +77,7 @@ func _set_threshold_rows(gold: float, silver: float, bronze: float) -> void:
 
 func _medal_name(medal: Level.Medal) -> String:
 	match medal:
+		Level.Medal.DEV: return "DEV"
 		Level.Medal.GOLD: return "GOLD"
 		Level.Medal.SILVER: return "SILVER"
 		Level.Medal.BRONZE: return "BRONZE"
@@ -77,6 +85,7 @@ func _medal_name(medal: Level.Medal) -> String:
 
 func _medal_color(medal: Level.Medal) -> Color:
 	match medal:
+		Level.Medal.DEV: return COLOR_DEV
 		Level.Medal.GOLD: return COLOR_GOLD
 		Level.Medal.SILVER: return COLOR_SILVER
 		Level.Medal.BRONZE: return COLOR_BRONZE

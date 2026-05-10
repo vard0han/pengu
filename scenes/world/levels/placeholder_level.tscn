@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://b2851kykdqgp8"]
 
 [ext_resource type="TileSet" uid="uid://cpnwnwy8qxm5k" path="res://resources/tile_set_physics.tres" id="1_g588y"]
-[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/enemies/patrol_enemy.tscn" id="2_tbwuv"]
+[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/test/patrol_old.tscn" id="2_tbwuv"]
 [ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="3_8fsij"]
 [ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="4_h3iic"]
 
