@@ -16,3 +16,4 @@ extends Resource
 @export var icon: Texture2D
 @export var projectile_texture: Texture2D
 @export var visual_scene: PackedScene
+@export_multiline var stat_description: String
