@@ -5,6 +5,8 @@ func enter() -> void:
 	super()
 	player.velocity.y = -1 * player.jump_force
 	player.anim_player.play("air")
+	
+	AudioManager.play_sfx("jump", -10.0 ,randf_range(0.8, 1.0))
 
 func process_physics(delta: float) -> void:
 	if not player: return

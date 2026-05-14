@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://k1c5t2tg6rfn"]
 
 [ext_resource type="Script" uid="uid://2p0q43c1xtd8" path="res://scenes/enemies/patrol_enemy.gd" id="1_3dqja"]
-[ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/Characters/tile_0015.png" id="1_767nm"]
+[ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/characters/tile_0015.png" id="1_767nm"]
 [ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card_pickup.tscn" id="2_bvcjx"]
 [ext_resource type="Shader" uid="uid://cii2o278o2vs7" path="res://assets/shaders/outline.gdshader" id="3_at13k"]
 [ext_resource type="Script" uid="uid://cjjdqwe3gxkkb" path="res://scripts/components/health_component.gd" id="4_2m8xl"]

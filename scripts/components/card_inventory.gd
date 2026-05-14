@@ -23,6 +23,8 @@ func add_card(card: CardData) -> bool:
 	
 	#_print_state()
 	
+	AudioManager.play_sfx("card_pickup", -20.0)
+	
 	return true
 
 func remove_card(slot_index: int) -> CardData:
@@ -57,6 +59,8 @@ func sacrifice_card(slot_index: int) -> CardData:
 	remove_card(slot_index)
 	
 	card_sacrificed.emit(card)
+	
+	AudioManager.play_sfx("empower", -20.0)
 	
 	return card
 

@@ -230,5 +230,5 @@ text = "HOLD R - restart
 HOLD T - restart with new weapon"
 
 [node name="Player" parent="." index="8" unique_id=681689913]
-position = Vector2(-1074, 25)
+position = Vector2(-865, -16)
 move_speed = 110.0

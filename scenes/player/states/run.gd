@@ -4,9 +4,13 @@ extends PlayerState
 func enter() -> void:
 	super()
 	player.anim_player.play("run")
+	
+	AudioManager.play_sfx_looped("footstep_grass", -15.0)
 
 func process_physics(delta: float) -> void:
 	if not player: return
+	
+	
 	
 	# -------------STATE LOGIC-------------
 
@@ -31,3 +35,6 @@ func process_physics(delta: float) -> void:
 	if player.direction == 0 and absf(player.velocity.x) < 0.1:
 		_state_machine.transition_to("Idle")
 		return
+
+func exit() -> void:
+	AudioManager.stop_sfx_looped("footstep_grass")

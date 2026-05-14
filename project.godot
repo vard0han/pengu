@@ -19,9 +19,14 @@ run/main_scene="uid://ban7nkh7g28un"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=155
 
+[audio]
+
+buses/default_bus_layout="uid://blf4yhrrb7iie"
+
 [autoload]
 
 SaveData="*uid://b42ebeyvfwh7e"
+AudioManager="*uid://3spm40odbflf"
 
 [debug]
 

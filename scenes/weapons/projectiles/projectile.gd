@@ -11,6 +11,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(_body: Node) -> void:
+	AudioManager.play_sfx("enemy_hit", -10.0, randf_range(2.0, 2.2))
 	queue_free()
 
 func _physics_process(delta: float) -> void:

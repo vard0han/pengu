@@ -18,5 +18,12 @@ func _on_area_entered(area: Area2D) -> void:
 	var hitbox: Hitbox = area
 	health_component.take_damage(hitbox.damage)
 	
+	if get_parent() is Enemy:
+		pass
+		AudioManager.play_sfx("enemy_hit", -10.0, randf_range(0.9, 1.0))
+	if get_parent() is Player:
+		AudioManager.play_sfx("player_hit", -15.0, randf_range(1.15, 1.25))
+	
+	
 	if hitbox.destroy_on_hit:
 		hitbox.queue_free()

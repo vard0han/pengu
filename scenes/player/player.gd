@@ -43,6 +43,8 @@ func _ready() -> void:
 	health_component.damaged.connect(_on_damaged)
 
 func _on_died() -> void:
+	AudioManager.play_sfx("player_death", -15.0, randf_range(0.5, 0.7))
+	
 	died.emit()
 
 func _physics_process(delta: float) -> void:

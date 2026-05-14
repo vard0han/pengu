@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dxmcxjy54g0nh" path="res://scenes/ui/card_slot.tscn" id="1_0mwgc"]
 [ext_resource type="Script" uid="uid://cnexni3y8i2g0" path="res://scenes/ui/hud.gd" id="1_hqnrr"]
-[ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/Characters/tile_0015.png" id="3_bo48s"]
+[ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/characters/tile_0015.png" id="3_bo48s"]
 [ext_resource type="PackedScene" uid="uid://datj0wupg85ff" path="res://scenes/ui/hearts_display.tscn" id="4_8qguk"]
 
 [node name="HUD" type="Control" unique_id=1423548122]

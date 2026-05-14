@@ -65,6 +65,8 @@ func _on_kill_zone_entered(body: Node) -> void:
 func _start_level() -> void:
 	await  get_tree().process_frame
 	
+	AudioManager.play_music("main_theme", 0.5)
+	
 	# emit initial enemy count
 	var initial_count: int = enemies_container.get_child_count()
 	enemies_remaining_changed.emit(initial_count)
@@ -138,6 +140,10 @@ func _on_finish_line_entered(body: Node) -> void:
 		return
 	if body is Player:
 		is_timer_running = false
+		
+		AudioManager.stop_music(0.5)
+		AudioManager.play_sfx("level_complete", -15.0, 0.95)
+		
 		level_completed.emit(time_elapsed)
 
 func get_medal_for_time(time: float) -> Medal:

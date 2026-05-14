@@ -73,6 +73,11 @@ func spawn_projectile() -> void:
 	var container : Node2D = main.game_manager.get_projectiles_container()
 	if container:
 		container.add_child(projectile)
+	
+	if is_empowered:
+		AudioManager.play_sfx("empowered_shot", -25.0)
+	else: 
+		AudioManager.play_sfx("air_whoosh", 15.0, randf_range(1.0, 1.2))
 
 func _on_card_sacrificed(card: CardData) -> void:
 	pending_empowerment = card
