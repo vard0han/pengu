@@ -30,7 +30,7 @@ func update_enemies_remaining(count: int) -> void:
 	enemies_label.text = str(count)
 
 func update_timer(time_seconds: float) -> void:
-	timer_label.text = "%.2f" % time_seconds
+	timer_label.text = Utilities.format_time(time_seconds)
 
 func refresh_inventory(cards: Array) -> void:
 	card_slot_0.set_card(cards[0] if cards.size() > 0 else null)
@@ -48,3 +48,13 @@ func setup_player_hearts(max_health: int) -> void:
 
 func update_player_hearts(current_health: int) -> void:
 	hearts_display.update_health(current_health)
+
+func shake_inventory() -> void:
+	for card_slot : Control in %CardSlotsRow.get_children():
+		card_slot.pivot_offset = card_slot.size / 2.0
+		
+		var tween: Tween = create_tween()
+		tween.tween_property(card_slot, "rotation_degrees", 5.0, 0.05)
+		tween.tween_property(card_slot, "rotation_degrees", -5.0, 0.05)
+		tween.tween_property(card_slot, "rotation_degrees", 3.0, 0.05)
+		tween.tween_property(card_slot, "rotation_degrees", 0.0, 0.05)

@@ -1,16 +1,11 @@
-[gd_scene format=3 uid="uid://b56f58l0nth2x"]
+[gd_scene format=3 uid="uid://x1yag2afls40"]
 
+[ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectiles/projectile.tscn" id="1_ai8fh"]
 [ext_resource type="Script" uid="uid://bpcaplx2tfdcc" path="res://scenes/weapons/empowerments/pierce_projectile.gd" id="1_be3b1"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_be3b1"]
-radius = 3.0
-
-[node name="PierceProjectile" type="Area2D" unique_id=1275570103]
-collision_layer = 128
+[node name="PierceProjectile" unique_id=455320433 instance=ExtResource("1_ai8fh")]
 script = ExtResource("1_be3b1")
+
+[node name="Hitbox" parent="." index="2" unique_id=698948714]
 damage = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=480859214]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=880038765]
-shape = SubResource("CircleShape2D_be3b1")
+destroy_on_hit = false

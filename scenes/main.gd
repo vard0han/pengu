@@ -51,6 +51,7 @@ func _on_enemies_remaining_changed(count: int) -> void:
 	hud.update_enemies_remaining(count)
 
 func _on_level_completed(time: float) -> void:
+	
 	var level: Level = game_manager.current_level_instance as Level
 	var level_id: String = level.level_id
 	
@@ -127,8 +128,13 @@ func _connect_player_signals() -> void:
 	
 	current_player.weapon.empowerment_cleared.connect(_on_empowerment_cleared)
 	current_player.died.connect(_on_player_died)
+	current_player.card_inventory.inventory_full.connect(_on_card_pickup_denied)
 	
 	hud.refresh_inventory(inventory.cards)
+
+func _on_card_pickup_denied() -> void:
+	AudioManager.play_sfx("player_hit", -15.0, randf_range(0.6, 0.8))
+	hud.shake_inventory()
 
 func _refresh_hud_inventory(_card: CardData = null, _slot_index: int = 0) -> void:
 	hud.refresh_inventory(current_player.card_inventory.cards)

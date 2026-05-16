@@ -9,5 +9,6 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if body is Player:
-		body.collect_card(card_data)
-		queue_free()
+		var added: bool = body.card_inventory.add_card(card_data)
+		if added:
+			queue_free()

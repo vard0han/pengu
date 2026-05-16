@@ -15,6 +15,8 @@ func enter() -> void:
 	player.anim_player.play("run")
 	
 	AudioManager.play_sfx("air_whoosh", 25.0, randf_range(0.65, 0.8))
+	
+	player.shake_camera("small")
 
 func process_physics(delta: float) -> void:
 	if not player: return

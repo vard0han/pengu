@@ -34,6 +34,7 @@ var _flicker_timer: float = 0.0
 @onready var weapon: Node2D = $Weapon
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox: Hurtbox = $Hurtbox
+@onready var camera: PlayerCamera = $Camera2D
 
 signal died
 
@@ -43,6 +44,7 @@ func _ready() -> void:
 	health_component.damaged.connect(_on_damaged)
 
 func _on_died() -> void:
+	AudioManager.stop_music(0.2)
 	AudioManager.play_sfx("player_death", -15.0, randf_range(0.5, 0.7))
 	
 	died.emit()
@@ -105,6 +107,9 @@ func _try_cycle_card() -> void:
 		card_inventory.cycle_card()
 
 func _on_damaged(_amount: int) -> void:
+	shake_camera("medium")
+	TimeManager.hitstop_small()
+	
 	_flicker_timer = health_component.damage_cooldown
 
 func _update_invincibility_flicker(delta: float) -> void:
@@ -119,3 +124,9 @@ func _update_invincibility_flicker(delta: float) -> void:
 			sprite.modulate.a = 1.0
 	else:
 		sprite.modulate.a = 1.0
+
+func shake_camera(strength: String) -> void:
+	match strength:
+		"small": camera.shake_small()
+		"medium": camera.shake_medium()
+		"large": camera.shake_large()

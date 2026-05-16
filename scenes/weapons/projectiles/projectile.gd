@@ -1,5 +1,5 @@
 class_name Projectile
-extends Hitbox
+extends Area2D
 
 @export var lifetime: float = 5.0
 
@@ -11,7 +11,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(_body: Node) -> void:
-	AudioManager.play_sfx("enemy_hit", -10.0, randf_range(2.0, 2.2))
+	AudioManager.play_sfx("enemy_hit", -20.0, randf_range(2.0, 2.2))
 	queue_free()
 
 func _physics_process(delta: float) -> void:

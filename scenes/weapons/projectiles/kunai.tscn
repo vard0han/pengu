@@ -3,16 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectiles/projectile.tscn" id="1_xn3hi"]
 [ext_resource type="Texture2D" uid="uid://bke6mlgiqgsjn" path="res://resources/textures/kunai_projectile.tres" id="2_83def"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_242op"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_83def"]
 radius = 7.0
 
 [node name="Kunai" unique_id=455320433 instance=ExtResource("1_xn3hi")]
-damage = 3
 
 [node name="Sprite2D" parent="." index="0" unique_id=1514560233]
 texture = ExtResource("2_83def")
 region_rect = Rect2(40, 9, 9, 9)
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=1623151557]
-rotation = 1.5707964
-shape = SubResource("CircleShape2D_242op")
+[node name="Hitbox" parent="." index="2" unique_id=698948714]
+damage = 3
+
+[node name="CollisionShape2D" parent="Hitbox" index="0" unique_id=1308898729]
+shape = SubResource("CircleShape2D_83def")

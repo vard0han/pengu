@@ -17,7 +17,11 @@ func _ready() -> void:
 		sprite.material.set_shader_parameter("outline_color", card_drop.color)
 
 func _on_died() -> void:
-	AudioManager.play_sfx("enemy_hit", -5.0, randf_range(1.5, 1.7))
+	AudioManager.play_sfx("enemy_hit", -15.0, randf_range(1.5, 1.7))
+	
+	var main: Main = Main.get_instance(get_tree())
+	if main and main.current_player:
+		main.current_player.shake_camera("small")
 	
 	_drop_card()
 	queue_free()

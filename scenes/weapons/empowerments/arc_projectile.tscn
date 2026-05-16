@@ -1,17 +1,12 @@
-[gd_scene format=3 uid="uid://cu7evum44f2j8"]
+[gd_scene format=3 uid="uid://dggwrfiusy0vo"]
 
 [ext_resource type="Script" uid="uid://orvgvhevqbd1" path="res://scenes/weapons/empowerments/arc_projectile.gd" id="1_050vg"]
+[ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectiles/projectile.tscn" id="1_d5a55"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_f0pap"]
-radius = 3.0
-
-[node name="ArcProjectile" type="Area2D" unique_id=75497651]
-collision_layer = 128
+[node name="ArcProjectile" unique_id=455320433 instance=ExtResource("1_d5a55")]
 script = ExtResource("1_050vg")
+gravity_strength = 600.0
+min_lift = 0.0
+
+[node name="Hitbox" parent="." index="2" unique_id=698948714]
 damage = 3
-destroy_on_hit = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1745227959]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=557578281]
-shape = SubResource("CircleShape2D_f0pap")

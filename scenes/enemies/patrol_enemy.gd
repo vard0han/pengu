@@ -9,6 +9,10 @@ var direction : int = -1
 @onready var ledge_ray: RayCast2D = $LedgeRay
 
 func _physics_process(delta: float) -> void:
+	if patrol_speed <= 0.0:
+		velocity = Vector2.ZERO
+		return
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	

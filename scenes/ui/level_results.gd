@@ -40,13 +40,13 @@ func setup(
 	_set_threshold_rows(best_medal, dev, gold, silver, bronze)
 
 func _set_time_labels(level_time: float, best_time: float, is_new_best: bool) -> void:
-	time_label.text = "TIME: %.2f" % level_time
+	time_label.text = "TIME: " + Utilities.format_time(level_time)
 	
 	if is_new_best:
 		best_label.text = "NEW BEST!"
 		best_label.modulate = COLOR_GOLD
 	else:
-		best_label.text = "BEST: %.2f" % best_time
+		best_label.text = "BEST: " + Utilities.format_time(best_time)
 		best_label.modulate = COLOR_EARNED
 
 func _set_medal_labels(earned: Level.Medal, best: Level.Medal, is_new_best: bool) -> void:
@@ -65,11 +65,11 @@ func _set_medal_labels(earned: Level.Medal, best: Level.Medal, is_new_best: bool
 func _set_threshold_rows(best: Level.Medal, dev: float, gold: float, silver: float, bronze: float) -> void:
 	if dev > 0.0 and best >= Level.Medal.GOLD:
 		dev_row.visible = true
-		dev_row.text = "DEV:      %.2f" % dev
+		dev_row.text = "DEV:      " + Utilities.format_time(dev)
 	
-	gold_row.text =    "GOLD:     %.2f" % gold
-	silver_row.text =  "SILVER:   %.2f" % silver
-	bronze_row.text =  "BRONZE:   %.2f" % bronze
+	gold_row.text =    "GOLD:     " + Utilities.format_time(gold)
+	silver_row.text =  "SILVER:   " + Utilities.format_time(silver)
+	bronze_row.text =  "BRONZE:   " + Utilities.format_time(bronze)
 	
 	gold_row.modulate = COLOR_GOLD 
 	silver_row.modulate = COLOR_SILVER

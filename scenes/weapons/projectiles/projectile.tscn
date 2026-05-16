@@ -1,16 +1,25 @@
 [gd_scene format=3 uid="uid://d1aae2yyynmf"]
 
 [ext_resource type="Script" uid="uid://dolov3k4diovs" path="res://scenes/weapons/projectiles/projectile.gd" id="1_qp4n5"]
+[ext_resource type="Script" uid="uid://cq6bv2b4pf06i" path="res://scripts/components/hitbox.gd" id="2_krgla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qp4n5"]
-radius = 5.0
+radius = 0.1
 
 [node name="Projectile" type="Area2D" unique_id=455320433]
-collision_layer = 128
+collision_layer = 0
 script = ExtResource("1_qp4n5")
-destroy_on_hit = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1514560233]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1623151557]
 shape = SubResource("CircleShape2D_qp4n5")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=698948714]
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("2_krgla")
+destroy_on_hit = true
+metadata/_custom_type_script = "uid://cq6bv2b4pf06i"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1308898729]

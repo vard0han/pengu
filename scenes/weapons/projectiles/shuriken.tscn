@@ -3,8 +3,14 @@
 [ext_resource type="PackedScene" uid="uid://d1aae2yyynmf" path="res://scenes/weapons/projectiles/projectile.tscn" id="1_2cuhi"]
 [ext_resource type="Texture2D" uid="uid://bos7t4k1r2kf4" path="res://resources/textures/shuriken_projectile.tres" id="2_2cuhi"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cuhi"]
+radius = 5.0
+
 [node name="Shuriken" unique_id=455320433 instance=ExtResource("1_2cuhi")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=1514560233]
 texture = ExtResource("2_2cuhi")
 region_rect = Rect2(52, 22, 10, 10)
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(698948714) index="0" unique_id=1308898729]
+shape = SubResource("CircleShape2D_2cuhi")

@@ -62,6 +62,8 @@ func spawn_projectile() -> void:
 		sprite.texture = weapon_data.projectile_texture
 	
 	if is_empowered:
+		_apply_weapon_hitbox(projectile)
+		
 		if sprite:
 			sprite.modulate = pending_empowerment.color
 		pending_empowerment = null
@@ -78,6 +80,23 @@ func spawn_projectile() -> void:
 		AudioManager.play_sfx("empowered_shot", -25.0)
 	else: 
 		AudioManager.play_sfx("air_whoosh", 15.0, randf_range(1.0, 1.2))
+
+func _apply_weapon_hitbox(projectile : Projectile) -> void:
+	var normal_projectile: Projectile = weapon_data.projectile_scene.instantiate()
+	var source_hitbox: Hitbox = normal_projectile.get_node_or_null("Hitbox")
+	var target_hitbox: Hitbox = projectile.get_node_or_null("Hitbox")
+	
+	if source_hitbox == null or target_hitbox == null:
+		normal_projectile.queue_free()
+		return
+	
+	var source_shape: CollisionShape2D = source_hitbox.get_node_or_null("CollisionShape2D")
+	var target_shape: CollisionShape2D = target_hitbox.get_node_or_null("CollisionShape2D")
+	
+	if source_shape and target_shape:
+		target_shape.shape = source_shape.shape
+	
+	normal_projectile.queue_free()
 
 func _on_card_sacrificed(card: CardData) -> void:
 	pending_empowerment = card
