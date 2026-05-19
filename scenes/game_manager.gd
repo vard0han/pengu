@@ -76,3 +76,21 @@ func _on_weapon_selected(weapon: WeaponData) -> void:
 	main.hud.visible = true
 	
 	load_level(pending_level_path)
+
+func get_particles_container() -> Node:
+	if current_level_instance:
+		return current_level_instance.get_node_or_null("Particles")
+	return null
+
+func spawn_particle(scene: PackedScene, position: Vector2, color: Color = Color.WHITE) -> GPUParticles2D:
+	var container: Node = get_particles_container()
+	if container == null:
+		return
+	
+	var particle: GPUParticles2D = scene.instantiate()
+	particle.global_position = position
+	particle.modulate = color
+	
+	container.add_child(particle)
+	
+	return particle

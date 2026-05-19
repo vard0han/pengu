@@ -3,7 +3,6 @@ extends Control
 
 @onready var card_slot_0: CardSlot = %CardSlot0
 @onready var card_slot_1: CardSlot = %CardSlot1
-@onready var empowerment_label: Label = %EmpowermentLabel
 @onready var enemies_label: Label = %EnemiesLabel
 @onready var timer_label: Label = %TimerLabel
 @onready var hearts_display: HeartsDisplay = %HeartsDisplay
@@ -11,7 +10,6 @@ extends Control
 var active_level: Level = null
 
 func _ready() -> void:
-	empowerment_label.visible = false
 	update_enemies_remaining(0)
 
 func set_active_level(level: Level) -> void:
@@ -35,13 +33,6 @@ func update_timer(time_seconds: float) -> void:
 func refresh_inventory(cards: Array) -> void:
 	card_slot_0.set_card(cards[0] if cards.size() > 0 else null)
 	card_slot_1.set_card(cards[1] if cards.size() > 1 else null)
-
-func set_empowered(is_empowered: bool, card: CardData = null) -> void:
-	empowerment_label.visible = is_empowered
-	if is_empowered and card:
-		empowerment_label.text = "EMPOWERED: " + card.display_label
-	else:
-		empowerment_label.text = ""
 
 func setup_player_hearts(max_health: int) -> void:
 	hearts_display.setup(max_health)

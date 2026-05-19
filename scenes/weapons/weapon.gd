@@ -11,6 +11,7 @@ var pending_empowerment: CardData = null
 var _cooldown_timer: float = 0.0
 var _current_visual: Node2D = null
 var _muzzle: Marker2D = null
+var _trajectory: TrajectoryBase = null
 
 func _ready() -> void:
 	_instance_visual()
@@ -25,6 +26,8 @@ func _process(delta: float) -> void:
 	rotation = player.aim_direction.angle()
 	
 	_cooldown_timer = maxf(_cooldown_timer - delta, 0.0)
+	
+	_update_trajectory()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -61,6 +64,12 @@ func spawn_projectile() -> void:
 	if sprite and weapon_data.projectile_texture:
 		sprite.texture = weapon_data.projectile_texture
 	
+	# set projectile as a child of "Projectiles" node in the level
+	var main : Main = Main.get_instance(get_tree())
+	var container : Node2D = main.game_manager.get_projectiles_container()
+	if container:
+		container.add_child(projectile)
+	
 	if is_empowered:
 		_apply_weapon_hitbox(projectile)
 		
@@ -69,12 +78,7 @@ func spawn_projectile() -> void:
 		pending_empowerment = null
 		empowerment_cleared.emit()
 		_clear_empowerment_visual()
-	
-	# set projectile as a child of "Projectiles" node in the level
-	var main : Main = Main.get_instance(get_tree())
-	var container : Node2D = main.game_manager.get_projectiles_container()
-	if container:
-		container.add_child(projectile)
+		_clear_trajectory()
 	
 	if is_empowered:
 		AudioManager.play_sfx("empowered_shot", -25.0)
@@ -87,6 +91,7 @@ func _apply_weapon_hitbox(projectile : Projectile) -> void:
 	var target_hitbox: Hitbox = projectile.get_node_or_null("Hitbox")
 	
 	if source_hitbox == null or target_hitbox == null:
+		push_warning("Hitbox missing — source: " + str(source_hitbox) + " target: " + str(target_hitbox))
 		normal_projectile.queue_free()
 		return
 	
@@ -139,3 +144,20 @@ func _instance_visual() -> void:
 func set_weapon(new_weapon_data: WeaponData) -> void:
 	weapon_data = new_weapon_data
 	_instance_visual()
+
+func _update_trajectory() -> void:
+	if pending_empowerment == null or pending_empowerment.trajectory_scene == null:
+		_clear_trajectory()
+		return
+	
+	if _trajectory == null:
+		_trajectory = pending_empowerment.trajectory_scene.instantiate() as TrajectoryBase
+		add_child(_trajectory)
+	
+	_trajectory.max_range = weapon_data.weapon_range
+	_trajectory.update_trajectory(_muzzle.global_position, player.aim_direction, get_global_mouse_position(), pending_empowerment.color)
+
+func _clear_trajectory() -> void:
+	if _trajectory:
+		_trajectory.queue_free()
+		_trajectory = null

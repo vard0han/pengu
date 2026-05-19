@@ -1,27 +1,10 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c1sso5unef5oq"]
 
-[ext_resource type="Script" uid="uid://bpcaplx2tfdcc" path="res://scenes/weapons/empowerments/pierce_projectile.gd" id="1_ilgpw"]
+[ext_resource type="PackedScene" uid="uid://x1yag2afls40" path="res://scenes/weapons/empowerments/pierce_projectile.tscn" id="1_ilgpw"]
 [ext_resource type="PackedScene" uid="uid://dprdaguhehjkm" path="res://scenes/player/states/cards/dash_state.tscn" id="1_t8hdp"]
 [ext_resource type="Script" uid="uid://bcny1435lia47" path="res://scripts/data/card_data.gd" id="1_uj18g"]
 [ext_resource type="Texture2D" uid="uid://o8suyhn5inhj" path="res://assets/cards/dash.png" id="2_rwipx"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_be3b1"]
-radius = 3.0
-
-[sub_resource type="PackedScene" id="PackedScene_eli6r"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"id_paths": [PackedInt32Array(), PackedInt32Array()],
-"names": PackedStringArray("PierceProjectile", "Area2D", "collision_layer", "script", "damage", "Sprite2D", "Sprite2D", "CollisionShape2D", "CollisionShape2D", "shape"),
-"node_count": 3,
-"node_ids": PackedInt32Array(1275570103, 480859214, 880038765),
-"node_paths": [NodePath("."), NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 3, 2, 0, 3, 1, 4, 2, 0, 1073741824, 0, 6, 5, -1, 0, 0, 1073741825, 0, 8, 7, -1, 1, 9, 3, 0),
-"variants": [128, ExtResource("1_ilgpw"), 3, SubResource("CircleShape2D_be3b1")],
-"version": 3
-}
+[ext_resource type="PackedScene" uid="uid://dw7n22aikvj47" path="res://scenes/effects/trajectories/pierce_trajectory.tscn" id="5_rwipx"]
 
 [resource]
 script = ExtResource("1_uj18g")
@@ -31,5 +14,6 @@ display_label = "DASH"
 color = Color(0.4, 0.5764706, 0.9607843, 1)
 icon = ExtResource("2_rwipx")
 movement_ability_scene = ExtResource("1_t8hdp")
-empowered_projectile_scene = SubResource("PackedScene_eli6r")
+empowered_projectile_scene = ExtResource("1_ilgpw")
+trajectory_scene = ExtResource("5_rwipx")
 metadata/_custom_type_script = "uid://bcny1435lia47"

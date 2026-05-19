@@ -13,3 +13,4 @@ extends Resource
 @export_category("Behavior")
 @export var movement_ability_scene: PackedScene
 @export var empowered_projectile_scene: PackedScene
+@export var trajectory_scene: PackedScene

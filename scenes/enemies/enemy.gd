@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var health_bar: EnemyHealthBar = %EnemyHealthBar
 @onready var sprite: Sprite2D = $Sprite2D
 
+const DEATH_BURST_SCENE: PackedScene = preload("res://scenes/effects/particles/enemy_death_burst.tscn")
+
 func _ready() -> void:
 	health_component.health_changed.connect(_on_health_changed)
 	health_bar.setup(health_component.max_health)
@@ -23,8 +25,14 @@ func _on_died() -> void:
 	if main and main.current_player:
 		main.current_player.shake_camera("small")
 	
+	_spawn_death_burst()
 	_drop_card()
 	queue_free()
+
+func _spawn_death_burst() -> void:
+	var main: Main = Main.get_instance(get_tree())
+	if main and main.current_level:
+		main.game_manager.spawn_particle(DEATH_BURST_SCENE, sprite.global_position, card_drop.color)
 
 func _on_health_changed(current: int, _max: int) -> void:
 	health_bar.update_health(current)

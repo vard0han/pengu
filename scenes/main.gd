@@ -120,13 +120,11 @@ func _connect_player_signals() -> void:
 	inventory.card_added.connect(_refresh_hud_inventory)
 	inventory.card_removed.connect(_refresh_hud_inventory)
 	inventory.card_cycled.connect(_refresh_hud_inventory)
-	inventory.card_sacrificed.connect(_on_card_sacrificed)
 	
 	hud.setup_player_hearts(player_health.max_health)
 	hud.update_player_hearts(player_health.current_health)
 	player_health.health_changed.connect(_on_player_health_changed)
 	
-	current_player.weapon.empowerment_cleared.connect(_on_empowerment_cleared)
 	current_player.died.connect(_on_player_died)
 	current_player.card_inventory.inventory_full.connect(_on_card_pickup_denied)
 	
@@ -138,12 +136,6 @@ func _on_card_pickup_denied() -> void:
 
 func _refresh_hud_inventory(_card: CardData = null, _slot_index: int = 0) -> void:
 	hud.refresh_inventory(current_player.card_inventory.cards)
-
-func _on_card_sacrificed(card: CardData) -> void:
-	hud.set_empowered(true, card)
-
-func _on_empowerment_cleared() -> void:
-	hud.set_empowered(false)
 
 func _on_player_health_changed(current: int, _max: int) -> void:
 	hud.update_player_hearts(current)

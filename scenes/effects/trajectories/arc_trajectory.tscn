@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://64yeuo3s6rms"]
+
+[ext_resource type="PackedScene" uid="uid://cr7on6x7udryt" path="res://scenes/effects/trajectories/trajectory_base.tscn" id="1_ylstc"]
+[ext_resource type="Script" uid="uid://nkdv4c2a43q7" path="res://scenes/effects/trajectories/arc_trajectory.gd" id="2_twgei"]
+
+[node name="ArcTrajectory" unique_id=1420243565 instance=ExtResource("1_ylstc")]
+script = ExtResource("2_twgei")
