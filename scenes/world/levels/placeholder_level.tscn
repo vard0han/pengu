@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://b2851kykdqgp8"]
+
+[ext_resource type="TileSet" uid="uid://cpnwnwy8qxm5k" path="res://resources/tile_set_physics.tres" id="1_g588y"]
+[ext_resource type="PackedScene" uid="uid://k1c5t2tg6rfn" path="res://scenes/test/patrol_old.tscn" id="2_tbwuv"]
+[ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="3_8fsij"]
+[ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="4_h3iic"]
+
+[node name="PlaceholderLevel" type="Node2D" unique_id=945902726]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=495922563]
+tile_map_data = PackedByteArray("AAAAAAcAAAACAAAAAAABAAcAAAACAAAAAAACAAcAAAACAAAAAAADAAcAAAACAAAAAAAEAAcAAAACAAAAAAAFAAcAAAACAAAAAAAGAAcAAAACAAAAAAAHAAcAAAACAAAAAAAIAAcAAAACAAAAAAAJAAcAAAACAAAAAAAKAAcAAAACAAAAAAALAAcAAAACAAAAAAAMAAcAAAACAAAAAAANAAcAAAACAAAAAAAOAAcAAAACAAAAAAAPAAcAAAACAAAAAAAQAAcAAAACAAAAAAARAAcAAAACAAAAAAD//wcAAAABAAAAAAASAAcAAAADAAAAAAAAAAQAAAADAAAAAAATAAQAAAADAAAAAAAYAAIAAAADAAAAAAAaAP//AAADAAAAAAACAAEAAAADAAAAAAAEAP//AAADAAAAAAADAP//AAACAAAAAAACAP//AAACAAAAAAD//wQAAAACAAAAAAD+/wQAAAACAAAAAAABAAEAAAACAAAAAAAAAAEAAAACAAAAAAASAAQAAAACAAAAAAARAAQAAAACAAAAAAAQAAQAAAACAAAAAAALAAIAAAACAAAAAAAMAAIAAAACAAAAAAANAAIAAAACAAAAAAAVAAIAAAACAAAAAAAWAAIAAAACAAAAAAAXAAIAAAACAAAAAAAXAP//AAACAAAAAAAYAP//AAACAAAAAAAZAP//AAACAAAAAAD9/wQAAAABAAAAAAD//wEAAAABAAAAAAABAP//AAABAAAAAAAKAAIAAAABAAAAAAAPAAQAAAABAAAAAAAUAAIAAAABAAAAAAAWAP//AAABAAAAAAAOAAIAAAADAAAAAAAKAAAAAAAAAAAAAAAHAP//AAAAAAAAAAD6/wIAAAAAAAAAAAD4/wAAAAAAAAAAAAAVAAsAAAACAAAAAAAWAAsAAAACAAAAAAAXAAsAAAACAAAAAAAYAAsAAAACAAAAAAAZAAsAAAACAAAAAAAaAAsAAAACAAAAAAAbAAsAAAACAAAAAAAcAAsAAAACAAAAAAAdAAsAAAACAAAAAAAeAAsAAAACAAAAAAAUAAsAAAABAAAAAAAfAAsAAAACAAAAAAAfAAkAAAAAAAYAAAAfAAoAAAAAAAYAAAAfAAUAAAAAAAEAAAAfAAYAAAAAAAYAAAAfAAcAAAAAAAYAAAAfAAgAAAAAAAYAAAAgAAsAAAACAAAAAAAhAAsAAAADAAAAAAA=")
+tile_set = ExtResource("1_g588y")
+
+[node name="Pickups" type="Node2D" parent="." unique_id=1158344346]
+
+[node name="Projectiles" type="Node2D" parent="." unique_id=1494524374]
+
+[node name="Enemies" type="Node2D" parent="." unique_id=600619546]
+
+[node name="PatrolEnemy" parent="Enemies" unique_id=276203327 instance=ExtResource("2_tbwuv")]
+position = Vector2(277, 72)
+card_drop = ExtResource("3_8fsij")
+
+[node name="PatrolEnemy2" parent="Enemies" unique_id=1535574037 instance=ExtResource("2_tbwuv")]
+position = Vector2(64, 127)
+card_drop = ExtResource("3_8fsij")
+
+[node name="PatrolEnemy3" parent="Enemies" unique_id=531181896 instance=ExtResource("2_tbwuv")]
+position = Vector2(-15, 72)
+card_drop = ExtResource("4_h3iic")
+
+[node name="PatrolEnemy4" parent="Enemies" unique_id=621822398 instance=ExtResource("2_tbwuv")]
+position = Vector2(603, 198)
+card_drop = ExtResource("3_8fsij")
+
+[node name="PatrolEnemy5" parent="Enemies" unique_id=1017930309 instance=ExtResource("2_tbwuv")]
+position = Vector2(246, 126)
+card_drop = ExtResource("4_h3iic")
+
+[node name="PlayerSpawn" type="Marker2D" parent="." unique_id=987366312]
+position = Vector2(190, 126)

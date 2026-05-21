@@ -7,9 +7,12 @@ extends Enemy
 var direction : int = -1
 
 @onready var ledge_ray: RayCast2D = $LedgeRay
-@onready var sprite: Sprite2D = $Sprite2D
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
+	if patrol_speed <= 0.0:
+		velocity = Vector2.ZERO
+		return
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
@@ -27,6 +30,7 @@ func flip_direction() -> void:
 	# flip direction and in which direction the raycast detects the collision
 	direction *= -1
 	ledge_ray.position.x *= -1
+	
 	sprite.flip_h = direction > 0
 	
 	# Force immediate update — raycast state is stale for one frame after moving it

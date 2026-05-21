@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c3bw2u364seyn"]
+
+[node name="WeaponVisual" type="Node2D" unique_id=1434154058]
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1860582117]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot" unique_id=686704269]
+unique_name_in_owner = true
+
+[node name="Muzzle" type="Marker2D" parent="Pivot" unique_id=405662925]
+unique_name_in_owner = true

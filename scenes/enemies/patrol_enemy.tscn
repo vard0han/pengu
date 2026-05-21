@@ -1,27 +1,56 @@
-[gd_scene format=3 uid="uid://k1c5t2tg6rfn"]
+[gd_scene format=3 uid="uid://dwgv6imlxdcwh"]
 
 [ext_resource type="Script" uid="uid://2p0q43c1xtd8" path="res://scenes/enemies/patrol_enemy.gd" id="1_3dqja"]
-[ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/Tiles/Characters/tile_0015.png" id="1_767nm"]
+[ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/characters/tile_0015.png" id="1_767nm"]
+[ext_resource type="PackedScene" uid="uid://68s1j3c527uq" path="res://scenes/enemies/enemy.tscn" id="1_phsxw"]
 [ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card_pickup.tscn" id="2_bvcjx"]
+[ext_resource type="Shader" uid="uid://cii2o278o2vs7" path="res://assets/shaders/outline.gdshader" id="3_at13k"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dqja"]
-size = Vector2(10.45911, 16)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phsxw"]
+resource_local_to_scene = true
+shader = ExtResource("3_at13k")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_width = 1.0
 
-[node name="PatrolEnemy" type="CharacterBody2D" unique_id=276203327]
-collision_layer = 4
-collision_mask = 3
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkbqn"]
+size = Vector2(13.1875, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hkga"]
+size = Vector2(11.825979, 15.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ektu"]
+size = Vector2(11.823887, 15.125)
+
+[node name="PatrolEnemy" unique_id=1356801853 instance=ExtResource("1_phsxw")]
 script = ExtResource("1_3dqja")
+patrol_speed = 50.0
+gravity = 800.0
 card_drop_scene = ExtResource("2_bvcjx")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=630022480]
+[node name="Sprite2D" parent="." index="0" unique_id=765667319]
+material = SubResource("ShaderMaterial_phsxw")
 position = Vector2(0, -12)
 texture = ExtResource("1_767nm")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1164736399]
-position = Vector2(-1, -8)
-scale = Vector2(1.0990803, 1)
-shape = SubResource("RectangleShape2D_3dqja")
+[node name="CollisionShape2D" parent="." index="1" unique_id=924808874]
+visible = false
+position = Vector2(-0.615, -8)
+shape = SubResource("RectangleShape2D_jkbqn")
 
-[node name="LedgeRay" type="RayCast2D" parent="." unique_id=1777103767]
+[node name="LedgeRay" type="RayCast2D" parent="." index="2" unique_id=207528973]
 position = Vector2(-10, 0)
 target_position = Vector2(0, 30)
+
+[node name="CollisionShape2D2" parent="Hurtbox" parent_id_path=PackedInt32Array(45261115) index="0" unique_id=369518490]
+position = Vector2(-0.615, -8)
+shape = SubResource("RectangleShape2D_8hkga")
+
+[node name="Hitbox" parent="." index="5" unique_id=1858465665]
+visible = true
+
+[node name="CollisionShape2D3" parent="Hitbox" index="0" unique_id=4812539]
+position = Vector2(-0.615, -8)
+shape = SubResource("RectangleShape2D_5ektu")
+
+[node name="HealthBarAnchor" parent="." index="6" unique_id=264409904]
+position = Vector2(0, -23)

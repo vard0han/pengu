@@ -1,0 +1,31 @@
+class_name DoubleJumpState
+extends PlayerState
+
+func enter() -> void:
+	super()
+	player.velocity.y = -1 * player.jump_force
+	player.anim_player.play("air")
+	
+	AudioManager.play_sfx("jump", 0.0, randf_range(1.1, 1.3))
+
+func process_physics(delta: float) -> void:
+	if not player: return
+	
+	# -------------STATE LOGIC-------------
+	
+	apply_horizontal_movement(delta)
+	apply_gravity(delta)
+	
+	# -------------TRANSITION LOGIC-------------
+	
+	var on_floor : bool = player.is_on_floor()
+	
+	if player.velocity.y >= 0:
+		_state_machine.transition_to("Fall")
+		return
+	
+	if on_floor:
+		if absf(player.velocity.x) > 0.1:
+			_state_machine.transition_to("Run")
+		else:
+			_state_machine.transition_to("Idle")

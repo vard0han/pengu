@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://5n376xmlhqdc"]
+
+[ext_resource type="Script" uid="uid://b5icc3n26ww4g" path="res://scenes/ui/weapon_select.gd" id="1_6yodv"]
+[ext_resource type="Script" uid="uid://corgghm6jc77" path="res://scripts/data/weapon_data.gd" id="2_laud3"]
+[ext_resource type="Resource" uid="uid://dcqe550q0p0h" path="res://resources/weapons/shuriken.tres" id="3_elkkp"]
+[ext_resource type="Resource" uid="uid://c8bxpv5kpv3d7" path="res://resources/weapons/kunai.tres" id="4_0ygci"]
+
+[node name="WeaponSelect" type="Control" unique_id=1424474938]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6yodv")
+available_weapons = Array[ExtResource("2_laud3")]([ExtResource("3_elkkp"), ExtResource("4_0ygci")])
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=332576915]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1854803339]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=974581725]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "SELECT WEAPON"
+horizontal_alignment = 1
+
+[node name="WeaponsRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=678994882]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 16

@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://d3kgeu33jtn6t"]
+
+[ext_resource type="Script" uid="uid://cx6ottraa1hus" path="res://scenes/ui/level_results.gd" id="1_7nq7p"]
+
+[node name="LevelResults" type="Control" unique_id=53760453]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7nq7p")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1020254667]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=734826492]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=853755305]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=606469458]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1830319556]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "LEVEL COMPLETE"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=29021374]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="BestLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=175374233]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1272227912]
+layout_mode = 2
+
+[node name="MedalLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=538132947]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+
+[node name="BestMedalLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=596669725]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.86036915, 0.8603692, 0.8603692, 1)
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=999249271]
+layout_mode = 2
+
+[node name="ThresholdsHeader" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=846723155]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85882354, 0.85882354, 0.85882354, 1)
+text = "MEDAL TIMES"
+horizontal_alignment = 1
+
+[node name="DevRow" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=974549875]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7019608, 0.9490196, 1, 1)
+theme_override_colors/font_outline_color = Color(0.4, 0.7, 1, 0.8)
+theme_override_constants/outline_size = 1
+horizontal_alignment = 1
+
+[node name="GoldRow" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1036138152]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="SilverRow" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1884236902]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="BronzeRow" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1846451666]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1929916004]
+layout_mode = 2
+
+[node name="ContinueButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=930172721]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "RETRY"

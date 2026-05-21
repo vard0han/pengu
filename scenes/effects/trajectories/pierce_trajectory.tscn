@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dw7n22aikvj47"]
+
+[ext_resource type="PackedScene" uid="uid://cr7on6x7udryt" path="res://scenes/effects/trajectories/trajectory_base.tscn" id="1_4mm0b"]
+[ext_resource type="Script" uid="uid://v4xpbdq3a0kh" path="res://scenes/effects/trajectories/pierce_trajectory.gd" id="2_oi8qt"]
+
+[node name="PierceTrajectory" unique_id=1420243565 instance=ExtResource("1_4mm0b")]
+script = ExtResource("2_oi8qt")

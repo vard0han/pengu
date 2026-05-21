@@ -1,10 +1,15 @@
 class_name JumpState
 extends PlayerState
 
+const JUMP_PUFF_SCENE: PackedScene = preload("res://scenes/effects/particles/jump_puff.tscn")
+
 func enter() -> void:
 	super()
 	player.velocity.y = -1 * player.jump_force
 	player.anim_player.play("air")
+	
+	AudioManager.play_sfx("jump", -10.0 ,randf_range(0.8, 1.0))
+	_spawn_jump_puff()
 
 func process_physics(delta: float) -> void:
 	if not player: return
@@ -20,5 +25,10 @@ func process_physics(delta: float) -> void:
 	# -------------TRANSITION LOGIC-------------
 	
 	if player.velocity.y >= 0:
-		state_machine.transition_to("Fall")
+		_state_machine.transition_to("Fall")
 		return
+
+func _spawn_jump_puff() -> void:
+	var main: Main = Main.get_instance(player.get_tree())
+	if main:
+		main.game_manager.spawn_particle(JUMP_PUFF_SCENE, player.global_position + Vector2(0,4))

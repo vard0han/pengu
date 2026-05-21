@@ -1,0 +1,15 @@
+[gd_scene format=4 uid="uid://bwrkvlgi0xuud"]
+
+[ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/base_level.tscn" id="1_wkf80"]
+
+[node name="Debug" unique_id=994587893 instance=ExtResource("1_wkf80")]
+level_id = "999"
+gold_time = 3.0
+silver_time = 6.0
+bronze_time = 9.0
+
+[node name="TileMapLayer" parent="." index="0" unique_id=1304465506]
+tile_map_data = PackedByteArray("AAD8/wEAAAACAAAAAAD9/wEAAAACAAAAAAD+/wEAAAACAAAAAAD//wEAAAACAAAAAAAAAAEAAAACAAAAAAABAAEAAAACAAAAAAACAAEAAAACAAAAAAADAAEAAAACAAAAAAAEAAEAAAACAAAAAAAFAAEAAAACAAAAAAAGAAEAAAACAAAAAAAHAAEAAAACAAAAAAA=")
+
+[node name="PlayerSpawn" parent="." index="4" unique_id=2045276910]
+position = Vector2(106, 11)

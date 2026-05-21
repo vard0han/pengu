@@ -1,0 +1,21 @@
+class_name State
+extends Node
+
+var actor : Node
+
+var _state_machine : StateMachine
+
+func _ready() -> void:
+	_state_machine = get_parent() as StateMachine
+
+func enter() -> void:
+	pass
+
+func exit() -> void:
+	pass
+
+func process_physics(_delta: float) -> void:
+	pass
+
+func process_input(_event: InputEvent) -> void:
+	pass

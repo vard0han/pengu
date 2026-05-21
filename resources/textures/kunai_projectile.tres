@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://bke6mlgiqgsjn"]
+
+[ext_resource type="Texture2D" uid="uid://ceti6sjeslvbw" path="res://assets/weapons/shuriken pixel art.png" id="1_2do5k"]
+
+[resource]
+atlas = ExtResource("1_2do5k")
+region = Rect2(48, 35, 14, 14)

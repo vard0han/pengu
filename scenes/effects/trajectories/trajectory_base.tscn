@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cr7on6x7udryt"]
+
+[ext_resource type="Script" uid="uid://1yhri3jdt7x6" path="res://scenes/effects/trajectories/trajectory_base.gd" id="1_4hnf2"]
+[ext_resource type="Texture2D" uid="uid://fd4y825j1tn" path="res://assets/tiles/tile_0157.png" id="2_i0q3s"]
+
+[node name="TrajectoryBase" type="Node2D" unique_id=1420243565]
+script = ExtResource("1_4hnf2")
+dot_texture = ExtResource("2_i0q3s")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://dhb22ygslces5"]
+
+[ext_resource type="Script" uid="uid://bcny1435lia47" path="res://scripts/data/card_data.gd" id="1_eafn0"]
+[ext_resource type="PackedScene" uid="uid://dggwrfiusy0vo" path="res://scenes/weapons/empowerments/arc_projectile.tscn" id="1_ikgba"]
+[ext_resource type="PackedScene" uid="uid://m1alj7c8khdy" path="res://scenes/player/states/cards/double_jump_state.tscn" id="1_t2fi3"]
+[ext_resource type="Texture2D" uid="uid://d2potttgfx081" path="res://assets/cards/jump.png" id="2_o35h4"]
+[ext_resource type="PackedScene" uid="uid://64yeuo3s6rms" path="res://scenes/effects/trajectories/arc_trajectory.tscn" id="5_o35h4"]
+
+[resource]
+script = ExtResource("1_eafn0")
+card_name = "Jump Card"
+card_id = "jump"
+display_label = "JUMP"
+color = Color(1, 0.85490197, 0.011764706, 1)
+icon = ExtResource("2_o35h4")
+movement_ability_scene = ExtResource("1_t2fi3")
+empowered_projectile_scene = ExtResource("1_ikgba")
+trajectory_scene = ExtResource("5_o35h4")
+metadata/_custom_type_script = "uid://bcny1435lia47"

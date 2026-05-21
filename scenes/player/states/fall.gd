@@ -1,6 +1,8 @@
 class_name FallState
 extends PlayerState
 
+const LANDING_PUFF_SCENE: PackedScene = preload("res://scenes/effects/particles/landing_puff.tscn")
+
 func enter() -> void:
 	super()
 	
@@ -16,21 +18,30 @@ func process_physics(delta: float) -> void:
 	
 	# -------------TRANSITION LOGIC-------------
 	
-	var on_floor := player.is_on_floor()
+	var on_floor : bool = player.is_on_floor()
 	
 	if on_floor:
 		if player.jump_buffer_timer > 0.0:
 			player.jump_buffer_timer = 0.0
-			state_machine.transition_to("Jump")
+			_state_machine.transition_to("Jump")
 			return
 		if absf(player.velocity.x) < 0.1:
-			state_machine.transition_to("Idle")
+			_state_machine.transition_to("Idle")
 			return
 		else:
-			state_machine.transition_to("Run")
+			_state_machine.transition_to("Run")
 			return
 	
 	if Input.is_action_just_pressed("jump") and player.coyote_timer > 0.0:
 		player.coyote_timer = 0.0
-		state_machine.transition_to("Jump")
+		_state_machine.transition_to("Jump")
 		return
+
+func exit() -> void:
+	if player.is_on_floor():
+		_spawn_landing_puff()
+
+func _spawn_landing_puff() -> void:
+	var main: Main = Main.get_instance(player.get_tree())
+	if main:
+		main.game_manager.spawn_particle(LANDING_PUFF_SCENE, player.global_position + Vector2(0, 8))

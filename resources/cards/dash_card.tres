@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://c1sso5unef5oq"]
+
+[ext_resource type="PackedScene" uid="uid://x1yag2afls40" path="res://scenes/weapons/empowerments/pierce_projectile.tscn" id="1_ilgpw"]
+[ext_resource type="PackedScene" uid="uid://dprdaguhehjkm" path="res://scenes/player/states/cards/dash_state.tscn" id="1_t8hdp"]
+[ext_resource type="Script" uid="uid://bcny1435lia47" path="res://scripts/data/card_data.gd" id="1_uj18g"]
+[ext_resource type="Texture2D" uid="uid://o8suyhn5inhj" path="res://assets/cards/dash.png" id="2_rwipx"]
+[ext_resource type="PackedScene" uid="uid://dw7n22aikvj47" path="res://scenes/effects/trajectories/pierce_trajectory.tscn" id="5_rwipx"]
+
+[resource]
+script = ExtResource("1_uj18g")
+card_name = "Dash Card"
+card_id = "dash"
+display_label = "DASH"
+color = Color(0.4, 0.5764706, 0.9607843, 1)
+icon = ExtResource("2_rwipx")
+movement_ability_scene = ExtResource("1_t8hdp")
+empowered_projectile_scene = ExtResource("1_ilgpw")
+trajectory_scene = ExtResource("5_rwipx")
+metadata/_custom_type_script = "uid://bcny1435lia47"

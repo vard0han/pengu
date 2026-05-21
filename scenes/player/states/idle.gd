@@ -14,19 +14,18 @@ func process_physics(delta: float) -> void:
 	
 	# -------------TRANSITION LOGIC-------------
 	
-	var on_floor := player.is_on_floor()
-	var direction : float = Input.get_axis("move_left", "move_right")
+	var on_floor : bool = player.is_on_floor()
 	
 	if Input.is_action_just_pressed("jump") and on_floor:
-		state_machine.transition_to("Jump")
+		_state_machine.transition_to("Jump")
 		return
 	
 	if not on_floor and player.velocity.y > 0:
 		# before transitioning to fall, start the coyote timer
 		player.coyote_timer = player.coyote_time
-		state_machine.transition_to("Fall")
+		_state_machine.transition_to("Fall")
 		return
 	
-	if(direction != 0):
-		state_machine.transition_to("Run")
+	if(player.direction != 0):
+		_state_machine.transition_to("Run")
 		return
