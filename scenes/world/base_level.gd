@@ -15,6 +15,7 @@ enum Medal {
 
 @export_category("Identity")
 @export var level_id: String = ""
+@export var display_name: String = ""
 
 @export_category("Medal Thresholds")
 @export var gold_time: float = 0.0
@@ -73,6 +74,8 @@ func _start_level() -> void:
 	
 	# check if level is already winnable
 	_check_win_condition(initial_count)
+	
+	_show_title_card()
 	
 	_timer_armed = true
 	level_started.emit()
@@ -157,3 +160,12 @@ func get_medal_for_time(time: float) -> Medal:
 		return Medal.BRONZE
 	
 	return Medal.NONE
+
+func _show_title_card() -> void:
+	var card_scene: PackedScene = preload("res://scenes/ui/level_title_card.tscn")
+	var card: LevelTitleCard = card_scene.instantiate()
+	
+	var main: Main = Main.get_instance(get_tree())
+	if main:
+		main.hud_layer.add_child(card)
+		card.show_title(display_name.to_upper(), 2.0)

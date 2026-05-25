@@ -7,10 +7,11 @@
 
 [node name="Level01" unique_id=994587893 instance=ExtResource("1_odbsn")]
 level_id = "level_01"
+display_name = "frozen peak"
 gold_time = 27.5
 silver_time = 34.0
 bronze_time = 40.0
-dev_time = 19.57
+dev_time = 21.34
 
 [node name="Background" parent="." index="0" unique_id=827422336]
 modulate = Color(0.3019608, 0.34901962, 0.4509804, 1)
@@ -230,5 +231,5 @@ text = "HOLD R - restart
 HOLD T - restart with new weapon"
 
 [node name="Player" parent="." index="8" unique_id=681689913]
-position = Vector2(43, 199)
+position = Vector2(-1071, 25)
 move_speed = 110.0

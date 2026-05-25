@@ -4,7 +4,7 @@ extends TrajectoryBase
 const TRAJECTORY_STEPS: int = 30
 const STEP_TIME: float = 0.05
 const GRAVITY: float = 600.0
-const MIN_LIFT: float = 0.0
+const MIN_LIFT: float = 5.0
 
 func _compute_points(from: Vector2, _aim_direction: Vector2, aim_target: Vector2) -> Array[Vector2]:
 	var points: Array[Vector2] = []
@@ -38,17 +38,3 @@ func _compute_points(from: Vector2, _aim_direction: Vector2, aim_target: Vector2
 		last_point = pos
 	
 	return points
-
-
-#[Cards] Add trajectory preview system with scene-based architecture
-#
-#- TrajectoryBase scene with shared _draw rendering (dots with black outline)
-#- ArcTrajectory inherited scene — ballistic math + raycast wall termination
-#- PierceTrajectory inherited scene — straight line, ignores walls
-#- trajectory_scene export on CardData (null = no preview)
-#- jump_card.tres → arc_trajectory.tscn
-#- dash_card.tres → pierce_trajectory.tscn
-#- Weapon instances trajectory scene lazily on empowerment activation
-#- Weapon frees trajectory on empowerment consumed, cancelled, or null
-#- Trajectory cleared explicitly at shot fire moment (no one-frame ghost)
-#- class_names on subclasses for Remote tab debuggability

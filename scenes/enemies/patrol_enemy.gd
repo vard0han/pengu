@@ -31,7 +31,7 @@ func flip_direction() -> void:
 	direction *= -1
 	ledge_ray.position.x *= -1
 	
-	sprite.flip_h = direction > 0
+	sprite.flip_h = direction < 0
 	
 	# Force immediate update — raycast state is stale for one frame after moving it
 	ledge_ray.force_raycast_update()

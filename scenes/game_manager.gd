@@ -14,6 +14,8 @@ func _ready() -> void:
 	call_deferred("show_weapon_select", "res://scenes/world/levels/level_01.tscn")
 
 func load_level(path: String) -> void:
+	await SceneTransition.fade_to_black(0.2)
+	
 	# free existing level
 	if current_level_instance:
 		current_level_instance.queue_free()
@@ -29,6 +31,8 @@ func load_level(path: String) -> void:
 	main.current_level.add_child(current_level_instance)
 	
 	call_deferred("_emit_level_loaded")
+	
+	await SceneTransition.fade_from_black(0.3)
 
 func reset_current_level() -> void:
 	if pending_level_path == "":

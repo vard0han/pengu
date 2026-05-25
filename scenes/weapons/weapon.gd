@@ -150,6 +150,9 @@ func _update_trajectory() -> void:
 		_clear_trajectory()
 		return
 	
+	if _trajectory != null and _trajectory.scene_file_path != pending_empowerment.trajectory_scene.resource_path:
+		_clear_trajectory()
+	
 	if _trajectory == null:
 		_trajectory = pending_empowerment.trajectory_scene.instantiate() as TrajectoryBase
 		add_child(_trajectory)

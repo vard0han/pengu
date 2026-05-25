@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	aim_direction = (get_global_mouse_position() - global_position).normalized()
 	
 	# flip the sprite according to aim
-	sprite.flip_h = aim_direction.x > 0
+	sprite.flip_h = aim_direction.x < 0
 	
 	# get player direction for everything
 	direction = Input.get_axis("move_left", "move_right")

@@ -29,6 +29,7 @@ SaveData="*uid://b42ebeyvfwh7e"
 AudioManager="*uid://3spm40odbflf"
 Utilities="*uid://koa0o8pceuaj"
 TimeManager="*uid://bek5uu8esk5ur"
+SceneTransition="*uid://t3ebwsrvltqg"
 
 [debug]
 
