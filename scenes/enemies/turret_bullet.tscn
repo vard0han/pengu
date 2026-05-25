@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bar2gsehr7w2a"]
+
+[ext_resource type="Script" uid="uid://chty3d7gxbwhb" path="res://scenes/enemies/turret_bullet.gd" id="1_re1kj"]
+[ext_resource type="Texture2D" uid="uid://b7no7uqevboxi" path="res://assets/enemies/spr_simple_bullet.png" id="2_fekxh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fekxh"]
+radius = 2.0
+
+[node name="TurretBullet" type="Area2D" unique_id=1086963975]
+collision_layer = 512
+collision_mask = 8
+script = ExtResource("1_re1kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1378464879]
+texture = ExtResource("2_fekxh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=62242423]
+shape = SubResource("CircleShape2D_fekxh")

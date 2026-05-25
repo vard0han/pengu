@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/base_level.tscn" id="1_odbsn"]
 [ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="3_ynxc0"]
 [ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="4_ynxc0"]
+[ext_resource type="PackedScene" uid="uid://bv6l1pffyg6q0" path="res://scenes/enemies/turret_enemy.tscn" id="5_8p1rb"]
 [ext_resource type="PackedScene" uid="uid://dwgv6imlxdcwh" path="res://scenes/enemies/patrol_enemy.tscn" id="5_q6olp"]
+[ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card_pickup.tscn" id="6_hgy7r"]
 
 [node name="Level01" unique_id=994587893 instance=ExtResource("1_odbsn")]
 level_id = "level_01"
@@ -66,6 +68,12 @@ card_drop = ExtResource("4_ynxc0")
 
 [node name="JumpPatrol5" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="10" unique_id=1502259405 instance=ExtResource("5_q6olp")]
 position = Vector2(-110, -144)
+card_drop = ExtResource("3_ynxc0")
+
+[node name="TurretEnemy" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="11" unique_id=1540975377 instance=ExtResource("5_8p1rb")]
+position = Vector2(-639, 12)
+scale = Vector2(-1, -1)
+card_drop_scene = ExtResource("6_hgy7r")
 card_drop = ExtResource("3_ynxc0")
 
 [node name="FinishLine" parent="." index="5" unique_id=1804460539]
@@ -231,5 +239,5 @@ text = "HOLD R - restart
 HOLD T - restart with new weapon"
 
 [node name="Player" parent="." index="8" unique_id=681689913]
-position = Vector2(-1071, 25)
+position = Vector2(-817, 24)
 move_speed = 110.0

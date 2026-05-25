@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://68s1j3c527uq" path="res://scenes/enemies/enemy.tscn" id="1_phsxw"]
 [ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card_pickup.tscn" id="2_bvcjx"]
 [ext_resource type="Shader" uid="uid://cii2o278o2vs7" path="res://assets/shaders/outline.gdshader" id="3_at13k"]
+[ext_resource type="Script" uid="uid://cq6bv2b4pf06i" path="res://scripts/components/hitbox.gd" id="6_2m8xl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_phsxw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_27vc1"]
 resource_local_to_scene = true
 shader = ExtResource("3_at13k")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
@@ -18,9 +19,6 @@ size = Vector2(13.1875, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8hkga"]
 size = Vector2(11.825979, 15.75)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ektu"]
-size = Vector2(11.823887, 15.125)
-
 [node name="PatrolEnemy" unique_id=1356801853 instance=ExtResource("1_phsxw")]
 script = ExtResource("1_3dqja")
 patrol_speed = 50.0
@@ -28,7 +26,7 @@ gravity = 800.0
 card_drop_scene = ExtResource("2_bvcjx")
 
 [node name="Sprite2D" parent="." index="0" unique_id=765667319]
-material = SubResource("ShaderMaterial_phsxw")
+material = SubResource("ShaderMaterial_27vc1")
 position = Vector2(0, -12)
 texture = ExtResource("1_767nm")
 
@@ -41,16 +39,24 @@ shape = SubResource("RectangleShape2D_jkbqn")
 position = Vector2(-10, 0)
 target_position = Vector2(0, 30)
 
-[node name="CollisionShape2D2" parent="Hurtbox" parent_id_path=PackedInt32Array(45261115) index="0" unique_id=369518490]
+[node name="Hurtbox" parent="." index="4" unique_id=45261115]
+visible = true
+
+[node name="CollisionShape2D2" parent="Hurtbox" index="0" unique_id=369518490]
 position = Vector2(-0.615, -8)
 shape = SubResource("RectangleShape2D_8hkga")
 
-[node name="Hitbox" parent="." index="5" unique_id=1858465665]
-visible = true
+[node name="Hitbox" type="Area2D" parent="." index="5" unique_id=1399562625]
+visible = false
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("6_2m8xl")
+metadata/_custom_type_script = "uid://cq6bv2b4pf06i"
 
-[node name="CollisionShape2D3" parent="Hitbox" index="0" unique_id=4812539]
-position = Vector2(-0.615, -8)
-shape = SubResource("RectangleShape2D_5ektu")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" index="0" unique_id=537913708]
+position = Vector2(-1, -8)
+scale = Vector2(1.0990803, 1)
+shape = SubResource("RectangleShape2D_8hkga")
 
 [node name="HealthBarAnchor" parent="." index="6" unique_id=264409904]
 position = Vector2(0, -23)
