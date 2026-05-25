@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dgcds6cgkaa8y" path="res://scenes/enemies/enemy_health_bar.tscn" id="2_8e3ao"]
 [ext_resource type="Shader" uid="uid://cii2o278o2vs7" path="res://assets/shaders/outline.gdshader" id="2_nb6gf"]
 [ext_resource type="Script" uid="uid://bkfnhx31hf6ye" path="res://scripts/components/hurtbox.gd" id="3_38ino"]
-[ext_resource type="Script" uid="uid://cq6bv2b4pf06i" path="res://scripts/components/hitbox.gd" id="4_fcftc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jt03m"]
 resource_local_to_scene = true
@@ -35,17 +34,6 @@ health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bkfnhx31hf6ye"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=369518490]
-position = Vector2(-1, -8)
-scale = Vector2(1.0990803, 1)
-
-[node name="Hitbox" type="Area2D" parent="." unique_id=1858465665]
-visible = false
-collision_layer = 64
-collision_mask = 0
-script = ExtResource("4_fcftc")
-metadata/_custom_type_script = "uid://cq6bv2b4pf06i"
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" unique_id=4812539]
 position = Vector2(-1, -8)
 scale = Vector2(1.0990803, 1)
 

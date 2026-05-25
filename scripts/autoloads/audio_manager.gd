@@ -68,6 +68,7 @@ func _get_sfx_stream(sound_name: String) -> AudioStream:
 	
 	var wav_path: String = SFX_PATH + sound_name + ".wav"
 	var ogg_path: String = SFX_PATH + sound_name + ".ogg"
+	var mp3_path: String = SFX_PATH + sound_name + ".mp3"
 	
 	var stream: AudioStream = null
 	
@@ -75,6 +76,8 @@ func _get_sfx_stream(sound_name: String) -> AudioStream:
 		stream = load(wav_path)
 	elif ResourceLoader.exists(ogg_path):
 		stream = load(ogg_path)
+	elif ResourceLoader.exists(mp3_path):
+		stream = load(mp3_path)
 	else: 
 		push_warning("SFX not found: " + sound_name)
 	
