@@ -12,7 +12,17 @@ var _current_music_path: String = ""
 
 var _looped_players: Dictionary = {}
 
+const SETTINGS_PATH: String = "user://settings.cfg"
+const DEFAULT_MUSIC_VOLUME: float = 0.8
+const DEFAULT_SFX_VOLUME: float = 0.8
+
+var music_volume: float = DEFAULT_MUSIC_VOLUME
+var sfx_volume: float = DEFAULT_SFX_VOLUME
+
 func _ready() -> void:
+	_load_settings()
+	_apply_volumes()
+	
 	for i : int in range(MAX_SFX_PLAYERS):
 		var player : AudioStreamPlayer = AudioStreamPlayer.new()
 		player.bus = "SFX"
@@ -100,7 +110,6 @@ func _fade_out_music(duration: float) -> void:
 	tween.tween_property(_music_player, "volume_db", -60.0, duration)
 	tween.tween_callback(_music_player.stop)
 
-
 func play_sfx_looped(sound_name: String, volume_db: float = -12.0, pitch_scale: float = 1.0) -> void:
 	if sound_name in _looped_players and _looped_players[sound_name].playing:
 		return  # already playing
@@ -126,3 +135,34 @@ func play_sfx_looped(sound_name: String, volume_db: float = -12.0, pitch_scale: 
 func stop_sfx_looped(sound_name: String) -> void:
 	if sound_name in _looped_players:
 		_looped_players[sound_name].stop()
+
+func set_music_volume(value: float) -> void:
+	music_volume = clampf(value, 0.0, 1.0)
+	_apply_volumes()
+	_save_settings()
+
+func set_sfx_volume(value: float) -> void:
+	sfx_volume = clampf(value, 0.0, 1.0)
+	_apply_volumes()
+	_save_settings()
+
+func _apply_volumes() -> void:
+	var music_bus: int = AudioServer.get_bus_index("Music")
+	var sfx_bus: int = AudioServer.get_bus_index("SFX")
+	
+	AudioServer.set_bus_volume_db(music_bus, linear_to_db(music_volume))
+	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(sfx_volume))
+
+func _load_settings() -> void:
+	var config : ConfigFile = ConfigFile.new()
+	var err: Error = config.load(SETTINGS_PATH)
+	if err != OK:
+		return
+	music_volume = config.get_value("audio", "music_volume", DEFAULT_MUSIC_VOLUME)
+	sfx_volume = config.get_value("audio", "sfx_volume", DEFAULT_SFX_VOLUME)
+
+func _save_settings() -> void:
+	var config : ConfigFile = ConfigFile.new()
+	config.set_value("audio", "music_volume", music_volume)
+	config.set_value("audio", "sfx_volume", sfx_volume)
+	config.save(SETTINGS_PATH)

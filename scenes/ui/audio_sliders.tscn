@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://crn0dlekjykuy"]
+
+[ext_resource type="Script" uid="uid://cq22yo6gs8fo5" path="res://scenes/ui/audio_sliders.gd" id="1_1l24m"]
+
+[node name="AudioSliders" type="VBoxContainer" unique_id=38697839]
+size_flags_horizontal = 3
+script = ExtResource("1_1l24m")
+
+[node name="MusicRow" type="HBoxContainer" parent="." unique_id=1995865104]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="MusicRow" unique_id=1728702800]
+layout_mode = 2
+text = "Music"
+
+[node name="MusicSlider" type="HSlider" parent="MusicRow" unique_id=1606393789]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="SFXRow" type="HBoxContainer" parent="." unique_id=1231422453]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="SFXRow" unique_id=1395046478]
+layout_mode = 2
+text = "SFX  "
+
+[node name="SFXSlider" type="HSlider" parent="SFXRow" unique_id=1918425654]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01

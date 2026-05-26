@@ -10,9 +10,6 @@ var pending_level_path: String = ""
 var weapon_select_instance: WeaponSelect = null
 var selected_weapon: WeaponData = null
 
-func _ready() -> void:
-	call_deferred("show_weapon_select", "res://scenes/world/levels/level_01.tscn")
-
 func load_level(path: String) -> void:
 	await SceneTransition.fade_to_black(0.2)
 	

@@ -10,6 +10,8 @@ extends Control
 @onready var silver_row: Label = %SilverRow
 @onready var bronze_row: Label = %BronzeRow
 @onready var continue_button: Button = %ContinueButton
+@onready var level_select_button: Button = %LevelSelectButton
+
 
 const COLOR_DEV: Color = Color(0.702, 0.949, 1.0)
 const COLOR_GOLD: Color = Color(1.0, 0.85, 0.3)
@@ -23,6 +25,7 @@ signal continue_pressed
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	continue_button.pressed.connect(func() -> void: continue_pressed.emit())
+	level_select_button.pressed.connect(func() -> void: Main.get_instance(get_tree()).show_level_select())
 
 func setup(
 	level_time: float, 

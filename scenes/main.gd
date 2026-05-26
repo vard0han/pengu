@@ -9,13 +9,20 @@ var hud: HUD = null
 var results_instance: LevelResults = null
 var game_over_instance: GameOver = null
 var current_player: Player = null
+var main_menu_instance: Control = null
+var level_select_instance: Control = null
+var pause_menu_instance: Control = null
 
 func _ready() -> void:
 	var hud_scene: PackedScene = load("res://scenes/ui/hud.tscn")
 	hud = hud_scene.instantiate()
 	hud_layer.add_child(hud)
+	hud.visible = false
 	
 	game_manager.level_loaded.connect(_on_level_loaded)
+	
+	_instance_pause_menu()
+	show_main_menu()
 
 func _on_level_loaded() -> void:
 	var level: Level = game_manager.current_level_instance as Level
@@ -158,3 +165,50 @@ func _on_retry() -> void:
 
 static func get_instance(tree: SceneTree) -> Main:
 	return tree.current_scene as Main
+
+func show_main_menu() -> void:
+	_free_current_menu()
+	hud.visible = false
+	
+	var scene: PackedScene = load("res://scenes/ui/main_menu.tscn")
+	main_menu_instance = scene.instantiate()
+	hud_layer.add_child(main_menu_instance)
+
+func show_level_select() -> void:
+	_free_current_menu()
+	hud.visible = false
+	
+	var scene: PackedScene = load("res://scenes/ui/level_select.tscn")
+	level_select_instance = scene.instantiate()
+	hud_layer.add_child(level_select_instance)
+
+func start_level(path: String) -> void:
+	_free_current_menu()
+	hud.visible = true
+	game_manager.show_weapon_select(path)
+
+func return_to_main_menu() -> void:
+	get_tree().paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	AudioManager.stop_music()
+	if results_instance:
+		results_instance.queue_free()
+		results_instance = null
+	if game_over_instance:
+		game_over_instance.queue_free()
+		game_over_instance = null
+	_free_current_level()
+	show_main_menu()
+
+func _free_current_menu() -> void:
+	if main_menu_instance:
+		main_menu_instance.queue_free()
+		main_menu_instance = null
+	if level_select_instance:
+		level_select_instance.queue_free()
+		level_select_instance = null
+
+func _instance_pause_menu() -> void:
+	var scene: PackedScene = load("res://scenes/ui/pause_menu.tscn")
+	pause_menu_instance = scene.instantiate()
+	hud_layer.add_child(pause_menu_instance)

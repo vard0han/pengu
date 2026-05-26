@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dqrq66h1rnbk5"]
+
+[ext_resource type="Script" uid="uid://e8re748fcuis" path="res://scenes/ui/main_menu.gd" id="1_fe2o3"]
+[ext_resource type="PackedScene" uid="uid://crn0dlekjykuy" path="res://scenes/ui/audio_sliders.tscn" id="1_sl1te"]
+
+[node name="MainMenu" type="Control" unique_id=1859168036]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fe2o3")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1914339922]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.05109611, 0.05109611, 0.051096104, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=333646591]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1098308575]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=1240357316]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "NINJA PENGU"
+
+[node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1320862212]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start"
+
+[node name="QuitButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1971443758]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit"
+
+[node name="AudioSliders" parent="CenterContainer/VBoxContainer" unique_id=38697839 instance=ExtResource("1_sl1te")]
+layout_mode = 2

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cp5660ngm77sq"]
+
+[ext_resource type="Script" uid="uid://c13p6a22jhjr" path="res://scenes/ui/level_select.gd" id="1_x15a5"]
+
+[node name="LevelSelect" type="Control" unique_id=1977393385]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x15a5")
+
+[node name="Background" type="ColorRect" parent="." unique_id=568086098]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.050980393, 0.050980393, 0.050980393, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=704109778]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Header" type="Label" parent="VBoxContainer" unique_id=370962052]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Levels"
+horizontal_alignment = 1
+
+[node name="ButtonRow" type="HBoxContainer" parent="VBoxContainer" unique_id=1863528265]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="Level1Button" type="Button" parent="VBoxContainer/ButtonRow" unique_id=613266076]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+
+[node name="Level2Button" type="Button" parent="VBoxContainer/ButtonRow" unique_id=1955003524]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "2"
+
+[node name="Level3Button" type="Button" parent="VBoxContainer/ButtonRow" unique_id=399491851]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "3"
+
+[node name="BackButton" type="Button" parent="VBoxContainer" unique_id=1214868001]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Back"

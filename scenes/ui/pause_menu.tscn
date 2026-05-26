@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://b06kw655at6sm"]
+
+[ext_resource type="Script" uid="uid://dh5ydvjm1ank6" path="res://scenes/ui/pause_menu.gd" id="1_0lmf7"]
+[ext_resource type="PackedScene" uid="uid://crn0dlekjykuy" path="res://scenes/ui/audio_sliders.tscn" id="1_6tw0m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0lmf7"]
+bg_color = Color(0, 0, 0, 0.9019608)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="PauseMenu" type="Control" unique_id=2060626821]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0lmf7")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1459753673]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.69803923)
+
+[node name="MenuPanel" type="PanelContainer" parent="." unique_id=920275216]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0
+offset_top = -94.5
+offset_right = 116.0
+offset_bottom = 94.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0lmf7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuPanel" unique_id=275366656]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PausedLabel" type="Label" parent="MenuPanel/VBoxContainer" unique_id=755560529]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="MenuPanel/VBoxContainer" unique_id=1987776994]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+
+[node name="AudioSliders" parent="MenuPanel/VBoxContainer" unique_id=38697839 instance=ExtResource("1_6tw0m")]
+layout_mode = 2
+
+[node name="MainMenuButton" type="Button" parent="MenuPanel/VBoxContainer" unique_id=1217185593]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Main Menu"
+
+[node name="Countdown" type="Label" parent="." unique_id=1034231890]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -51.0
+offset_right = 24.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 128
+text = "1"
