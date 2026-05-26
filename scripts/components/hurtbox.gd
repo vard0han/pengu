@@ -23,8 +23,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if get_parent() is Player:
 		AudioManager.play_sfx("player_hit", -10.0, randf_range(1.15, 1.25))
 	
-	
 	if hitbox.destroy_on_hit:
-		var projectile: Node = hitbox.get_parent()
-		if projectile and projectile is Projectile:
-			projectile.queue_free()
+		var source: Node = hitbox.get_parent()
+		if source and is_instance_valid(source):
+			source.queue_free()

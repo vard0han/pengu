@@ -23,4 +23,5 @@ func _on_body_entered(body: Node) -> void:
 func _spawn_sparkle() -> void:
 	var main: Main = Main.get_instance(get_tree())
 	if main and main.current_level:
-		main.game_manager.spawn_particle(PICKUP_SPARKLE_SCENE, global_position, card_data.color)
+		var card_data_color: Color = card_data.color if card_data else Color.WHITE
+		main.game_manager.spawn_particle(PICKUP_SPARKLE_SCENE, global_position, card_data_color)

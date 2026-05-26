@@ -118,7 +118,7 @@ restart_with_weapon={
 2d_physics/layer_7="EnemyHitbox"
 2d_physics/layer_8="PlayerProjectile"
 2d_physics/layer_9="Pickup"
-2d_physics/layer_10="Enemy"
+2d_physics/layer_10="EnemyProjectile"
 2d_physics/layer_11="TurretBody"
 
 [physics]

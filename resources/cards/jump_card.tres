@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bcny1435lia47" path="res://scripts/data/card_data.gd" id="1_eafn0"]
 [ext_resource type="PackedScene" uid="uid://dggwrfiusy0vo" path="res://scenes/weapons/empowerments/arc_projectile.tscn" id="1_ikgba"]
 [ext_resource type="PackedScene" uid="uid://m1alj7c8khdy" path="res://scenes/player/states/cards/double_jump_state.tscn" id="1_t2fi3"]
-[ext_resource type="Texture2D" uid="uid://5gf3dh3ylx42" path="res://assets/cards/jump.png" id="2_o35h4"]
+[ext_resource type="Texture2D" uid="uid://d2potttgfx081" path="res://assets/cards/jump.png" id="2_o35h4"]
 [ext_resource type="PackedScene" uid="uid://64yeuo3s6rms" path="res://scenes/effects/trajectories/arc_trajectory.tscn" id="5_o35h4"]
 
 [resource]

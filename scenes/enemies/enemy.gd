@@ -1,7 +1,8 @@
 class_name Enemy
 extends CharacterBody2D
 
-@export var card_drop_scene : PackedScene
+const CARD_PICKUP_SCENE: PackedScene = preload("res://scenes/cards/card_pickup.tscn")
+
 @export var card_drop : CardData
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar: EnemyHealthBar = %EnemyHealthBar
@@ -32,7 +33,8 @@ func _on_died() -> void:
 func _spawn_death_burst() -> void:
 	var main: Main = Main.get_instance(get_tree())
 	if main and main.current_level:
-		main.game_manager.spawn_particle(DEATH_BURST_SCENE, sprite.global_position, card_drop.color)
+		var card_drop_color: Color = card_drop.color if card_drop else Color.WHITE
+		main.game_manager.spawn_particle(DEATH_BURST_SCENE, sprite.global_position, card_drop_color)
 
 func _on_health_changed(current: int, _max: int) -> void:
 	health_bar.update_health(current)
@@ -40,8 +42,8 @@ func _on_health_changed(current: int, _max: int) -> void:
 func _drop_card() -> void:
 	# if scene exists, instantiate it, adjust the position
 	# add it in the level scene tree, remove the enemy
-	if card_drop_scene:
-		var card_pickup: Node = card_drop_scene.instantiate()
+	if card_drop:
+		var card_pickup: Node = CARD_PICKUP_SCENE.instantiate()
 		card_pickup.card_data = card_drop
 		card_pickup.global_position = global_position
 		
