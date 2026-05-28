@@ -8,17 +8,23 @@ extends Enemy
 
 @onready var _muzzle: Marker2D = $Muzzle
 @onready var _fire_timer: Timer = $FireTimer
+@onready var _animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
+	sprite = _animated_sprite
 	super._ready()
 	_fire_timer.wait_time = fire_rate
 	_fire_timer.timeout.connect(_fire)
+	_animated_sprite.animation_finished.connect(_on_shoot_finished)
+	_animated_sprite.play("idle")
 	
 func _fire() -> void:
 	if bullet_scene == null:
 		push_warning("TurretEnemy: bullet_scene is not assigned.")
 		return
-		
+	
+	_animated_sprite.play("shoot")
+	
 	var bullet: TurretBullet = bullet_scene.instantiate()
 	bullet.speed = bullet_speed
 	bullet.max_distance = bullet_range
@@ -42,3 +48,10 @@ func _get_projectiles_container() -> Node:
 	if main and main.game_manager:
 		return main.game_manager.get_projectiles_container()
 	return null
+
+func _on_shoot_finished() -> void:
+	if _animated_sprite.animation == "shoot":
+		_animated_sprite.play("idle")
+
+func _apply_outline_color(color: Color) -> void:
+	_animated_sprite.material.set_shader_parameter("outline_color", color)

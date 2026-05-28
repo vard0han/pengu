@@ -5,46 +5,107 @@
 [ext_resource type="Shader" uid="uid://cii2o278o2vs7" path="res://assets/shaders/outline.gdshader" id="2_qwbpo"]
 [ext_resource type="PackedScene" uid="uid://bar2gsehr7w2a" path="res://scenes/enemies/turret_bullet.tscn" id="3_bhx7w"]
 [ext_resource type="Texture2D" uid="uid://2txbn4y2q0hs" path="res://assets/enemies/spr_simple_turret_idle.png" id="3_qwbpo"]
+[ext_resource type="Texture2D" uid="uid://c1h7nyb4hsllj" path="res://assets/enemies/spr_simple_turret_shoot.png" id="6_bhx7w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7j3db"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmua"]
 resource_local_to_scene = true
 shader = ExtResource("2_qwbpo")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/outline_width = 1.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgwxs"]
+atlas = ExtResource("6_bhx7w")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_de036"]
+atlas = ExtResource("6_bhx7w")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbcei"]
+atlas = ExtResource("6_bhx7w")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_socbt"]
+atlas = ExtResource("6_bhx7w")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tadxk"]
+atlas = ExtResource("6_bhx7w")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eeme1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vgwxs")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_de036")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbcei")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_socbt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tadxk")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ejog"]
-size = Vector2(11, 8)
+size = Vector2(9.5, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7j3db"]
-size = Vector2(10.91822, 8)
+size = Vector2(8.643591, 7)
 
 [node name="TurretEnemy" unique_id=1356801853 instance=ExtResource("1_ove4n")]
 collision_layer = 1024
 script = ExtResource("2_7j3db")
-fire_rate = 2.0
-bullet_speed = 200.0
-bullet_range = 400.0
+fire_rate = null
+bullet_speed = null
+bullet_range = null
 bullet_scene = ExtResource("3_bhx7w")
 
 [node name="Sprite2D" parent="." index="0" unique_id=765667319]
-material = SubResource("ShaderMaterial_7j3db")
+visible = false
+material = SubResource("ShaderMaterial_qkmua")
 position = Vector2(0, -4)
 texture = ExtResource("3_qwbpo")
 
-[node name="CollisionShape2D" parent="." index="1" unique_id=924808874]
-position = Vector2(1, -4)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=2018379312]
+material = SubResource("ShaderMaterial_qkmua")
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_eeme1")
+animation = &"shoot"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" parent="." index="2" unique_id=924808874]
+position = Vector2(0.75, -3.5)
 shape = SubResource("RectangleShape2D_4ejog")
 
-[node name="Hurtbox" parent="." index="3" unique_id=45261115]
+[node name="Hurtbox" parent="." index="4" unique_id=45261115]
 visible = true
 
 [node name="CollisionShape2D2" parent="Hurtbox" index="0" unique_id=369518490]
-position = Vector2(1, -4)
+position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_7j3db")
 
-[node name="Muzzle" type="Marker2D" parent="." index="5" unique_id=864469403]
-position = Vector2(8, -4)
+[node name="HealthBarAnchor" parent="." index="5" unique_id=264409904]
+position = Vector2(0, 2)
 
-[node name="FireTimer" type="Timer" parent="." index="6" unique_id=1138765206]
+[node name="Muzzle" type="Marker2D" parent="." index="6" unique_id=864469403]
+position = Vector2(6, -3)
+
+[node name="FireTimer" type="Timer" parent="." index="7" unique_id=1138765206]
 wait_time = 2.0
 autostart = true

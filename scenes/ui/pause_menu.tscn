@@ -50,7 +50,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0lmf7")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuPanel" unique_id=275366656]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 10
 
 [node name="PausedLabel" type="Label" parent="MenuPanel/VBoxContainer" unique_id=755560529]
 layout_mode = 2
@@ -65,6 +65,11 @@ text = "Resume"
 
 [node name="AudioSliders" parent="MenuPanel/VBoxContainer" unique_id=38697839 instance=ExtResource("1_6tw0m")]
 layout_mode = 2
+
+[node name="WeaponSelectButton" type="Button" parent="MenuPanel/VBoxContainer" unique_id=522497312]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Weapon Select"
 
 [node name="MainMenuButton" type="Button" parent="MenuPanel/VBoxContainer" unique_id=1217185593]
 unique_name_in_owner = true

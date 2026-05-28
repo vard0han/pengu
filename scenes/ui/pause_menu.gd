@@ -7,6 +7,7 @@ const COUNTDOWN_FROM: int = 2
 @onready var _countdown: Label = $Countdown
 @onready var _resume_button: Button = %ResumeButton
 @onready var _main_menu_button: Button = %MainMenuButton
+@onready var _weapon_select_button: Button = %WeaponSelectButton
 
 var _is_resuming: bool = false
 
@@ -14,6 +15,7 @@ func _ready() -> void:
 	visible = false
 	_resume_button.pressed.connect(_on_resume_pressed)
 	_main_menu_button.pressed.connect(_on_main_menu_pressed)
+	_weapon_select_button.pressed.connect(_on_weapon_select_pressed)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event.is_action_pressed("pause"):
@@ -58,6 +60,12 @@ func _on_main_menu_pressed() -> void:
 	_is_resuming = false
 	get_tree().paused = false
 	Main.get_instance(get_tree()).return_to_main_menu()
+
+func _on_weapon_select_pressed() -> void:
+	visible = false
+	_is_resuming = false
+	get_tree().paused = false
+	Main.get_instance(get_tree()).game_manager.reset_current_level()
 
 func _play_countdown() -> void:
 	_countdown.visible = true

@@ -6,7 +6,7 @@ const CARD_PICKUP_SCENE: PackedScene = preload("res://scenes/cards/card_pickup.t
 @export var card_drop : CardData
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var health_bar: EnemyHealthBar = %EnemyHealthBar
-@onready var sprite: Sprite2D = $Sprite2D
+@onready var sprite: Node2D = $Sprite2D
 
 const DEATH_BURST_SCENE: PackedScene = preload("res://scenes/effects/particles/enemy_death_burst.tscn")
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 	health_component.died.connect(_on_died)
 	
 	if card_drop:
-		sprite.material.set_shader_parameter("outline_color", card_drop.color)
+		_apply_outline_color(card_drop.color)
 
 func _on_died() -> void:
 	AudioManager.play_sfx("enemy_hit", -15.0, randf_range(1.5, 1.7))
@@ -51,3 +51,6 @@ func _drop_card() -> void:
 		var container : Node2D = main.game_manager.get_pickups_container()
 		if container:
 			container.call_deferred("add_child", card_pickup)
+
+func _apply_outline_color(color: Color) -> void:
+	sprite.material.set_shader_parameter("outline_color", color)

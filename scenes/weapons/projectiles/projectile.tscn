@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d1aae2yyynmf"]
 
 [ext_resource type="Script" uid="uid://dolov3k4diovs" path="res://scenes/weapons/projectiles/projectile.gd" id="1_qp4n5"]
+[ext_resource type="PackedScene" uid="uid://cjcih6vtwgtui" path="res://scenes/effects/particles/projectile_impact.tscn" id="2_bvfrx"]
 [ext_resource type="Script" uid="uid://cq6bv2b4pf06i" path="res://scripts/components/hitbox.gd" id="2_krgla"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qp4n5"]
@@ -9,6 +10,7 @@ radius = 0.1
 [node name="Projectile" type="Area2D" unique_id=455320433]
 collision_layer = 0
 script = ExtResource("1_qp4n5")
+impact_scene = ExtResource("2_bvfrx")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1514560233]
 

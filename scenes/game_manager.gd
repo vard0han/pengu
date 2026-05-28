@@ -83,14 +83,15 @@ func get_particles_container() -> Node:
 		return current_level_instance.get_node_or_null("Particles")
 	return null
 
-func spawn_particle(scene: PackedScene, position: Vector2, color: Color = Color.WHITE) -> GPUParticles2D:
+func spawn_particle(scene: PackedScene, position: Vector2, color: Color = Color.WHITE, rotation_angle: float = 0.0) -> GPUParticles2D:
 	var container: Node = get_particles_container()
 	if container == null:
 		return
 	
-	var particle: GPUParticles2D = scene.instantiate()
+	var particle: Node2D = scene.instantiate()
 	particle.global_position = position
 	particle.modulate = color
+	particle.rotation = rotation_angle
 	
 	container.add_child(particle)
 	

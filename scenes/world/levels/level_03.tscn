@@ -6,7 +6,7 @@
 [ext_resource type="Resource" uid="uid://c1sso5unef5oq" path="res://resources/cards/dash_card.tres" id="4_7yau5"]
 [ext_resource type="PackedScene" uid="uid://dgcuqjc01o17q" path="res://scenes/enemies/turret_enemy.tscn" id="5_elbth"]
 
-[node name="Level01" unique_id=994587893 instance=ExtResource("1_uqijg")]
+[node name="Level03" unique_id=994587893 instance=ExtResource("1_uqijg")]
 level_id = "level_03"
 display_name = "frozen peak"
 gold_time = 27.5

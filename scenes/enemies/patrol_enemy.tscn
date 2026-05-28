@@ -3,11 +3,10 @@
 [ext_resource type="Script" uid="uid://2p0q43c1xtd8" path="res://scenes/enemies/patrol_enemy.gd" id="1_3dqja"]
 [ext_resource type="Texture2D" uid="uid://c32secyopa6le" path="res://assets/tiles/characters/tile_0015.png" id="1_767nm"]
 [ext_resource type="PackedScene" uid="uid://68s1j3c527uq" path="res://scenes/enemies/enemy.tscn" id="1_phsxw"]
-[ext_resource type="PackedScene" uid="uid://bwinksyej1kli" path="res://scenes/cards/card_pickup.tscn" id="2_bvcjx"]
 [ext_resource type="Shader" uid="uid://cii2o278o2vs7" path="res://assets/shaders/outline.gdshader" id="3_at13k"]
 [ext_resource type="Script" uid="uid://cq6bv2b4pf06i" path="res://scripts/components/hitbox.gd" id="6_2m8xl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_27vc1"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_phsxw"]
 resource_local_to_scene = true
 shader = ExtResource("3_at13k")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
@@ -23,10 +22,9 @@ size = Vector2(11.825979, 15.75)
 script = ExtResource("1_3dqja")
 patrol_speed = 50.0
 gravity = 800.0
-card_drop_scene = ExtResource("2_bvcjx")
 
 [node name="Sprite2D" parent="." index="0" unique_id=765667319]
-material = SubResource("ShaderMaterial_27vc1")
+material = SubResource("ShaderMaterial_phsxw")
 position = Vector2(0, -12)
 texture = ExtResource("1_767nm")
 

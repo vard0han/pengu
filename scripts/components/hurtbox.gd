@@ -26,4 +26,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if hitbox.destroy_on_hit:
 		var source: Node = hitbox.get_parent()
 		if source and is_instance_valid(source):
-			source.queue_free()
+			if source.has_method("die"):
+				source.die()
+			else:
+				source.queue_free()
