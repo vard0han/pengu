@@ -66,6 +66,11 @@ text = "Resume"
 [node name="AudioSliders" parent="MenuPanel/VBoxContainer" unique_id=38697839 instance=ExtResource("1_6tw0m")]
 layout_mode = 2
 
+[node name="RetryButton" type="Button" parent="MenuPanel/VBoxContainer" unique_id=1014657428]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Retry"
+
 [node name="WeaponSelectButton" type="Button" parent="MenuPanel/VBoxContainer" unique_id=522497312]
 unique_name_in_owner = true
 layout_mode = 2

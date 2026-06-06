@@ -36,6 +36,13 @@ func reset_current_level() -> void:
 		push_warning("Cannot reset: no level path stored")
 		return
 	
+	load_level(pending_level_path)
+
+func reset_current_level_weapon() -> void:
+	if pending_level_path == "":
+		push_warning("Cannot reset: no level path stored")
+		return
+	
 	show_weapon_select(pending_level_path)
 
 func _emit_level_loaded() -> void:

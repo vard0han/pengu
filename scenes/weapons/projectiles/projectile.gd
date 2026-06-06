@@ -49,7 +49,6 @@ func _vanish() -> void:
 	set_deferred("monitoring", false)
 	if has_node("Hitbox"):
 		get_node("Hitbox").set_deferred("monitoring", false)
-	print("test")
 	var tween : Tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(self, "scale", Vector2.ZERO, 0.15)

@@ -4,7 +4,6 @@ extends PlayerState
 func enter() -> void:
 	super()
 	player.velocity.y = -1 * player.jump_force
-	player.anim_player.play("air")
 	
 	AudioManager.play_sfx("jump", 0.0, randf_range(1.1, 1.3))
 

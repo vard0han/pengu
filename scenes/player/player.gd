@@ -27,8 +27,7 @@ var jump_buffer_timer: float = 0.0
 const FLICKED_FREQUENCY: float = 10.0
 var _flicker_timer: float = 0.0
 
-@onready var anim_player : AnimationPlayer = $AnimationPlayer
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var card_inventory: CardInventory = $CardInventory
 @onready var state_machine: StateMachine = $StateMachine
 @onready var weapon: Node2D = $Weapon

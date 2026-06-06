@@ -3,7 +3,7 @@ extends PlayerState
 
 func enter() -> void:
 	super()
-	player.anim_player.play("idle")
+	player.sprite.play("idle")
 
 func process_physics(delta: float) -> void:
 	if not player: return

@@ -46,8 +46,8 @@ var time_elapsed: float = 0.0
 var is_timer_running: bool = false
 var _timer_armed: bool = false
 
-var _restart_hold_timer: float = 0.0
-var _restart_weapon_hold_timer: float = 0.0
+#var _restart_hold_timer: float = 0.0
+#var _restart_weapon_hold_timer: float = 0.0
 
 func _ready() -> void:
 	if level_id == "":
@@ -88,8 +88,15 @@ func _process(delta: float) -> void:
 			_timer_armed = false
 			is_timer_running = true
 	
-	_process_restart_input(delta)
-	_process_restart_weapon_input(delta)
+	#_process_restart_input(delta)
+	#_process_restart_weapon_input(delta)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("restart_level"):
+		restart_requested.emit()
+	
+	if event.is_action_pressed("restart_with_weapon"):
+		restart_with_weapon_requested.emit()
 
 func _player_provided_input() -> bool:
 	return (
@@ -99,23 +106,25 @@ func _player_provided_input() -> bool:
 		Input.is_action_pressed("attack")
 	)
 
-func _process_restart_input(delta: float) -> void:
+func _process_restart_input(_delta: float) -> void:
 	if Input.is_action_pressed("restart_level"):
-		_restart_hold_timer += delta
-		if _restart_hold_timer >= RESTART_HOLD_DURATION:
-			_restart_hold_timer = 0.0
-			restart_requested.emit()
-	else:
-		_restart_hold_timer = 0.0
+		#_restart_hold_timer += delta
+		#if _restart_hold_timer >= RESTART_HOLD_DURATION:
+			#_restart_hold_timer = 0.0
+			#restart_requested.emit()
+		restart_requested.emit()
+	#else:
+		#_restart_hold_timer = 0.0
 
-func _process_restart_weapon_input(delta: float) -> void:
+func _process_restart_weapon_input(_delta: float) -> void:
 	if Input.is_action_pressed("restart_with_weapon"):
-		_restart_weapon_hold_timer += delta
-		if _restart_weapon_hold_timer >= RESTART_HOLD_DURATION:
-			_restart_weapon_hold_timer = 0.0
-			restart_with_weapon_requested.emit()
-	else:
-		_restart_weapon_hold_timer = 0.0
+		#_restart_weapon_hold_timer += delta
+		#if _restart_weapon_hold_timer >= RESTART_HOLD_DURATION:
+			#_restart_weapon_hold_timer = 0.0
+			#restart_with_weapon_requested.emit()
+		restart_with_weapon_requested.emit()
+	#else:
+		#_restart_weapon_hold_timer = 0.0
 
 # called when enemy is removed from the tree
 func _on_enemy_exiting(_child: Node) -> void:

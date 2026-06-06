@@ -15,7 +15,6 @@ weapon_range = 300.0
 projectile_texture = ExtResource("2_i3eg4")
 visual_scene = ExtResource("3_gpr7m")
 stat_description = "
-
-Damage: Low
-Range: High"
+Damage: 1
+Range: 300"
 metadata/_custom_type_script = "uid://corgghm6jc77"

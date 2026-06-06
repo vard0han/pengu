@@ -14,8 +14,6 @@ func enter() -> void:
 	player.velocity.x = DASH_SPEED * player.last_direction
 	_dash_timer = DASH_DURATION
 	
-	player.anim_player.play("run")
-	
 	AudioManager.play_sfx("air_whoosh", 25.0, randf_range(0.65, 0.8))
 	
 	player.shake_camera("small")

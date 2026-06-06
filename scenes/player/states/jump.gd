@@ -6,7 +6,6 @@ const JUMP_PUFF_SCENE: PackedScene = preload("res://scenes/effects/particles/jum
 func enter() -> void:
 	super()
 	player.velocity.y = -1 * player.jump_force
-	player.anim_player.play("air")
 	
 	AudioManager.play_sfx("jump", -10.0 ,randf_range(0.8, 1.0))
 	_spawn_jump_puff()

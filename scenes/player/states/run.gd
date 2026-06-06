@@ -3,14 +3,12 @@ extends PlayerState
 
 func enter() -> void:
 	super()
-	player.anim_player.play("run")
+	player.sprite.play("run")
 	
 	AudioManager.play_sfx_looped("footstep_grass", -15.0)
 
 func process_physics(delta: float) -> void:
 	if not player: return
-	
-	
 	
 	# -------------STATE LOGIC-------------
 

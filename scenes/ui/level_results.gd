@@ -25,7 +25,13 @@ signal continue_pressed
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	continue_button.pressed.connect(func() -> void: continue_pressed.emit())
-	level_select_button.pressed.connect(func() -> void: Main.get_instance(get_tree()).show_level_select())
+	level_select_button.pressed.connect(_on_level_select_button_pressed)
+	
+	AudioManager.stop_sfx_looped("footstep_grass")
+
+func _on_level_select_button_pressed() -> void:
+	Main.get_instance(get_tree()).show_level_select()
+	queue_free()
 
 func setup(
 	level_time: float, 

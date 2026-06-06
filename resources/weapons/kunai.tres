@@ -17,6 +17,6 @@ display_color = Color(0.97571105, 0.9736578, 0, 1)
 projectile_texture = ExtResource("2_q4j6e")
 visual_scene = ExtResource("3_4p7g0")
 stat_description = "
-Damage: High
-Range: Low"
+Damage: 3
+Range: 100"
 metadata/_custom_type_script = "uid://corgghm6jc77"
