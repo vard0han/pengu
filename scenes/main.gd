@@ -199,6 +199,7 @@ func return_to_main_menu() -> void:
 		game_over_instance = null
 	_free_current_level()
 	show_main_menu()
+	AudioManager.stop_sfx_looped("footstep_grass")
 
 func _free_current_menu() -> void:
 	if main_menu_instance:

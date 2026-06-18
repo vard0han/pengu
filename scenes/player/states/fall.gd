@@ -5,6 +5,7 @@ const LANDING_PUFF_SCENE: PackedScene = preload("res://scenes/effects/particles/
 
 func enter() -> void:
 	super()
+	player.sprite.play("fall")
 
 func process_physics(delta: float) -> void:
 	if not player: return
