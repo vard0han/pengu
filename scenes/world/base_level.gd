@@ -46,9 +46,6 @@ var time_elapsed: float = 0.0
 var is_timer_running: bool = false
 var _timer_armed: bool = false
 
-#var _restart_hold_timer: float = 0.0
-#var _restart_weapon_hold_timer: float = 0.0
-
 func _ready() -> void:
 	if level_id == "":
 		push_warning("Level has no level_id set in inspector")
@@ -87,9 +84,6 @@ func _process(delta: float) -> void:
 		if _player_provided_input():
 			_timer_armed = false
 			is_timer_running = true
-	
-	#_process_restart_input(delta)
-	#_process_restart_weapon_input(delta)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart_level"):
@@ -105,26 +99,6 @@ func _player_provided_input() -> bool:
 		Input.is_action_pressed("jump") or
 		Input.is_action_pressed("attack")
 	)
-
-func _process_restart_input(_delta: float) -> void:
-	if Input.is_action_pressed("restart_level"):
-		#_restart_hold_timer += delta
-		#if _restart_hold_timer >= RESTART_HOLD_DURATION:
-			#_restart_hold_timer = 0.0
-			#restart_requested.emit()
-		restart_requested.emit()
-	#else:
-		#_restart_hold_timer = 0.0
-
-func _process_restart_weapon_input(_delta: float) -> void:
-	if Input.is_action_pressed("restart_with_weapon"):
-		#_restart_weapon_hold_timer += delta
-		#if _restart_weapon_hold_timer >= RESTART_HOLD_DURATION:
-			#_restart_weapon_hold_timer = 0.0
-			#restart_with_weapon_requested.emit()
-		restart_with_weapon_requested.emit()
-	#else:
-		#_restart_weapon_hold_timer = 0.0
 
 # called when enemy is removed from the tree
 func _on_enemy_exiting(_child: Node) -> void:

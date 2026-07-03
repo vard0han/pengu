@@ -12,12 +12,20 @@ func process_physics(_delta: float) -> void:
 func apply_gravity(delta: float) -> void:
 	if not player:
 		return
+	if player.is_on_floor():
+		return
 	
-	# increase gravity each frame, while mid-air
-	if not player.is_on_floor():
-		player.velocity.y += player.gravity * delta
-		# stop gravity from reaching stupid number (might cause bugs)
-		player.velocity.y = minf(player.velocity.y, player.max_fall_speed)
+	var g: float
+	
+	if absf(player.velocity.y) < player.apex_threshold:
+		g = player.rise_gravity * player.apex_gravity_multiplier
+	elif player.velocity.y < 0.0:
+		g = player.rise_gravity
+	else:
+		g = player.fall_gravity
+	
+	player.velocity.y += g * delta
+	player.velocity.y = minf(player.velocity.y, player.max_fall_speed)
 
 func apply_horizontal_movement(delta: float) -> void:
 	if not player:

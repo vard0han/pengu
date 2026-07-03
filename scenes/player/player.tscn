@@ -13,11 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="12_gx1jg"]
 [ext_resource type="Script" uid="uid://cjjdqwe3gxkkb" path="res://scripts/components/health_component.gd" id="13_ugbui"]
 [ext_resource type="Script" uid="uid://bkfnhx31hf6ye" path="res://scripts/components/hurtbox.gd" id="14_fcs02"]
-[ext_resource type="Texture2D" uid="uid://bsrpy6l1yggy8" path="res://assets/lina's penguins/fall.png" id="14_myrg7"]
-[ext_resource type="Texture2D" uid="uid://dkhh3pullqh3x" path="res://assets/lina's penguins/jump.png" id="16_kvlxm"]
-[ext_resource type="Texture2D" uid="uid://f4iyo1elcwbv" path="res://assets/lina's penguins/pengu_idle.png" id="16_myrg7"]
-[ext_resource type="Texture2D" uid="uid://cg80ynhywf1ns" path="res://assets/lina's penguins/pengu_run.png" id="17_kvlxm"]
-[ext_resource type="Texture2D" uid="uid://b806kbfgogsmt" path="res://assets/lina's penguins/smoosh.png" id="17_uf5tr"]
+[ext_resource type="Texture2D" uid="uid://b8ajlnqgnw76p" path="res://assets/penguins/fall.png" id="14_myrg7"]
+[ext_resource type="Texture2D" uid="uid://dkhh3pullqh3x" path="res://assets/penguins/jump.png" id="16_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://bcx6w5ntc2wo5" path="res://assets/penguins/pengu_idle.png" id="16_myrg7"]
+[ext_resource type="Texture2D" uid="uid://cg80ynhywf1ns" path="res://assets/penguins/pengu_run.png" id="17_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://b806kbfgogsmt" path="res://assets/penguins/smoosh.png" id="17_uf5tr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 22.0
@@ -122,13 +122,14 @@ animations = [{
 collision_layer = 2
 collision_mask = 1025
 script = ExtResource("1_dovo2")
-jump_force = 350.0
+move_speed = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463265850]
 visible = false
 shape = SubResource("CapsuleShape2D_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2056689752]
+zoom = Vector2(1.2, 1.2)
 position_smoothing_speed = 10.0
 script = ExtResource("3_fcs02")
 
