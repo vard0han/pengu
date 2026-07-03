@@ -16,7 +16,12 @@ func process_physics(delta: float) -> void:
 	apply_gravity(delta)
 	
 	# -------------TRANSITION LOGIC-------------
-	
+
+	if is_on_wall_and_pressing():
+		player.wall_normal = player.get_wall_normal()
+		_state_machine.transition_to("WallSlide")
+		return
+
 	var on_floor : bool = player.is_on_floor()
 	
 	if on_floor:
@@ -34,6 +39,11 @@ func process_physics(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and player.coyote_timer > 0.0:
 		player.coyote_timer = 0.0
 		_state_machine.transition_to("Jump")
+		return
+
+	if Input.is_action_just_pressed("jump") and player.wall_coyote_timer > 0.0:
+		player.wall_coyote_timer = 0.0
+		_state_machine.transition_to("WallJump")
 		return
 
 func exit() -> void:

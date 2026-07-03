@@ -27,6 +27,13 @@ func apply_gravity(delta: float) -> void:
 	player.velocity.y += g * delta
 	player.velocity.y = minf(player.velocity.y, player.max_fall_speed)
 
+func is_on_wall_and_pressing() -> bool:
+	if not player: return false
+	if not player.is_on_wall_only(): return false
+	if player.wall_jump_lock_timer > 0.0: return false
+	var wall_dir: float = -player.get_wall_normal().x
+	return player.direction == signf(wall_dir)
+
 func apply_horizontal_movement(delta: float) -> void:
 	if not player:
 		return
