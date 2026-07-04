@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://de2r1xgdorhvy"]
+[gd_scene format=4 uid="uid://bqb6mjdquv003"]
 
 [ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/base_level.tscn" id="1_uqijg"]
 [ext_resource type="PackedScene" uid="uid://dwgv6imlxdcwh" path="res://scenes/enemies/patrol_enemy.tscn" id="2_whm6c"]

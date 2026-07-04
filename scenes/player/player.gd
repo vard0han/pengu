@@ -32,6 +32,18 @@ extends CharacterBody2D
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
 
+@export_category("Wall Movement")
+## How high the wall jump reaches, measured in tiles.
+@export var wall_jump_height_tiles: float = 3.0
+## Horizontal speed away from the wall on a wall jump.
+@export var wall_jump_horizontal_speed: float = 140.0
+## Fraction of normal gravity applied while sliding. 0.25 = slow slide.
+@export var wall_slide_gravity_multiplier: float = 0.25
+## Grace window after leaving a wall where jump still triggers wall jump.
+@export var wall_coyote_time: float = 0.1
+## After a wall jump, how long before the player can grab a wall again.
+@export var wall_jump_lock_time: float = 0.2
+
 var aim_direction: Vector2 = Vector2.RIGHT
 var direction : float = 1.0
 var last_direction : float = 1.0
@@ -42,6 +54,11 @@ var jump_velocity: float = 0.0
 
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
+
+var wall_jump_velocity: float = 0.0
+var wall_coyote_timer: float = 0.0
+var wall_jump_lock_timer: float = 0.0
+var wall_normal: Vector2 = Vector2.ZERO
 
 # flicker for iframes (after damaged)
 const FLICKED_FREQUENCY: float = 10.0
@@ -66,6 +83,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	coyote_timer = maxf(coyote_timer - delta, 0.0)
 	jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
+	wall_coyote_timer = maxf(wall_coyote_timer - delta, 0.0)
+	wall_jump_lock_timer = maxf(wall_jump_lock_timer - delta, 0.0)
 
 func _process(delta: float) -> void:
 	aim_direction = (get_global_mouse_position() - global_position).normalized()
@@ -100,6 +119,9 @@ func _recalculate_jump() -> void:
 	#fall_gravity = (2.0 * height_px) / (time_to_fall * time_to_fall)
 	fall_gravity = rise_gravity * fall_gravity_multiplier
 	jump_velocity = rise_gravity * time_to_apex
+
+	var wall_height_px: float = wall_jump_height_tiles * tile_size
+	wall_jump_velocity = sqrt(2.0 * rise_gravity * wall_height_px)
 
 func _on_died() -> void:
 	AudioManager.stop_music(0.2)

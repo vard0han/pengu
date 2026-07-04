@@ -6,18 +6,20 @@
 [ext_resource type="Script" uid="uid://gwhwu3ry4hug" path="res://scenes/player/states/idle.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://cdu7skj32y1ys" path="res://scenes/player/states/run.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://cwpho3s2b5xt3" path="res://scenes/player/states/jump.gd" id="7_0owmy"]
+[ext_resource type="Script" uid="uid://rqdpkgfp8hw5" path="res://scenes/player/states/wall_slide.gd" id="8_lgqa7"]
 [ext_resource type="Script" uid="uid://pnxpf7p85pd1" path="res://scenes/player/states/fall.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://cwsw2ddmd1ftm" path="res://scenes/weapons/weapon.gd" id="9_5gtgg"]
+[ext_resource type="Script" uid="uid://bvbfaynuwify3" path="res://scenes/player/states/wall_jump.gd" id="9_8ydkj"]
 [ext_resource type="Resource" uid="uid://c8bxpv5kpv3d7" path="res://resources/weapons/kunai.tres" id="10_fm80t"]
 [ext_resource type="Script" uid="uid://dphds4jgsa3rp" path="res://scripts/components/card_inventory.gd" id="11_je7p5"]
 [ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="12_gx1jg"]
 [ext_resource type="Script" uid="uid://cjjdqwe3gxkkb" path="res://scripts/components/health_component.gd" id="13_ugbui"]
 [ext_resource type="Script" uid="uid://bkfnhx31hf6ye" path="res://scripts/components/hurtbox.gd" id="14_fcs02"]
-[ext_resource type="Texture2D" uid="uid://b8ajlnqgnw76p" path="res://assets/penguins/fall.png" id="14_myrg7"]
-[ext_resource type="Texture2D" uid="uid://dkhh3pullqh3x" path="res://assets/penguins/jump.png" id="16_kvlxm"]
-[ext_resource type="Texture2D" uid="uid://bcx6w5ntc2wo5" path="res://assets/penguins/pengu_idle.png" id="16_myrg7"]
-[ext_resource type="Texture2D" uid="uid://cg80ynhywf1ns" path="res://assets/penguins/pengu_run.png" id="17_kvlxm"]
-[ext_resource type="Texture2D" uid="uid://b806kbfgogsmt" path="res://assets/penguins/smoosh.png" id="17_uf5tr"]
+[ext_resource type="Texture2D" uid="uid://bxb8mnju3ce75" path="res://assets/penguins/fall.png" id="14_myrg7"]
+[ext_resource type="Texture2D" uid="uid://b4v2g6um21id4" path="res://assets/penguins/jump.png" id="16_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://yrrvepg8jjk4" path="res://assets/penguins/pengu_idle.png" id="16_myrg7"]
+[ext_resource type="Texture2D" uid="uid://2su0ewa00lwj" path="res://assets/penguins/pengu_run.png" id="17_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://bb26l87cvkuie" path="res://assets/penguins/smoosh.png" id="17_uf5tr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
 height = 22.0
@@ -147,6 +149,12 @@ script = ExtResource("7_0owmy")
 
 [node name="Fall" type="Node2D" parent="StateMachine" unique_id=183175131]
 script = ExtResource("8_qek5x")
+
+[node name="WallSlide" type="Node2D" parent="StateMachine" unique_id=1931256304]
+script = ExtResource("8_lgqa7")
+
+[node name="WallJump" type="Node2D" parent="StateMachine" unique_id=1675179501]
+script = ExtResource("9_8ydkj")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1105540759]
 script = ExtResource("9_5gtgg")
