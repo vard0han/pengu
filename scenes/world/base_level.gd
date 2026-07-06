@@ -63,7 +63,7 @@ func _on_kill_zone_entered(body: Node) -> void:
 func _start_level() -> void:
 	await  get_tree().process_frame
 	
-	AudioManager.play_music("main_theme", 0.5)
+	AudioManager.play_music("tengo_ost", 0.5)
 	
 	# emit initial enemy count
 	var initial_count: int = enemies_container.get_child_count()

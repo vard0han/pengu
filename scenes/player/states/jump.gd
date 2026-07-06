@@ -5,6 +5,7 @@ const JUMP_PUFF_SCENE: PackedScene = preload("res://scenes/effects/particles/jum
 
 func enter() -> void:
 	super()
+	
 	player.velocity.y = -player.jump_velocity
 	
 	player.sprite.play("jump")

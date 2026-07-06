@@ -5,6 +5,8 @@ extends CharacterBody2D
 @export var move_speed : float = 105.0
 @export var acceleration : float = 1000.0
 @export var deceleration : float = 800.0
+@export var turn_acceleration_multiplier: float = 2.5
+@export var max_horizontal_speed: float = 500.0
 
 @export_category("Jump — Designer Inputs")
 ## How high the jump reaches, measured in tiles.
@@ -27,6 +29,10 @@ extends CharacterBody2D
 @export var jump_cut_multiplier: float = 0.4
 ## Maximum downward speed, pixels/sec. Caps terminal velocity.
 @export var max_fall_speed: float = 600.0
+
+@export_category("Dash")
+@export var dash_distance_tiles: float = 5.0
+@export var dash_speed: float = 600.0
 
 @export_category("Advanced Movement")
 @export var coyote_time: float = 0.1
@@ -51,6 +57,8 @@ var last_direction : float = 1.0
 var rise_gravity: float = 0.0
 var fall_gravity: float = 0.0
 var jump_velocity: float = 0.0
+
+var dash_duration: float = 0.0
 
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
@@ -78,7 +86,7 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	health_component.died.connect(_on_died)
 	health_component.damaged.connect(_on_damaged)
-	_recalculate_jump()
+	_recalculate_movement()
 
 func _physics_process(delta: float) -> void:
 	coyote_timer = maxf(coyote_timer - delta, 0.0)
@@ -113,7 +121,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("cycle_card"):
 		_try_cycle_card()
 
-func _recalculate_jump() -> void:
+func _recalculate_movement() -> void:
 	var height_px: float = jump_height_tiles * tile_size
 	rise_gravity = (2.0 * height_px) / (time_to_apex * time_to_apex)
 	#fall_gravity = (2.0 * height_px) / (time_to_fall * time_to_fall)
@@ -122,6 +130,9 @@ func _recalculate_jump() -> void:
 
 	var wall_height_px: float = wall_jump_height_tiles * tile_size
 	wall_jump_velocity = sqrt(2.0 * rise_gravity * wall_height_px)
+	
+	var dash_distance_px: float = dash_distance_tiles * tile_size
+	dash_duration = dash_distance_px / dash_speed
 
 func _on_died() -> void:
 	AudioManager.stop_music(0.2)

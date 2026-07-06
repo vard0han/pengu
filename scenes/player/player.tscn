@@ -6,10 +6,10 @@
 [ext_resource type="Script" uid="uid://gwhwu3ry4hug" path="res://scenes/player/states/idle.gd" id="5_p47bc"]
 [ext_resource type="Script" uid="uid://cdu7skj32y1ys" path="res://scenes/player/states/run.gd" id="6_75vfm"]
 [ext_resource type="Script" uid="uid://cwpho3s2b5xt3" path="res://scenes/player/states/jump.gd" id="7_0owmy"]
-[ext_resource type="Script" path="res://scenes/player/states/wall_slide.gd" id="8_lgqa7"]
+[ext_resource type="Script" uid="uid://rqdpkgfp8hw5" path="res://scenes/player/states/wall_slide.gd" id="8_lgqa7"]
 [ext_resource type="Script" uid="uid://pnxpf7p85pd1" path="res://scenes/player/states/fall.gd" id="8_qek5x"]
 [ext_resource type="Script" uid="uid://cwsw2ddmd1ftm" path="res://scenes/weapons/weapon.gd" id="9_5gtgg"]
-[ext_resource type="Script" path="res://scenes/player/states/wall_jump.gd" id="9_8ydkj"]
+[ext_resource type="Script" uid="uid://bvbfaynuwify3" path="res://scenes/player/states/wall_jump.gd" id="9_8ydkj"]
 [ext_resource type="Resource" uid="uid://c8bxpv5kpv3d7" path="res://resources/weapons/kunai.tres" id="10_fm80t"]
 [ext_resource type="Script" uid="uid://dphds4jgsa3rp" path="res://scripts/components/card_inventory.gd" id="11_je7p5"]
 [ext_resource type="PackedScene" uid="uid://cuogqvvhnp70j" path="res://scenes/weapons/reticle.tscn" id="12_gx1jg"]
@@ -130,6 +130,7 @@ script = ExtResource("1_dovo2")
 shape = SubResource("CapsuleShape2D_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2056689752]
+zoom = Vector2(0.9, 0.9)
 position_smoothing_speed = 10.0
 script = ExtResource("3_fcs02")
 
