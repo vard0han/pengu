@@ -52,6 +52,25 @@ func apply_horizontal_movement(delta: float) -> void:
 	player.velocity.x = clampf(player.velocity.x, -player.max_horizontal_speed, player.max_horizontal_speed)
 
 
+func apply_corner_correction(delta: float) -> void:
+	if not player:
+		return
+	if player.velocity.y >= 0.0:
+		return
+	
+	var motion: Vector2 = Vector2(0, player.velocity.y * delta)
+	
+	if not player.test_move(player.global_transform, motion):
+		return
+	
+	for nudge_dir : float in [1.0, -1.0]:
+		var nudge: Vector2 = Vector2(player.corner_correction_distance * nudge_dir, 0)
+		var nudged_transform: Transform2D = player.global_transform.translated(nudge)
+
+		if not player.test_move(nudged_transform, motion):
+			player.global_position += nudge
+			return
+
 # ---------- Timing forgiveness: shared contract ----------
 
 ## Call this to check if a ground jump is available via coyote time.

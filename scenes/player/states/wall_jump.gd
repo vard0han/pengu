@@ -14,9 +14,12 @@ func enter() -> void:
 
 func process_physics(delta: float) -> void:
 	if not player: return
-
+	
+	apply_corner_correction(delta)
+	
 	if player.wall_jump_lock_timer <= 0.0:
 		apply_horizontal_movement(delta)
+	
 	apply_gravity(delta)
 
 	if Input.is_action_just_released("jump") and player.velocity.y < 0:

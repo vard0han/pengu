@@ -18,6 +18,7 @@ func process_physics(delta: float) -> void:
 	
 	# -------------STATE LOGIC-------------
 	
+	apply_corner_correction(delta)
 	apply_horizontal_movement(delta)
 	apply_gravity(delta)
 	

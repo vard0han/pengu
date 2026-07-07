@@ -34,6 +34,9 @@ extends CharacterBody2D
 @export var dash_distance_tiles: float = 5.0
 @export var dash_speed: float = 600.0
 
+@export_category("Corner Correction")
+@export var corner_correction_distance: float = 4.0
+
 @export_category("Advanced Movement")
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
