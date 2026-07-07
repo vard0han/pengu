@@ -39,7 +39,7 @@ func _fire() -> void:
 	projectiles_container.add_child(bullet)
 	bullet.global_position = _muzzle.global_position
 	
-	var direction : Vector2 = Vector2.RIGHT if scale.x > 0 else Vector2.LEFT
+	var direction : Vector2 = Vector2.RIGHT.rotated(_muzzle.global_rotation)
 	bullet.launch(direction)
 
 

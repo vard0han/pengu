@@ -65,6 +65,8 @@ func _start_level() -> void:
 	
 	AudioManager.play_music("tengo_ost", 0.5)
 	
+	_freeze_enemies()
+	
 	# emit initial enemy count
 	var initial_count: int = enemies_container.get_child_count()
 	enemies_remaining_changed.emit(initial_count)
@@ -84,6 +86,7 @@ func _process(delta: float) -> void:
 		if _player_provided_input():
 			_timer_armed = false
 			is_timer_running = true
+			_unfreeze_enemies()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart_level"):
@@ -152,3 +155,11 @@ func _show_title_card() -> void:
 	if main:
 		main.hud_layer.add_child(card)
 		card.show_title(display_name.to_upper(), 2.0)
+
+func _freeze_enemies() -> void:
+	for enemy: Enemy in enemies_container.get_children():
+		enemy.process_mode = Node.PROCESS_MODE_DISABLED
+
+func _unfreeze_enemies() -> void:
+	for enemy: Enemy in enemies_container.get_children():
+		enemy.process_mode = Node.PROCESS_MODE_INHERIT

@@ -35,7 +35,7 @@ extends CharacterBody2D
 @export var dash_speed: float = 600.0
 
 @export_category("Corner Correction")
-@export var corner_correction_distance: float = 4.0
+@export var corner_correction_distance: float = 2.0
 
 @export_category("Advanced Movement")
 @export var coyote_time: float = 0.1
@@ -52,6 +52,7 @@ extends CharacterBody2D
 @export var wall_coyote_time: float = 0.1
 ## After a wall jump, how long before the player can grab a wall again.
 @export var wall_jump_lock_time: float = 0.2
+@export var wall_slide_max_fall_speed: float = 150.0
 
 var aim_direction: Vector2 = Vector2.RIGHT
 var direction : float = 1.0

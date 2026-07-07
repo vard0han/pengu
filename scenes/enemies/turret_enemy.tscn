@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://2txbn4y2q0hs" path="res://assets/enemies/spr_simple_turret_idle.png" id="3_qwbpo"]
 [ext_resource type="Texture2D" uid="uid://c1h7nyb4hsllj" path="res://assets/enemies/spr_simple_turret_shoot.png" id="6_bhx7w"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkmua"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhx7w"]
 resource_local_to_scene = true
 shader = ExtResource("2_qwbpo")
 shader_parameter/outline_color = Color(1, 1, 1, 1)
@@ -70,19 +70,19 @@ size = Vector2(8.643591, 7)
 [node name="TurretEnemy" unique_id=1356801853 instance=ExtResource("1_ove4n")]
 collision_layer = 1024
 script = ExtResource("2_7j3db")
-fire_rate = null
-bullet_speed = null
-bullet_range = null
+fire_rate = 2.0
+bullet_speed = 200.0
+bullet_range = 400.0
 bullet_scene = ExtResource("3_bhx7w")
 
 [node name="Sprite2D" parent="." index="0" unique_id=765667319]
 visible = false
-material = SubResource("ShaderMaterial_qkmua")
+material = SubResource("ShaderMaterial_bhx7w")
 position = Vector2(0, -4)
 texture = ExtResource("3_qwbpo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1" unique_id=2018379312]
-material = SubResource("ShaderMaterial_qkmua")
+material = SubResource("ShaderMaterial_bhx7w")
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_eeme1")
 animation = &"shoot"

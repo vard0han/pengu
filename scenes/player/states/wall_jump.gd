@@ -15,16 +15,25 @@ func enter() -> void:
 func process_physics(delta: float) -> void:
 	if not player: return
 	
+	# -------------STATE LOGIC-------------
+	
 	apply_corner_correction(delta)
 	
 	if player.wall_jump_lock_timer <= 0.0:
 		apply_horizontal_movement(delta)
 	
 	apply_gravity(delta)
-
+	
+	# -------------TRANSITION LOGIC-------------
+	
 	if Input.is_action_just_released("jump") and player.velocity.y < 0:
 		player.velocity.y *= player.jump_cut_multiplier
-
+	
+	if is_on_wall_and_pressing():
+		player.wall_normal = player.get_wall_normal()
+		_state_machine.transition_to("WallSlide")
+		return
+	
 	if player.velocity.y >= 0:
 		_state_machine.transition_to("Fall")
 		return

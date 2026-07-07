@@ -32,7 +32,7 @@ func is_on_wall_and_pressing() -> bool:
 	if not player.is_on_wall_only(): return false
 	if player.wall_jump_lock_timer > 0.0: return false
 	var wall_dir: float = -player.get_wall_normal().x
-	return player.direction == signf(wall_dir)
+	return signf(player.direction) == signf(wall_dir)
 
 func apply_horizontal_movement(delta: float) -> void:
 	if not player:
