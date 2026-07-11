@@ -49,6 +49,7 @@ func _on_level_loaded() -> void:
 	_connect_player_signals()
 
 func _on_restart_requested() -> void:
+	_clear_death_ui()
 	game_manager.load_level(game_manager.pending_level_path)
 
 func _on_restart_with_weapon_requested() -> void:
@@ -157,10 +158,7 @@ func _on_player_died() -> void:
 	game_over_instance.retry_pressed.connect(_on_retry)
 
 func _on_retry() -> void:
-	if game_over_instance:
-		game_over_instance.queue_free()
-		game_over_instance = null
-	
+	_clear_death_ui()
 	game_manager.reset_current_level()
 
 static func get_instance(tree: SceneTree) -> Main:
@@ -213,3 +211,11 @@ func _instance_pause_menu() -> void:
 	var scene: PackedScene = load("res://scenes/ui/pause_menu.tscn")
 	pause_menu_instance = scene.instantiate()
 	hud_layer.add_child(pause_menu_instance)
+
+func _clear_death_ui() -> void:
+	if game_over_instance:
+		game_over_instance.queue_free()
+		game_over_instance = null
+	if results_instance:
+		results_instance.queue_free()
+		results_instance = null

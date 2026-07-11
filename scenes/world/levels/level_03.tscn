@@ -82,5 +82,5 @@ position = Vector2(0, 400)
 [node name="Tutorials" type="Node2D" parent="." index="7" unique_id=1599857436]
 
 [node name="Player" parent="." index="8" unique_id=681689913]
-position = Vector2(49, 211)
+position = Vector2(-1083, 26)
 move_speed = 110.0

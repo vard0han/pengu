@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://datj0wupg85ff"]
 
 [ext_resource type="Script" uid="uid://piqenf3n5vxb" path="res://scenes/ui/hearts_display.gd" id="1_ibijm"]
-[ext_resource type="Texture2D" uid="uid://4lj3pbd71wld" path="res://assets/hearts/pengu_hp.png" id="2_on7jw"]
+[ext_resource type="Texture2D" uid="uid://ddqx208nt8yf3" path="res://assets/tiles/tile_0044.png" id="2_on7jw"]
 [ext_resource type="Texture2D" uid="uid://7qg6fk1400di" path="res://assets/tiles/tile_0046.png" id="3_1bgnc"]
 
 [node name="HeartsDisplay" type="HBoxContainer" unique_id=1364286350]

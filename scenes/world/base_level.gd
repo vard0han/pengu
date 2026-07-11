@@ -45,6 +45,7 @@ var is_complete_unlocked: bool = false
 var time_elapsed: float = 0.0
 var is_timer_running: bool = false
 var _timer_armed: bool = false
+var _is_ending: bool = false
 
 func _ready() -> void:
 	if level_id == "":
@@ -58,6 +59,7 @@ func _ready() -> void:
 
 func _on_kill_zone_entered(body: Node) -> void:
 	if body is Player:
+		_is_ending = true
 		body.health_component.take_damage_ignore_cooldown(999)
 
 func _start_level() -> void:
@@ -89,6 +91,9 @@ func _process(delta: float) -> void:
 			_unfreeze_enemies()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _is_ending: 
+		return
+	
 	if event.is_action_pressed("restart_level"):
 		restart_requested.emit()
 	

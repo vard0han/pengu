@@ -6,7 +6,7 @@
 [node name="ArcProjectile" unique_id=455320433 instance=ExtResource("1_d5a55")]
 script = ExtResource("1_050vg")
 gravity_strength = 600.0
-min_lift = 0.0
+min_lift = 40.0
 
 [node name="Hitbox" parent="." index="2" unique_id=698948714]
 damage = 3
