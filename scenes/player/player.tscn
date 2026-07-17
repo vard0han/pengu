@@ -21,10 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://cg80ynhywf1ns" path="res://assets/penguins/pengu_run.png" id="17_kvlxm"]
 [ext_resource type="Texture2D" uid="uid://b806kbfgogsmt" path="res://assets/penguins/smoosh.png" id="17_uf5tr"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
-radius = 9.0
-height = 22.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_uf5tr"]
 atlas = ExtResource("17_kvlxm")
 region = Rect2(0, 0, 24, 24)
@@ -121,13 +117,14 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
+radius = 9.0
+height = 20.0
+
 [node name="Player" type="CharacterBody2D" unique_id=681689913]
 collision_layer = 2
 collision_mask = 1025
 script = ExtResource("1_dovo2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463265850]
-shape = SubResource("CapsuleShape2D_dovo2")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2056689752]
 zoom = Vector2(0.9, 0.9)
@@ -156,6 +153,7 @@ script = ExtResource("8_lgqa7")
 script = ExtResource("9_8ydkj")
 
 [node name="Weapon" type="Node2D" parent="." unique_id=1105540759]
+position = Vector2(0, -10)
 script = ExtResource("9_5gtgg")
 weapon_data = ExtResource("10_fm80t")
 
@@ -165,6 +163,7 @@ weapon_data = ExtResource("10_fm80t")
 script = ExtResource("11_je7p5")
 
 [node name="Reticle" parent="." unique_id=519812675 instance=ExtResource("12_gx1jg")]
+visible = false
 modulate = Color(1, 0, 1, 1)
 region_rect = Rect2(101, 5, 6, 6)
 
@@ -173,8 +172,18 @@ script = ExtResource("13_ugbui")
 damage_cooldown = 1.0
 metadata/_custom_type_script = "uid://cjjdqwe3gxkkb"
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1339942405]
+position = Vector2(0, -11)
+sprite_frames = SubResource("SpriteFrames_myrg7")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463265850]
+position = Vector2(0, -10)
+shape = SubResource("CapsuleShape2D_dovo2")
+
 [node name="Hurtbox" type="Area2D" parent="." unique_id=1761976488 node_paths=PackedStringArray("health_component")]
-visible = false
+position = Vector2(0, -10)
 collision_layer = 8
 collision_mask = 576
 script = ExtResource("14_fcs02")
@@ -183,9 +192,3 @@ metadata/_custom_type_script = "uid://bkfnhx31hf6ye"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1663120866]
 shape = SubResource("CapsuleShape2D_dovo2")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1339942405]
-position = Vector2(0, -1)
-sprite_frames = SubResource("SpriteFrames_myrg7")
-animation = &"idle"
-autoplay = "idle"

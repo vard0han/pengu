@@ -33,7 +33,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _is_in_level() -> bool:
 	var main : Main = Main.get_instance(get_tree())
-	return main != null and main.game_manager.current_level_instance != null
+	return main != null and main.game_manager.current_level_instance != null and main.game_manager.is_level_ready
 
 func _open() -> void:
 	get_parent().move_child(self, -1)

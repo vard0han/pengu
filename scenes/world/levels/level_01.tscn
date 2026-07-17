@@ -198,32 +198,35 @@ text = " - Switch cards
 horizontal_alignment = 1
 
 [node name="RegularPatrol" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="0" unique_id=1356801853 instance=ExtResource("2_ynxc0")]
-position = Vector2(292, 126)
+position = Vector2(288, 126)
 
 [node name="JumpPatrol" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="1" unique_id=965955601 instance=ExtResource("2_ynxc0")]
-position = Vector2(731, 216)
+position = Vector2(729, 216)
 patrol_speed = 0.0
 card_drop = ExtResource("3_q6olp")
 
 [node name="JumpPatrol2" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="2" unique_id=265077795 instance=ExtResource("2_ynxc0")]
-position = Vector2(622, -36)
+position = Vector2(621, -36)
 patrol_speed = 0.0
 card_drop = ExtResource("3_q6olp")
 
 [node name="DashPatrol" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="3" unique_id=1278892515 instance=ExtResource("2_ynxc0")]
-position = Vector2(1005, 126)
+position = Vector2(999, 126)
 card_drop = ExtResource("4_8p1rb")
 
 [node name="DashPatrol2" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="4" unique_id=395550830 instance=ExtResource("2_ynxc0")]
-position = Vector2(1014, 288)
+position = Vector2(1017, 288)
 card_drop = ExtResource("4_8p1rb")
 
 [node name="DashPatrol3" parent="Enemies" parent_id_path=PackedInt32Array(1302501266) index="5" unique_id=721304173 instance=ExtResource("2_ynxc0")]
-position = Vector2(1052, -72)
+position = Vector2(1053, -72)
 card_drop = ExtResource("4_8p1rb")
 
 [node name="FinishLine" parent="." index="6" unique_id=1804460539]
 position = Vector2(245, -225)
+
+[node name="Sprite2D" parent="FinishLine" index="1" unique_id=945155921]
+position = Vector2(-2, 0)
 
 [node name="KillZone" parent="." index="7" unique_id=466905863]
 position = Vector2(0, 395)
@@ -232,4 +235,4 @@ position = Vector2(0, 395)
 shape = SubResource("WorldBoundaryShape2D_odbsn")
 
 [node name="Player" parent="." index="8" unique_id=681689913]
-position = Vector2(-677, 116)
+position = Vector2(-684, 126)

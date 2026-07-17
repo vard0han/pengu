@@ -68,6 +68,7 @@ func spawn_projectile() -> void:
 	else:
 		projectile.global_position = _muzzle.global_position
 		projectile.velocity = player.aim_direction * weapon_data.projectile_speed
+		projectile.on_launched()
 	
 	var sprite: Sprite2D = projectile.get_node_or_null("Sprite2D")
 	if sprite and weapon_data.projectile_texture:
