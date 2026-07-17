@@ -9,6 +9,7 @@ var current_level_instance: Node2D = null
 var pending_level_path: String = ""
 var weapon_select_instance: WeaponSelect = null
 var selected_weapon: WeaponData = null
+var is_level_ready: bool = false
 
 func load_level(path: String) -> void:
 	await SceneTransition.fade_to_black(0.2)
@@ -30,6 +31,7 @@ func load_level(path: String) -> void:
 	call_deferred("_emit_level_loaded")
 	
 	await SceneTransition.fade_from_black(0.3)
+	is_level_ready = true
 
 func reset_current_level() -> void:
 	if pending_level_path == "":

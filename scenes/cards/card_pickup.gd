@@ -1,13 +1,19 @@
+@tool
 class_name CardPickup
 extends Area2D
 
-@export var card_data: CardData
+@export var card_data: CardData : set = _set_card_data
 @onready var card_visual: CardVisual = $CardVisual
 
 const PICKUP_SPARKLE_SCENE: PackedScene = preload("res://scenes/effects/particles/card_pickup_sparkle.tscn")
 
 func _ready() -> void:
 	card_visual.set_card(card_data, false)
+
+func _set_card_data(value: CardData) -> void:
+	card_data = value
+	if is_node_ready():
+		card_visual.set_card(card_data, false)
 
 func _on_body_entered(body: Node) -> void:
 	if not body is Player:

@@ -56,19 +56,23 @@ func spawn_projectile() -> void:
 	
 	var projectile : Projectile = scene.instantiate()
 	
-	projectile.global_position = _muzzle.global_position
-	projectile.max_distance = weapon_data.weapon_range
-	projectile.velocity = player.aim_direction * weapon_data.projectile_speed
-	
-	var sprite: Sprite2D = projectile.get_node_or_null("Sprite2D")
-	if sprite and weapon_data.projectile_texture:
-		sprite.texture = weapon_data.projectile_texture
-	
-	# set projectile as a child of "Projectiles" node in the level
 	var main : Main = Main.get_instance(get_tree())
 	var container : Node2D = main.game_manager.get_projectiles_container()
 	if container:
 		container.add_child(projectile)
+	
+	projectile.max_distance = weapon_data.weapon_range
+	
+	if projectile is ArcProjectile:
+		projectile.launch_arc(_muzzle.global_position, get_global_mouse_position())
+	else:
+		projectile.global_position = _muzzle.global_position
+		projectile.velocity = player.aim_direction * weapon_data.projectile_speed
+		projectile.on_launched()
+	
+	var sprite: Sprite2D = projectile.get_node_or_null("Sprite2D")
+	if sprite and weapon_data.projectile_texture:
+		sprite.texture = weapon_data.projectile_texture
 	
 	if is_empowered:
 		_apply_weapon_hitbox(projectile)

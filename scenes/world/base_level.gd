@@ -45,9 +45,7 @@ var is_complete_unlocked: bool = false
 var time_elapsed: float = 0.0
 var is_timer_running: bool = false
 var _timer_armed: bool = false
-
-#var _restart_hold_timer: float = 0.0
-#var _restart_weapon_hold_timer: float = 0.0
+var _is_ending: bool = false
 
 func _ready() -> void:
 	if level_id == "":
@@ -61,12 +59,15 @@ func _ready() -> void:
 
 func _on_kill_zone_entered(body: Node) -> void:
 	if body is Player:
+		_is_ending = true
 		body.health_component.take_damage_ignore_cooldown(999)
 
 func _start_level() -> void:
 	await  get_tree().process_frame
 	
-	AudioManager.play_music("main_theme", 0.5)
+	AudioManager.play_music("tengo_ost", 0.5)
+	
+	_freeze_enemies()
 	
 	# emit initial enemy count
 	var initial_count: int = enemies_container.get_child_count()
@@ -87,11 +88,12 @@ func _process(delta: float) -> void:
 		if _player_provided_input():
 			_timer_armed = false
 			is_timer_running = true
-	
-	#_process_restart_input(delta)
-	#_process_restart_weapon_input(delta)
+			_unfreeze_enemies()
 
 func _unhandled_input(event: InputEvent) -> void:
+	if _is_ending: 
+		return
+	
 	if event.is_action_pressed("restart_level"):
 		restart_requested.emit()
 	
@@ -105,26 +107,6 @@ func _player_provided_input() -> bool:
 		Input.is_action_pressed("jump") or
 		Input.is_action_pressed("attack")
 	)
-
-func _process_restart_input(_delta: float) -> void:
-	if Input.is_action_pressed("restart_level"):
-		#_restart_hold_timer += delta
-		#if _restart_hold_timer >= RESTART_HOLD_DURATION:
-			#_restart_hold_timer = 0.0
-			#restart_requested.emit()
-		restart_requested.emit()
-	#else:
-		#_restart_hold_timer = 0.0
-
-func _process_restart_weapon_input(_delta: float) -> void:
-	if Input.is_action_pressed("restart_with_weapon"):
-		#_restart_weapon_hold_timer += delta
-		#if _restart_weapon_hold_timer >= RESTART_HOLD_DURATION:
-			#_restart_weapon_hold_timer = 0.0
-			#restart_with_weapon_requested.emit()
-		restart_with_weapon_requested.emit()
-	#else:
-		#_restart_weapon_hold_timer = 0.0
 
 # called when enemy is removed from the tree
 func _on_enemy_exiting(_child: Node) -> void:
@@ -178,3 +160,11 @@ func _show_title_card() -> void:
 	if main:
 		main.hud_layer.add_child(card)
 		card.show_title(display_name.to_upper(), 2.0)
+
+func _freeze_enemies() -> void:
+	for enemy: Enemy in enemies_container.get_children():
+		enemy.process_mode = Node.PROCESS_MODE_DISABLED
+
+func _unfreeze_enemies() -> void:
+	for enemy: Enemy in enemies_container.get_children():
+		enemy.process_mode = Node.PROCESS_MODE_INHERIT

@@ -2,26 +2,75 @@ class_name Player
 extends CharacterBody2D
 
 @export_category("Horizontal Movement")
-@export var move_speed : float = 100.0
+@export var move_speed : float = 105.0
 @export var acceleration : float = 1000.0
 @export var deceleration : float = 800.0
+@export var turn_acceleration_multiplier: float = 2.5
+@export var max_horizontal_speed: float = 500.0
 
-@export_category("Vertical Movement")
-@export var jump_force : float = 300.0
-@export var gravity : float = 800.0
-@export var jump_cut_multiplier : float = 0.4
-@export var max_fall_speed : float = 800.0
+@export_category("Jump — Designer Inputs")
+## How high the jump reaches, measured in tiles.
+@export var jump_height_tiles: float = 4.0
+## Seconds to reach the top of the jump. Lower = snappier rise.
+@export var time_to_apex: float = 0.38
+## Seconds to fall back the same height. Lower than time_to_apex = faster fall.
+#@export var time_to_fall: float = 0.28
+## fall multiplier for gravity. so that fall is quicker than jump
+@export var fall_gravity_multiplier: float = 2.0
+## Size of one tile in pixels. Jump height is measured in these.
+@export var tile_size: float = 18.0
+
+@export_category("Jump — Feel Knobs")
+## Velocity.y window (pixels/sec) around zero that counts as "at apex".
+@export var apex_threshold: float = 40.0
+## Gravity multiplier inside the apex window. Below 1.0 = hangtime.
+@export var apex_gravity_multiplier: float = 0.5
+## When jump is released early while rising, velocity.y is multiplied by this.
+@export var jump_cut_multiplier: float = 0.4
+## Maximum downward speed, pixels/sec. Caps terminal velocity.
+@export var max_fall_speed: float = 600.0
+
+@export_category("Dash")
+@export var dash_distance_tiles: float = 5.0
+@export var dash_speed: float = 600.0
+
+@export_category("Corner Correction")
+@export var corner_correction_distance: float = 2.0
 
 @export_category("Advanced Movement")
 @export var coyote_time: float = 0.1
 @export var jump_buffer_time: float = 0.1
 
+@export_category("Wall Movement")
+## How high the wall jump reaches, measured in tiles.
+@export var wall_jump_height_tiles: float = 3.0
+## Horizontal speed away from the wall on a wall jump.
+@export var wall_jump_horizontal_speed: float = 140.0
+## Fraction of normal gravity applied while sliding. 0.25 = slow slide.
+@export var wall_slide_gravity_multiplier: float = 0.25
+## Grace window after leaving a wall where jump still triggers wall jump.
+@export var wall_coyote_time: float = 0.1
+## After a wall jump, how long before the player can grab a wall again.
+@export var wall_jump_lock_time: float = 0.2
+@export var wall_slide_max_fall_speed: float = 150.0
+
 var aim_direction: Vector2 = Vector2.RIGHT
 var direction : float = 1.0
 var last_direction : float = 1.0
 
+var rise_gravity: float = 0.0
+var fall_gravity: float = 0.0
+var jump_velocity: float = 0.0
+
+var dash_duration: float = 0.0
+
 var coyote_timer: float = 0.0
 var jump_buffer_timer: float = 0.0
+
+var wall_jump_velocity: float = 0.0
+var wall_coyote_timer: float = 0.0
+var wall_jump_lock_timer: float = 0.0
+var wall_normal: Vector2 = Vector2.ZERO
 
 # flicker for iframes (after damaged)
 const FLICKED_FREQUENCY: float = 10.0
@@ -30,7 +79,7 @@ var _flicker_timer: float = 0.0
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var card_inventory: CardInventory = $CardInventory
 @onready var state_machine: StateMachine = $StateMachine
-@onready var weapon: Node2D = $Weapon
+@onready var weapon: Weapon = $Weapon
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var hurtbox: Hurtbox = $Hurtbox
 @onready var camera: PlayerCamera = $Camera2D
@@ -41,16 +90,13 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	health_component.died.connect(_on_died)
 	health_component.damaged.connect(_on_damaged)
-
-func _on_died() -> void:
-	AudioManager.stop_music(0.2)
-	AudioManager.play_sfx("player_death", -15.0, randf_range(0.5, 0.7))
-	
-	died.emit()
+	_recalculate_movement()
 
 func _physics_process(delta: float) -> void:
 	coyote_timer = maxf(coyote_timer - delta, 0.0)
 	jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
+	wall_coyote_timer = maxf(wall_coyote_timer - delta, 0.0)
+	wall_jump_lock_timer = maxf(wall_jump_lock_timer - delta, 0.0)
 
 func _process(delta: float) -> void:
 	aim_direction = (get_global_mouse_position() - global_position).normalized()
@@ -78,6 +124,25 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("cycle_card"):
 		_try_cycle_card()
+
+func _recalculate_movement() -> void:
+	var height_px: float = jump_height_tiles * tile_size
+	rise_gravity = (2.0 * height_px) / (time_to_apex * time_to_apex)
+	#fall_gravity = (2.0 * height_px) / (time_to_fall * time_to_fall)
+	fall_gravity = rise_gravity * fall_gravity_multiplier
+	jump_velocity = rise_gravity * time_to_apex
+
+	var wall_height_px: float = wall_jump_height_tiles * tile_size
+	wall_jump_velocity = sqrt(2.0 * rise_gravity * wall_height_px)
+	
+	var dash_distance_px: float = dash_distance_tiles * tile_size
+	dash_duration = dash_distance_px / dash_speed
+
+func _on_died() -> void:
+	AudioManager.stop_music(0.2)
+	AudioManager.play_sfx("player_death", -15.0, randf_range(0.5, 0.7))
+	
+	died.emit()
 
 func collect_card(card: CardData) -> void:
 	card_inventory.add_card(card)

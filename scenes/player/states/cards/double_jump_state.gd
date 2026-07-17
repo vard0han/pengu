@@ -3,7 +3,7 @@ extends PlayerState
 
 func enter() -> void:
 	super()
-	player.velocity.y = -1 * player.jump_force
+	player.velocity.y = -player.jump_velocity
 	
 	AudioManager.play_sfx("jump", 0.0, randf_range(1.1, 1.3))
 
@@ -12,6 +12,7 @@ func process_physics(delta: float) -> void:
 	
 	# -------------STATE LOGIC-------------
 	
+	apply_corner_correction(delta)
 	apply_horizontal_movement(delta)
 	apply_gravity(delta)
 	

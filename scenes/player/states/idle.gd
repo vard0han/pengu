@@ -17,12 +17,12 @@ func process_physics(delta: float) -> void:
 	var on_floor : bool = player.is_on_floor()
 	
 	if Input.is_action_just_pressed("jump") and on_floor:
+		consume_direct_jump_input()
 		_state_machine.transition_to("Jump")
 		return
 	
 	if not on_floor and player.velocity.y > 0:
-		# before transitioning to fall, start the coyote timer
-		player.coyote_timer = player.coyote_time
+		start_coyote_time()
 		_state_machine.transition_to("Fall")
 		return
 	

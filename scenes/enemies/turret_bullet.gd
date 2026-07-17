@@ -7,11 +7,17 @@ extends Area2D
 var _velocity: Vector2 = Vector2.ZERO
 var _distance_traveled: float = 0.0
 
+func _ready() -> void:
+	body_entered.connect(_on_body_entered)
+
 func launch(direction: Vector2) -> void:
 	_velocity = direction.normalized() * speed
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	global_position += _velocity * delta
 	_distance_traveled += _velocity.length() * delta
 	if _distance_traveled >= max_distance:
 		queue_free()
+
+func _on_body_entered(_body: Node) -> void:
+	queue_free()

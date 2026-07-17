@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dtfmuk3002t8f" path="res://scenes/ui/card_visual.tscn" id="2_duqvd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_duqvd"]
+bg_color = Color(0.2, 0.2, 0.2, 0.5)
 anti_aliasing = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_duqvd"]
@@ -22,6 +23,7 @@ offset_bottom = -4.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_duqvd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1273678723]
+visible = false
 position = Vector2(0, -11)
 shape = SubResource("CircleShape2D_duqvd")
 

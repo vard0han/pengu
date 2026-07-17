@@ -2,8 +2,6 @@ class_name DashState
 extends PlayerState
 
 var _dash_timer: float = 0.0
-const DASH_DURATION: float = 0.15
-const DASH_SPEED: float = 300.0
 
 const DASH_TRAIL_SCENE: PackedScene = preload("res://scenes/effects/particles/dash_trail.tscn")
 
@@ -11,8 +9,8 @@ func enter() -> void:
 	super()
 	
 	player.velocity.y = 0.0
-	player.velocity.x = DASH_SPEED * player.last_direction
-	_dash_timer = DASH_DURATION
+	player.velocity.x = player.dash_speed * player.last_direction
+	_dash_timer = player.dash_duration
 	
 	AudioManager.play_sfx("air_whoosh", 25.0, randf_range(0.65, 0.8))
 	
@@ -39,6 +37,14 @@ func process_physics(delta: float) -> void:
 	
 	# -------------TRANSITION LOGIC-------------
 	
+	if has_buffered_jump():
+		do_buffered_jump()
+		return
+	
 	if _dash_timer <= 0:
-		_state_machine.transition_to("Fall")
+		player.velocity.x = player.move_speed * player.direction if player.direction != 0 else 0.0
+		if player.is_on_floor():
+			_state_machine.transition_to("Run" if absf(player.velocity.x) > 0.1 else "Idle")
+		else:
+			_state_machine.transition_to("Fall")
 		return

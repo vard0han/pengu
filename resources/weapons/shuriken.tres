@@ -12,6 +12,7 @@ weapon_id = "shuriken"
 projectile_scene = ExtResource("1_m5mo2")
 fire_rate = 6.0
 weapon_range = 300.0
+projectile_speed = 400.0
 projectile_texture = ExtResource("2_i3eg4")
 visual_scene = ExtResource("3_gpr7m")
 stat_description = "
