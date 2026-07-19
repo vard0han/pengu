@@ -86,4 +86,3 @@ position = Vector2(0, 400)
 
 [node name="Player" parent="." index="8" unique_id=681689913]
 position = Vector2(-1080, 36)
-move_speed = 110.0

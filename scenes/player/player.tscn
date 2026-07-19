@@ -179,6 +179,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=463265850]
+visible = false
 position = Vector2(0, -10)
 shape = SubResource("CapsuleShape2D_dovo2")
 
@@ -191,4 +192,5 @@ health_component = NodePath("../HealthComponent")
 metadata/_custom_type_script = "uid://bkfnhx31hf6ye"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" unique_id=1663120866]
+visible = false
 shape = SubResource("CapsuleShape2D_dovo2")

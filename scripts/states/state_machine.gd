@@ -14,10 +14,13 @@ func _ready() -> void:
 		if state:
 			state.actor = owner_actor
 	
-	_current_state = get_child(0) as State
-	call_deferred("_enter_initial_state")
-
-func _enter_initial_state() -> void:
+	await get_tree().physics_frame
+	
+	var initial_state_name: String = "Fall"
+	if owner_actor is CharacterBody2D and (owner_actor as CharacterBody2D).is_on_floor():
+		initial_state_name = "Idle"
+	
+	_current_state = find_child(initial_state_name) as State
 	_current_state.enter()
 
 func _physics_process(delta : float) -> void:

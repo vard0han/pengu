@@ -55,7 +55,7 @@ extends CharacterBody2D
 @export var wall_slide_max_fall_speed: float = 150.0
 
 var aim_direction: Vector2 = Vector2.RIGHT
-var direction : float = 1.0
+var direction : float = 0.0
 var last_direction : float = 1.0
 
 var rise_gravity: float = 0.0

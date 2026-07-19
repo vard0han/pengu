@@ -51,7 +51,6 @@ func apply_horizontal_movement(delta: float) -> void:
 	
 	player.velocity.x = clampf(player.velocity.x, -player.max_horizontal_speed, player.max_horizontal_speed)
 
-
 func apply_corner_correction(delta: float) -> void:
 	if not player:
 		return

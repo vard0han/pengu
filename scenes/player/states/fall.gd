@@ -45,7 +45,7 @@ func process_physics(delta: float) -> void:
 		return
 
 func exit() -> void:
-	if player.is_on_floor():
+	if player.is_on_floor() and player.velocity.y > 0.0:
 		_spawn_landing_puff()
 
 func _spawn_landing_puff() -> void:
