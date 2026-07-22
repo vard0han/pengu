@@ -38,16 +38,24 @@ func apply_horizontal_movement(delta: float) -> void:
 	if not player:
 		return
 	
+	var control_multiplier: float = 1.0
+	var speed_multiplier: float = 1.0
+	if player.current_surface == Player.SurfaceType.ICE or player.ice_exit_grace_timer > 0.0:
+		control_multiplier = player.ice_control_multiplier
+		speed_multiplier = player.ice_speed_multiplier
+	
+	print("surface: ", player.current_surface, " control_multiplier: ", control_multiplier, " accel: ", player.acceleration * control_multiplier)
+	
 	if player.direction != 0:
-		var target_speed: float = player.move_speed * player.direction
-		var accel: float = player.acceleration
+		var target_speed: float = player.move_speed * speed_multiplier * player.direction
+		var accel: float = player.acceleration * control_multiplier
 	
 		if player.velocity.x != 0.0 and signf(player.velocity.x) != signf(player.direction):
 			accel *= player.turn_acceleration_multiplier
 	
 		player.velocity.x = move_toward(player.velocity.x, target_speed, accel * delta)
 	else:
-		player.velocity.x = move_toward(player.velocity.x, 0.0, player.deceleration * delta)
+		player.velocity.x = move_toward(player.velocity.x, 0.0, player.deceleration * control_multiplier * delta)
 	
 	player.velocity.x = clampf(player.velocity.x, -player.max_horizontal_speed, player.max_horizontal_speed)
 

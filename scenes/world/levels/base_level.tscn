@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dvcg7e6js2o0p"]
 
 [ext_resource type="TileSet" uid="uid://cpnwnwy8qxm5k" path="res://resources/tile_set_physics.tres" id="1_asil4"]
-[ext_resource type="Script" uid="uid://co0mli2ybgwub" path="res://scenes/world/base_level.gd" id="1_vuxlt"]
+[ext_resource type="Script" uid="uid://co0mli2ybgwub" path="res://scenes/world/levels/base_level.gd" id="1_vuxlt"]
 [ext_resource type="Texture2D" uid="uid://ddny8l1iqf2k2" path="res://assets/tiles/tile_0112.png" id="2_asil4"]
 [ext_resource type="Texture2D" uid="uid://coo3j063d0ecv" path="res://assets/tilemap/tilemap-backgrounds_packed.png" id="3_2a85f"]
 [ext_resource type="PackedScene" uid="uid://cvjuwglb08ivq" path="res://scenes/player/player.tscn" id="4_oouiu"]
@@ -51,6 +51,8 @@ tile_set = SubResource("TileSet_tdeym")
 
 [node name="Foreground" type="TileMapLayer" parent="." unique_id=1304465506]
 tile_set = ExtResource("1_asil4")
+
+[node name="Surfaces" type="Node2D" parent="." unique_id=964153510]
 
 [node name="Pickups" type="Node2D" parent="." unique_id=763736419]
 

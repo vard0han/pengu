@@ -42,7 +42,11 @@ func process_physics(delta: float) -> void:
 		return
 	
 	if _dash_timer <= 0:
-		player.velocity.x = player.move_speed * player.direction if player.direction != 0 else 0.0
+		var on_ice: bool = player.current_surface == Player.SurfaceType.ICE or player.ice_exit_grace_timer > 0.0
+		
+		if not on_ice:
+			player.velocity.x = player.move_speed * player.direction if player.direction != 0 else 0.0
+		
 		if player.is_on_floor():
 			_state_machine.transition_to("Run" if absf(player.velocity.x) > 0.1 else "Idle")
 		else:

@@ -3,9 +3,9 @@ extends CharacterBody2D
 
 @export_category("Horizontal Movement")
 @export var move_speed : float = 105.0
-@export var acceleration : float = 1000.0
-@export var deceleration : float = 800.0
-@export var turn_acceleration_multiplier: float = 2.5
+@export var acceleration : float = 500.0
+@export var deceleration : float = 400.0
+@export var turn_acceleration_multiplier: float = 1.5
 @export var max_horizontal_speed: float = 500.0
 
 @export_category("Jump — Designer Inputs")
@@ -54,6 +54,11 @@ extends CharacterBody2D
 @export var wall_jump_lock_time: float = 0.2
 @export var wall_slide_max_fall_speed: float = 150.0
 
+@export_category("Surfaces — Ice")
+@export var ice_control_multiplier: float = 0.2
+@export var ice_speed_multiplier: float = 1.4
+@export var ice_exit_grace_time: float = 0.15
+
 var aim_direction: Vector2 = Vector2.RIGHT
 var direction : float = 0.0
 var last_direction : float = 1.0
@@ -72,6 +77,11 @@ var wall_coyote_timer: float = 0.0
 var wall_jump_lock_timer: float = 0.0
 var wall_normal: Vector2 = Vector2.ZERO
 
+var current_surface: SurfaceType = SurfaceType.NONE
+var _surface_stack: Array[SurfaceType] = []
+
+var ice_exit_grace_timer: float = 0.0
+
 # flicker for iframes (after damaged)
 const FLICKED_FREQUENCY: float = 10.0
 var _flicker_timer: float = 0.0
@@ -86,6 +96,8 @@ var _flicker_timer: float = 0.0
 
 signal died
 
+enum SurfaceType { NONE, ICE }
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	health_component.died.connect(_on_died)
@@ -97,6 +109,7 @@ func _physics_process(delta: float) -> void:
 	jump_buffer_timer = maxf(jump_buffer_timer - delta, 0.0)
 	wall_coyote_timer = maxf(wall_coyote_timer - delta, 0.0)
 	wall_jump_lock_timer = maxf(wall_jump_lock_timer - delta, 0.0)
+	ice_exit_grace_timer = maxf(ice_exit_grace_timer - delta, 0.0)
 
 func _process(delta: float) -> void:
 	aim_direction = (get_global_mouse_position() - global_position).normalized()
@@ -194,3 +207,16 @@ func shake_camera(strength: String) -> void:
 		"small": camera.shake_small()
 		"medium": camera.shake_medium()
 		"large": camera.shake_large()
+
+func enter_surface_zone(surface: SurfaceType) -> void:
+	_surface_stack.append(surface)
+	current_surface = _surface_stack.back()
+
+func exit_surface_zone(surface: SurfaceType) -> void:
+	if surface == SurfaceType.ICE:
+		ice_exit_grace_timer = ice_exit_grace_time
+	
+	var idx: int = _surface_stack.rfind(surface)
+	if idx != -1:
+		_surface_stack.remove_at(idx)
+	current_surface = _surface_stack.back() if not _surface_stack.is_empty() else SurfaceType.NONE

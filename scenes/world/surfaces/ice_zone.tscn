@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://co3jniuofie1"]
+
+[ext_resource type="Script" uid="uid://cjmoudupm4re0" path="res://scenes/world/surfaces/ice_zone.gd" id="1_8jask"]
+[ext_resource type="Texture2D" uid="uid://bvicsj270uhmk" path="res://assets/tiles/tile_0154.png" id="1_tr7yl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkp3o"]
+size = Vector2(360, 22)
+
+[node name="IceZone" type="Area2D" unique_id=657769259]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_8jask")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1538383044]
+position = Vector2(0, -10.9375)
+shape = SubResource("RectangleShape2D_bkp3o")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1672920630]
+position = Vector2(0, -9)
+texture = ExtResource("1_tr7yl")

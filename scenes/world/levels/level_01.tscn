@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bbs5kywh8t8a4"]
 
-[ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/base_level.tscn" id="1_odbsn"]
+[ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/levels/base_level.tscn" id="1_odbsn"]
 [ext_resource type="Texture2D" uid="uid://7aq5lr32t8ck" path="res://assets/inputs/tilemap_black_packed.png" id="2_8y18y"]
 [ext_resource type="PackedScene" uid="uid://dwgv6imlxdcwh" path="res://scenes/enemies/patrol_enemy.tscn" id="2_ynxc0"]
 [ext_resource type="Texture2D" uid="uid://c2h4ww4godcg3" path="res://assets/inputs/tilemap_white_packed.png" id="3_3tp2u"]
@@ -222,17 +222,17 @@ card_drop = ExtResource("4_8p1rb")
 position = Vector2(1053, -72)
 card_drop = ExtResource("4_8p1rb")
 
-[node name="FinishLine" parent="." index="6" unique_id=1804460539]
+[node name="FinishLine" parent="." index="7" unique_id=1804460539]
 position = Vector2(245, -225)
 
 [node name="Sprite2D" parent="FinishLine" index="1" unique_id=945155921]
 position = Vector2(-2, 0)
 
-[node name="KillZone" parent="." index="7" unique_id=466905863]
+[node name="KillZone" parent="." index="8" unique_id=466905863]
 position = Vector2(0, 395)
 
 [node name="CollisionShape2D" parent="KillZone" index="0" unique_id=392877736]
 shape = SubResource("WorldBoundaryShape2D_odbsn")
 
-[node name="Player" parent="." index="8" unique_id=681689913]
+[node name="Player" parent="." index="9" unique_id=681689913]
 position = Vector2(-684, 126)

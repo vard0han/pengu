@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bias07bulaflo"]
 
-[ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/base_level.tscn" id="1_dl2e1"]
+[ext_resource type="PackedScene" uid="uid://dvcg7e6js2o0p" path="res://scenes/world/levels/base_level.tscn" id="1_dl2e1"]
 [ext_resource type="PackedScene" uid="uid://dgcuqjc01o17q" path="res://scenes/enemies/turret_enemy.tscn" id="2_ama0h"]
 [ext_resource type="Resource" uid="uid://dhb22ygslces5" path="res://resources/cards/jump_card.tres" id="3_7sw10"]
 [ext_resource type="PackedScene" uid="uid://dwgv6imlxdcwh" path="res://scenes/enemies/patrol_enemy.tscn" id="4_7sw10"]
